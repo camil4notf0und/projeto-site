@@ -1,0 +1,8 @@
+@import url(./base/reset.css);
+@import url(./base/variaveis.css);
+@import url(./base/cabecalho.css);
+@import url(./base/rodape.css);
+
+main {
+    margin-top: 75px;
+}
