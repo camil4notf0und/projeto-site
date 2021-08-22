@@ -1,0 +1,25 @@
+.chamada {
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 60px);
+}
+.chamada--imagem {
+    width: 40%;
+    height: 100%;
+    background: url(../../../assets/img/fone.png) center / cover no-repeat;
+}
+.chamada--texto {
+    display: flex;
+    align-items: center;
+    background-color: var(--verde-principal-escuro);
+    width: 60%;
+    height: 100%;
+    text-align: center;
+}
+.chamada__texto {
+    font-size: 50px;
+    font-family: var(--fonte-tipo-um);
+    color: #000;
+    margin: 0 auto;
+    width: 90%;
+}

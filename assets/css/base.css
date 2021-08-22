@@ -3,6 +3,10 @@
 @import url(./base/cabecalho.css);
 @import url(./base/rodape.css);
 
+body {
+    background-color: var(--preto-diferenciado);
+}
+
 main {
-    margin-top: 75px;
+    margin-top: 60px;
 }
