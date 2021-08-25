@@ -76,12 +76,12 @@
     width: 100%;
     height: 175px;
     background-position: center;
-    background-size: 270px 175px;
+    background-size: 260px 175px;
     background-repeat: no-repeat;
     transition: 0.75s background-size, 0.75s box-shadow;
 }
 .video__imagem:hover {
-    background-size: 300px 200px;
+    background-size: 290px 200px;
     box-shadow: inset 0 0 50px black;
 }
 .videos__video:nth-child(1) .video__imagem {
