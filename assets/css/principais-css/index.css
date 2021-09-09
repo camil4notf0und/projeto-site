@@ -3,27 +3,59 @@
     width: 100%;
     height: calc(100vh - 60px);
 }
-.chamada--imagem {
-    width: 40%;
-    height: 100%;
-    background: url(../../../assets/img/fone.png) center / cover no-repeat;
+.carousel-item:nth-child(1) .chamada--imagem {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: url(https://pbs.twimg.com/media/EraMpgeXYAQCfqn.jpg) center / cover no-repeat;
+}
+.carousel-item:nth-child(2) .chamada--imagem {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: url(https://www.abcdacomunicacao.com.br/wp-content/uploads/podpah.jpg) center / cover no-repeat;
 }
 .chamada--texto {
     display: flex;
     align-items: center;
-    background-color: var(--verde-principal-escuro);
+    background: linear-gradient(45deg, var(--verde-principal), #4aa068, #30814d, #4aa068, var(--verde-principal-escuro));
+    background-size: 300% 300%;
     width: 60%;
     height: 100%;
     text-align: center;
+    animation: movendo 5s ease infinite;
 }
-.chamada__texto {
-    font-size: 50px;
-    font-family: var(--fonte-tipo-um);
-    color: #000;
-    margin: 0 auto;
-    width: 90%;
+@keyframes movendo {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
+
+.chamada__texto {
+    font-size: 40px;
+    font-family: var(--fonte-tipo-um);
+    color: #fff;
+    margin: 0 auto;
+    width: 90%;
+    animation: ida 1s;
+}
+@keyframes ida {
+    from {
+        transform: translateX(-50px) translateY(-50px);
+        filter: blur(2px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
 
 
 .filtro {
@@ -71,6 +103,8 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    opacity: 0;
+    transition: 1.5s opacity;
 }
 .video__imagem {
     width: 100%;
@@ -78,12 +112,95 @@
     background-position: center;
     background-size: 101% 101%;
     background-repeat: no-repeat;
-    transition: 0.75s background-size, 0.75s box-shadow;
+
+
+
+
+    position: relative;
+    display: inline-block;
+    animation: none;
+    transition: 0.5s;
 }
-.video__imagem:hover {
+.video__imagem:hover, .video__imagem:focus {
     background-size: 110% 110%;
-    box-shadow: inset 0 0 50px black;
+    animation: led 0.25s infinite alternate;
+    animation-iteration-count: 2;
+    animation-delay: 0.5s;
 }
+.video__imagem, .video__imagem span {
+    box-sizing: border-box;
+}
+.video__imagem span {
+    display: block;
+    position: absolute;
+    background: var(--verde-principal);
+}
+.video__imagem span:nth-child(1) {
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.25s transform;
+}
+.video__imagem:hover span:nth-child(1), .video__imagem:focus span:nth-child(1) {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.25s;
+}
+.video__imagem span:nth-child(2) {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: 0.25s transform;
+}
+.video__imagem:hover span:nth-child(2), .video__imagem:focus span:nth-child(2) {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.25s;
+}
+.video__imagem span:nth-child(3) {
+    right: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.25s transform;
+    transition-delay: 0.25s;
+}
+.video__imagem:hover span:nth-child(3), .video__imagem:focus span:nth-child(3) {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.25s;
+    transition-delay: 0.25s;
+}
+.video__imagem span:nth-child(4) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: 0.25s transform;
+    transition-delay: 0.25s;
+}
+.video__imagem:hover span:nth-child(4), .video__imagem:focus span:nth-child(4) {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.25s;
+    transition-delay: 0.25s;
+}
+
+
+
+
+
+
 .videos__video:nth-child(1) .video__imagem {
     background-image: url(../../img/thumbnail-metaforando.webp);
 }
@@ -94,18 +211,78 @@
     background-image: url(../../img/thumbnail-ninja.webp);
 }
 .videos__video:nth-child(4) .video__imagem {
-    background-image: url(../../img/thumbnail-zoio.webp);
+    background-image: url(../../img/thumbnail-lucas.jpg);
 }
 .videos__video:nth-child(5) .video__imagem {
     background-image: url(../../img/thumbnail-gaules.webp);
 }
 .videos__video:nth-child(6) .video__imagem {
-    background-image: url(../../img/thumbnail-da-cunha.webp);
+    background-image: url(../../img/thumbnail-lito.jpg);
 }
 .video__titulo {
     font-size: 22.5px;
     color: var(--verde-principal);
 }
-.video__paragrafo {
 
+
+
+
+
+.video__hover {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    width: 100%;
+    height: 100%;
+    color: var(--branco-diferenciado);
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+}
+.video__hover:hover, .video__hover:focus {
+    opacity: 1;
+}
+.video__hover-margin {
+    margin: 0 auto;
+}
+
+.alerta {
+    flex-direction: column;
+}
+.botoes {
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    grid-template-rows: 50% 50%;
+    grid-row-gap: 10%;
+    grid-column-gap: 5%;
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+}
+.botao-alerta {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: var(--verde-principal);
+    transform: translateY(0);
+    color: white;
+    padding: 5px;
+    font-size: 12.5px;
+    transition: 0.15s;
+}
+.botao-alerta:hover {
+    background-color: var(--verde-principal-escuro);
+    transform: translateY(-1.5px);
+}
+.botao-alerta:active {
+    transform: translateY(1.5px);
+}
+.aviso-segundo-plano .pano-de-fundo{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.25);
 }

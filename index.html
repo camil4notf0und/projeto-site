@@ -12,19 +12,24 @@
         <script src="https://kit.fontawesome.com/0a54e825af.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./assets/css/base.css">
         <link rel="stylesheet" href="./assets/css/principais-css/index.css">
+        <script src="./assets/js/cabecalho.js" defer></script>
+        <script src="./assets/js/index.js" defer></script>
+        <script src="./assets/js/API-ytb.js" defer></script>
     </head>
     <body>
         <header class="cabecalho">
             <div class="cabecalho__separa">
-                <div class="logo-titulo">
-                    <i class="fas fa-microphone-alt fa-3x"></i>
-                    <h5 class="logo__titulo">Nome do site</h5>
-                </div>
+                <a href="./index.html">
+                    <div class="logo-titulo">
+                        <i class="fas fa-microphone-alt fa-3x"></i>
+                        <h5 class="logo__titulo">Nome do site</h5>
+                    </div>
+                </a>
                 <div class="navegacao--configs">
                     <nav class="navegacao">
                         <ul class="navegacao__lista">
-                            <li class="navegacao__item">
-                                <a href="#" class="navegacao__link"><i class="fas fa-home fa-lg"></i>Home</a>
+                            <li class="navegacao__item ativo">
+                                <a href="./index.html" class="navegacao__link"><i class="fas fa-home fa-lg"></i>Home</a>
                             </li>
                             <li class="navegacao__item">
                                 <a href="#" class="navegacao__link"><i class="fas fa-info-circle fa-lg"></i>Sobre</a>
@@ -34,7 +39,7 @@
                     <div class="configs">
                         <div class="dropdown">
                             <a class="botao-configs" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-cog fa-lg"></i>Configs<i class="fas fa-chevron-down fa-xs"></i>
+                                <i class="fas fa-cog fa-lg"></i><i class="fas fa-cog fa-lg fa-spin"></i>Configs<i class="fas fa-chevron-down fa-xs"></i>
                             </a>
                           
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -49,7 +54,24 @@
         </header>
         <main class="principal">
             <section class="chamada">
-                <div class="chamada--imagem"></div>
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <div class="chamada--imagem"></div>
+                      </div>
+                      <div class="carousel-item">
+                        <div class="chamada--imagem"></div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-chevron-left fa-2x"></i></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-chevron-right fa-2x"></i></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
                 <div class="chamada--texto">
                     <h1 class="chamada__texto">Você aí, que gosta de ouvir podcast, mas está sem conteúdos, fique tranquilo, separamos os melhores poscast para você!</h1>
                 </div>
@@ -67,35 +89,337 @@
                 </div>
             </section>
             <section class="videos">
-                <div class="videos__video">
-                    <div class="video__imagem"></div>
+                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-qual-video="0" tabindex="0">
+                    <div class="video__imagem">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="video__hover">
+                            <div class="video__hover-margin">
+                                <i class="fas fa-play fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
                     <h2 class="video__titulo">Flow Podcast - #154 - Meta</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video">
-                    <div class="video__imagem"></div>
+                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-qual-video="1" tabindex="0">
+                    <div class="video__imagem">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="video__hover">
+                            <div class="video__hover-margin">
+                                <i class="fas fa-play fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
                     <h2 class="video__titulo">Podpah - #46 - Diogo</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video">
-                    <div class="video__imagem"></div>
+                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-qual-video="2" tabindex="0">
+                    <div class="video__imagem">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="video__hover">
+                            <div class="video__hover-margin">
+                                <i class="fas fa-play fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
                     <h2 class="video__titulo">Flow Podcast - #226 - Ninja</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video">
-                    <div class="video__imagem"></div>
-                    <h2 class="video__titulo">Podpah - #26 - Zoio</h2>
+                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-qual-video="3" tabindex="0">
+                    <div class="video__imagem">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="video__hover">
+                            <div class="video__hover-margin">
+                                <i class="fas fa-play fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="video__titulo">Podpah - #05 - Lucas</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video">
-                    <div class="video__imagem"></div>
+                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-qual-video="4" tabindex="0">
+                    <div class="video__imagem">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="video__hover">
+                            <div class="video__hover-margin">
+                                <i class="fas fa-play fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
                     <h2 class="video__titulo">Flow Podcast - #227 - Gaule</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video">
-                    <div class="video__imagem"></div>
-                    <h2 class="video__titulo">Podpah - #41 - da Cunha</h2>
+                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-qual-video="5" tabindex="0">
+                    <div class="video__imagem">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="video__hover">
+                            <div class="video__hover-margin">
+                                <i class="fas fa-play fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="video__titulo">Ciência sem fim - #04 - Lito</h2>
                     <p class="video__paragrafo"></p>
+                </div>
+            </section>
+            <section class="modais"></section>
+                <!-- Modal 1 -->
+                <div class="modal fade" id="staticBackdropUm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #154 - Metaforando</h5>
+                        <div>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div id="player"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <div  class="div-icone fa-backwardVideo">
+                                <i class="fas fa-backward"></i>
+                            </div>
+                            <div class="div-icone fa-playVideo">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="div-icone fa-pauseVideo">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            <div class="div-icone fa-forwardVideo">
+                                <i class="fas fa-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Modal 2 -->
+                <div class="modal fade" id="staticBackdropDois" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Podpah - #46 - Diogo</h5>
+                        <div>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div id="playerDois"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <div  class="div-icone fa-backwardVideo">
+                                <i class="fas fa-backward"></i>
+                            </div>
+                            <div class="div-icone fa-playVideo">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="div-icone fa-pauseVideo">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            <div class="div-icone fa-forwardVideo">
+                                <i class="fas fa-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Modal 3 -->
+                <div class="modal fade" id="staticBackdropTres" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #226 - Ninja</h5>
+                        <div>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div id="playerTres"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <div  class="div-icone fa-backwardVideo">
+                                <i class="fas fa-backward"></i>
+                            </div>
+                            <div class="div-icone fa-playVideo">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="div-icone fa-pauseVideo">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            <div class="div-icone fa-forwardVideo">
+                                <i class="fas fa-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Modal 4 -->
+                <div class="modal fade" id="staticBackdropQuatro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Podpah - #05 - Lucas Inutilismo</h5>
+                        <div>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div id="playerQuatro"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <div  class="div-icone fa-backwardVideo">
+                                <i class="fas fa-backward"></i>
+                            </div>
+                            <div class="div-icone fa-playVideo">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="div-icone fa-pauseVideo">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            <div class="div-icone fa-forwardVideo">
+                                <i class="fas fa-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Modal 5 -->
+                <div class="modal fade" id="staticBackdropCinco" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #227 - Gaule
+                        </h5>
+                        <div>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div id="playerCinco"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <div  class="div-icone fa-backwardVideo">
+                                <i class="fas fa-backward"></i>
+                            </div>
+                            <div class="div-icone fa-playVideo">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="div-icone fa-pauseVideo">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            <div class="div-icone fa-forwardVideo">
+                                <i class="fas fa-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Modal 6 -->
+                <div class="modal fade" id="staticBackdropSeis" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Ciência sem Fim - #04 - Lito</h5>
+                        <div>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div id="playerSeis"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <div  class="div-icone fa-backwardVideo">
+                                <i class="fas fa-backward"></i>
+                            </div>
+                            <div class="div-icone fa-playVideo">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="div-icone fa-pauseVideo">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            <div class="div-icone fa-forwardVideo">
+                                <i class="fas fa-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+            <section class="offcanvas´s">
+                <div class="player-segundo-plano">
+                    <button class="btn btn-primary d-none" id="botaoAbreOffCanvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
+                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling">
+                        <div class="offcanvas-header">
+                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Flow Podcast - #154 - Meta</h5>
+                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Podpah - #46 - Diogo</h5>
+                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Flow Podcast - #226 - Ninja</h5>
+                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Podpah - #05 - Lucas</h5>
+                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Flow Podcast - #227 - Gaule
+                        </h5>
+                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Ciência sem fim - #04 - Lito</h5>
+                        <div>
+                            <button type="button" class="btn-maximiza" data-bs-toggle="modal"><i class="fas fa-plus fa-lg"></i></button>
+                            <button type="button" class="btn-close text-reset fechaOffCanvas" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div  class="div-icone fa-backwardVideo">
+                                <i class="fas fa-backward"></i>
+                            </div>
+                            <div class="div-icone fa-playVideo">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="div-icone fa-pauseVideo">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            <div class="div-icone fa-forwardVideo">
+                                <i class="fas fa-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aviso-segundo-plano">
+                        <div class="pano-de-fundo" id="panoDeFundo"></div>
+                        <button class="btn btn-primary d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrollingDois" aria-controls="offcanvasScrolling" id="botaoAbreAviso">Enable body scrolling</button>
+                        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrollingDois" aria-labelledby="offcanvasScrollingLabel">
+                            <div class="offcanvas-header">
+                              <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Aviso!</h5>
+                              <button type="button" class="btn-close text-reset fechaOffCanvas" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"><i class="fas fa-times fa-lg"></i></button>
+                            </div>
+                            <div class="offcanvas-body alerta">
+                              <p>Existe um podcast em segundo plano, o que deseja fazer?</p>
+                              <div class="botoes">
+                                  <button id="btn-continua-ouvindo" class="botao-alerta">Continuar Ouvindo</button>
+                                  <button id="btn-continua-assistindo" class="botao-alerta" data-bs-toggle="modal">Continuar Assitindo</button>
+                                  <button id="btn-ouvir-selecionado" class="botao-alerta">Ouvir Podcast Selecionado</button>
+                                  <button id="btn-assistir-selecionado" class="botao-alerta">Assitir podcast Selecionado</button>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -120,5 +444,4 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     </body>
-    <script src="./assets/js/index.js"></script>
 </html>

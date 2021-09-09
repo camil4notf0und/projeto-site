@@ -1,5 +1,5 @@
 .cabecalho {
-    width: 100vw;
+    width: 100%;
     height: 60px;
     background: var(--verde-principal);
     font-family: var(--fonte-tipo-dois);
@@ -21,6 +21,14 @@
     align-items: center;
     justify-content: space-between;
     width: 175px;
+    cursor: pointer;
+    transition: 0.25s transform;
+}
+.fa-microphone-alt {
+    transition: 0.25s transform;
+}
+.logo-titulo:hover .fa-microphone-alt{
+    transform: rotate(15deg);
 }
 .logo__titulo {
     margin: 0;
@@ -49,10 +57,30 @@
 .navegacao--configs .fa-chevron-down {
     margin-left: 3px;
 }
+.navegacao__item {
+    opacity: 0.5;
+    transition: 0.25s transform, 0.25s opacity;
+}
+.navegacao__item.ativo, .navegacao__item.ativo:hover {
+    opacity: 1;
+}
+.navegacao__item:hover {
+    opacity: 0.75;
+    transform: translateY(-3px);
+}
 .navegacao__link, .botao-configs {
     text-decoration: none;
     color: #000000;
     font-size: 20px;
+}
+.botao-configs .fa-cog:nth-child(2) {
+    display: none;
+}
+.botao-configs:hover .fa-cog:nth-child(1) {
+    display: none;
+}
+.botao-configs:hover .fa-cog:nth-child(2) {
+    display: inline-block;
 }
 .navegacao__link:hover, .botao-configs:hover {
     color: #000000;
