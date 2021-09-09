@@ -1,0 +1,18 @@
+@import url(./base/reset.css);
+@import url(./base/variaveis.css);
+@import url(./base/cabecalho.css);
+@import url(./base/bootstrap.css);
+@import url(./base/rodape.css);
+
+body {
+    background-color: var(--preto-diferenciado);
+}
+
+main {
+    margin-top: 60px;
+}
+
+a, a:hover, a:focus {
+    color: black;
+    text-decoration: none;
+}
