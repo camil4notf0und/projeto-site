@@ -11,10 +11,13 @@ function apareceVideos() {
     if(scroll >= 400) {
         if(animacao<videos.length) {
             videos[animacao].style.opacity = "1";
+            videos[animacao].style.transform = "scale(1)";
             animacao++;
             videos[animacao].style.opacity = "1";
+            videos[animacao].style.transform = "scale(1)";
             animacao++;
             videos[animacao].style.opacity = "1";
+            videos[animacao].style.transform = "scale(1)";
             animacao++;
         }
     }
@@ -59,3 +62,49 @@ btnMaximiza.onclick = maximiza;
 var offCanvasDois = document.getElementById("offcanvasScrollingDois");
 var panoDeFundo = document.getElementById("panoDeFundo");
 
+
+
+function flowPodcast() {
+    for(let f = 0; f < videos.length; f++) {
+        let podcast = videos[f].getAttribute("data-podcast");
+        if(podcast == "flow-podcast") {
+            videos[f].style.display = "block";
+        }else if(podcast == "podpah") {
+            videos[f].style.display = "none";
+        }else if(podcast == "ciencia-sem-fim") {
+            videos[f].style.display = "none";
+        }
+    }
+}
+
+function podpah() {
+    for(let f = 0; f < videos.length; f++) {
+        let podcast = videos[f].getAttribute("data-podcast");
+        if(podcast == "flow-podcast") {
+            videos[f].style.display = "none";
+        }else if(podcast == "podpah") {
+            videos[f].style.display = "block";
+        }else if(podcast == "ciencia-sem-fim") {
+            videos[f].style.display = "none";
+        }
+    }
+}
+
+function cienciaSemFim() {
+    for(let f = 0; f < videos.length; f++) {
+        let podcast = videos[f].getAttribute("data-podcast");
+        if(podcast == "flow-podcast") {
+            videos[f].style.display = "none";
+        }else if(podcast == "podpah") {
+            videos[f].style.display = "none";
+        }else if(podcast == "ciencia-sem-fim") {
+            videos[f].style.display = "block";
+        }
+    }
+}
+
+function todos() {
+    for(let f = 0; f < videos.length; f++) {
+        videos[f].style.display = "block";
+    }   
+}

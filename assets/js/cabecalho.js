@@ -9,7 +9,7 @@ window.addEventListener("scroll", function (event) {
 });
 
 function animacaoCabecalho() {
-	if(scroll>500) { cabecalho.style.transition = "opacity 1s, top 1s"};
+	if(scroll>500) { cabecalho.style.transition = "opacity 1s, top  1s"};
 	if(scroll<=500) { cabecalho.style.top = "-70px"; }
 	if(scroll>510) { cabecalho.style.top = "0"; }
 	if(scroll>=200) {

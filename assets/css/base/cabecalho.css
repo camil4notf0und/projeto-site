@@ -22,10 +22,10 @@
     justify-content: space-between;
     width: 175px;
     cursor: pointer;
-    transition: 0.25s transform;
+    transition: 0.25s ease-out transform;
 }
 .fa-microphone-alt {
-    transition: 0.25s transform;
+    transition: 0.25s ease-out transform;
 }
 .logo-titulo:hover .fa-microphone-alt{
     transform: rotate(15deg);

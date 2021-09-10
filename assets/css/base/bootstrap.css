@@ -4,14 +4,10 @@
 }
 @keyframes vinda {
     from {
-        transform: translateX(-100px);
-        filter: blur(2px);
-        opacity: 0;
+        transform: translateX(-75px);
     }
     to {
         transform: translateX(0);
-        filter: blur(0);
-        opacity: 1;
     }
 }
 
@@ -97,11 +93,14 @@
 .fa-times, .btn-minimiza, .btn-maximiza {
     background: none;
     color: var(--verde-principal);
+    cursor: pointer;
     border: none;
     opacity: 0.5;
-    padding: 0;
     text-shadow: 0 0 0 var(--verde-principal);
     transition: 0.10s text-shadow, 0.10s opacity;
+}
+.btn-minimiza {
+    padding: .5rem;
 }
 .fa-times:hover, .btn-minimiza:hover, .btn-maximiza:hover {
     color: var(--verde-principal);
@@ -143,5 +142,13 @@ html .btn-close {
 }
 .offcanvas-title {
     font-size: 16px;
+    color: var(--verde-principal);
+}
+
+
+.tooltip.show {
+	opacity: 1;
+}
+.tooltip .tooltip-inner {
     color: var(--verde-principal);
 }

@@ -13,15 +13,21 @@
     height: calc(100vh - 60px);
     background: url(https://www.abcdacomunicacao.com.br/wp-content/uploads/podpah.jpg) center / cover no-repeat;
 }
+.carousel-item:nth-child(3) .chamada--imagem {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: url(https://cdn.flowpodcast.com.br/criador/yLTB8ibDV92MmwQMNHQD/assets/icon/e8abc3c7-0506-48c7-958e-72e4aa303602_89e6a595-3cb6-4118-be90-b26bff2d42da_e6a931f5-e7d1-4a75-b1f6-bd799cb328ca.jpeg) center / cover no-repeat;
+}
 .chamada--texto {
     display: flex;
     align-items: center;
-    background: linear-gradient(45deg, var(--verde-principal), #4aa068, #30814d, #4aa068, var(--verde-principal-escuro));
+    /*background: linear-gradient(45deg, var(--verde-principal), #4aa068, #30814d, #4aa068, var(--verde-principal-escuro));*/
+    background-color: var(--verde-principal-escuro);
     background-size: 300% 300%;
     width: 60%;
     height: 100%;
     text-align: center;
-    animation: movendo 5s ease infinite;
+    /* animation: movendo 5s ease infinite;*/
 }
 @keyframes movendo {
     0% {
@@ -46,14 +52,10 @@
 }
 @keyframes ida {
     from {
-        transform: translateX(-50px) translateY(-50px);
-        filter: blur(2px);
-        opacity: 0;
+        transform: translateX(-50px);
     }
     to {
-        transform: translateX(0) translateY(0);
-        filter: blur(0);
-        opacity: 1;
+        transform: translateX(0);
     }
 }
 
@@ -104,7 +106,8 @@
     flex-direction: column;
     cursor: pointer;
     opacity: 0;
-    transition: 1.5s opacity;
+    transform: scale(0.85);
+    transition: 1.5s opacity, 0.25s ease-in-out transform;
 }
 .video__imagem {
     width: 100%;
