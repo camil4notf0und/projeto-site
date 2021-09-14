@@ -111,7 +111,7 @@
 }
 .video__imagem {
     width: 100%;
-    height: 175px;
+    height: 150px;
     background-position: center;
     background-size: 101% 101%;
     background-repeat: no-repeat;
@@ -223,12 +223,9 @@
     background-image: url(../../img/thumbnail-lito.jpg);
 }
 .video__titulo {
-    font-size: 22.5px;
+    font-size: 20px;
     color: var(--verde-principal);
 }
-
-
-
 
 
 .video__hover {
@@ -287,5 +284,7 @@
     top: 0;
     z-index: 3;
     display: none;
+    opacity: 0;
     background-color: rgba(0, 0, 0, 0.25);
+    transition: 1s;
 }

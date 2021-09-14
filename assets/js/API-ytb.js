@@ -310,7 +310,6 @@ function continuaOuvindo() {
 
 function continuaAssistindo() {
   botaoAviso.click();
-  //  videos[qualTocando].click();
 }
 
 function ouvirVideoSelecionado() {
@@ -349,10 +348,13 @@ function segundoPlano() {
   let roleOffCanvasDois = offCanvasDois.getAttribute("role");
   if(roleOffCanvasDois == "dialog") {
     panoDeFundo.style.display = "block";
+    panoDeFundo.style.opacity = "1";
   }else {
+    panoDeFundo.style.opacity = "0";
     panoDeFundo.style.display = "none";
   }
 }
+
 
 setInterval(segundoPlano, 1);
 

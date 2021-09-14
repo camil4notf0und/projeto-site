@@ -8,8 +8,9 @@ body {
     background-color: var(--preto-diferenciado);
 }
 
-main {
-    margin-top: 60px;
+main, footer {
+    width: 80%;
+    margin-left: 20%;
 }
 
 a, a:hover, a:focus {

@@ -2,13 +2,12 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Site | Podcasts</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Gayathri&family=Sansita&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/0a54e825af.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./assets/css/base.css">
         <link rel="stylesheet" href="./assets/css/principais-css/index.css">
@@ -35,20 +34,23 @@
                             <li class="navegacao__item">
                                 <a href="#" class="navegacao__link"><i class="fas fa-info-circle fa-lg"></i>Sobre</a>
                             </li>
+                            <li class="navegação__item">
+                                <div class="dropdown">
+                                    <a class="botao-configs" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-cog fa-lg"></i><i class="fas fa-cog fa-lg fa-spin"></i>Configs<i class="fas fa-chevron-down fa-xs"></i>
+                                    </a>
+                                  
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                      <li><a class="dropdown-item" href="#">Action</a></li>
+                                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         </ul>
                     </nav>
                     <div class="configs">
-                        <div class="dropdown">
-                            <a class="botao-configs" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-cog fa-lg"></i><i class="fas fa-cog fa-lg fa-spin"></i>Configs<i class="fas fa-chevron-down fa-xs"></i>
-                            </a>
-                          
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                              <li><a class="dropdown-item" href="#">Action</a></li>
-                              <li><a class="dropdown-item" href="#">Another action</a></li>
-                              <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                          </div>
+                        
                     </div>
                 </div>
             </div>
@@ -86,10 +88,10 @@
                             <i class="fas fa-filter fa-2x"></i> <h5 class="filtro__texto">Filtrar</h5>
                     </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="Javascript: flowPodcast();">Flow Podcast</a></li>
-                        <li><a class="dropdown-item" href="Javascript: podpah();">PodPah</a></li>
-                        <li><a class="dropdown-item" href="Javascript: cienciaSemFim();">Ciência Sem Fim</a></li>
-                        <li><a class="dropdown-item" href="Javascript: todos();">Todos</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="flowPodcast()">Flow Podcast</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="podpah()">PodPah</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="cienciaSemFim()">Ciência Sem Fim</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="todos()">Todos</a></li>
                         </ul>
                 </div>
             </section>
