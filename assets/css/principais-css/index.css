@@ -224,7 +224,8 @@
 }
 .video__titulo {
     font-size: 20px;
-    color: var(--verde-principal);
+    font-weight: 300;
+    color: var(--branco-diferenciado);
 }
 
 
