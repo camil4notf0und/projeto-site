@@ -18,7 +18,12 @@
 
 .logo-titulo {
     cursor: pointer;
-    
+
+}
+
+.podpato_logo {
+    width: 200px;
+
 }
 
 .navegacao--configs {
