@@ -6,6 +6,7 @@
 
 body {
     background-color: var(--preto-diferenciado);
+    font-family: var(--fonte-titulo);
 }
 
 main, footer {
