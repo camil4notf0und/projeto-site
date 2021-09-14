@@ -8,21 +8,18 @@
     left: 0;
     z-index: 2;
 }
+
 .cabecalho__separa {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    margin: 15px 0 0 15px;
+    margin: 15px 15px;
     
 }
 
-.logo-titulo {
-    cursor: pointer;
-
-}
-
 .podpato_logo {
-    width: 200px;
+    width: 100%;
+    cursor: pointer;
 
 }
 
@@ -63,7 +60,7 @@
 }
 .navegacao__link, .botao-configs {
     text-decoration: none;
-    color: #000000;
+    color: var(--branco-diferenciado);
     font-size: 20px;
 }
 .botao-configs .fa-cog:nth-child(2) {
@@ -76,7 +73,7 @@
     display: inline-block;
 }
 .navegacao__link:hover, .botao-configs:hover {
-    color: #000000;
+    color: var(--branco-diferenciado);
 }
 .configs {
     display: flex;
