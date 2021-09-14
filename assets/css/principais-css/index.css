@@ -83,7 +83,7 @@
     background-color: #387c50;
 }
 .filtro__texto {
-    color: #000000;
+    color: var(--branco-diferenciado);
     font-size: 20px;
     margin: 0 15px 0 25px;
 }
