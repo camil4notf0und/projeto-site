@@ -13,7 +13,9 @@
     justify-content: space-between;
     flex-direction: column;
     margin: 15px 0 0 15px;
+    
 }
+
 .logo-titulo {
     display: flex;
     align-items: center;
