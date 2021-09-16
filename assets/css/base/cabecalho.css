@@ -1,5 +1,5 @@
 .cabecalho {
-    width: 20%;
+    width: 22.5%;
     height: 100%;
     background: var(--preto-escuro);
     font-family: var(--fonte-tipo-dois);
@@ -13,28 +13,33 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    margin: 15px 15px;
-    
+    margin: 25px 15px 15px 15px;
 }
 
+.link__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .podpato_logo {
-    width: 100%;
+    width: 80%;
     cursor: pointer;
-
 }
 
 .navegacao--configs {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    height: 500px;
 }
 .navegacao {
     display: flex;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     flex-direction: column;
-    margin-top: 75px;
+    margin-top: 50px;
 }
+
 .navegacao__lista {
     display: flex;
     justify-content: space-between;
@@ -44,8 +49,16 @@
 .navegacao--configs .fas {
     margin-right: 15px;
 }
+.navegacao--configs .navegacao__item:nth-child(2) .fas {
+    margin-right: 10px;
+}
+.navegacao--configs .navegacao__item:nth-child(4) .fas {
+    margin-left: 2.5px;
+    margin-right: 17.5px;
+}
 .navegacao--configs .fa-chevron-down {
     margin-left: 3px;
+    transform: rotate(180deg);
 }
 .navegacao__item {
     opacity: 0.5;
@@ -78,4 +91,6 @@
 .configs {
     display: flex;
     align-items: center;
+    width: 80%;
+    margin: 0 auto;
 }
