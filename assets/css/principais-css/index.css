@@ -1,21 +1,21 @@
 .chamada {
     display: flex;
     width: 100%;
-    height: calc(100vh - 60px);
+    height: 100vh;
 }
 .carousel-item:nth-child(1) .chamada--imagem {
     width: 100%;
-    height: calc(100vh - 60px);
+    height: 100vh;
     background: url(https://pbs.twimg.com/media/EraMpgeXYAQCfqn.jpg) center / cover no-repeat;
 }
 .carousel-item:nth-child(2) .chamada--imagem {
     width: 100%;
-    height: calc(100vh - 60px);
+    height: 100vh;
     background: url(https://www.abcdacomunicacao.com.br/wp-content/uploads/podpah.jpg) center / cover no-repeat;
 }
 .carousel-item:nth-child(3) .chamada--imagem {
     width: 100%;
-    height: calc(100vh - 60px);
+    height: 100vh;
     background: url(https://cdn.flowpodcast.com.br/criador/yLTB8ibDV92MmwQMNHQD/assets/icon/e8abc3c7-0506-48c7-958e-72e4aa303602_89e6a595-3cb6-4118-be90-b26bff2d42da_e6a931f5-e7d1-4a75-b1f6-bd799cb328ca.jpeg) center / cover no-repeat;
 }
 .chamada--texto {
