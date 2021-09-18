@@ -10,11 +10,11 @@ body {
 }
 
 main, footer {
-    width: 77.5%;
-    margin-left: 22.5%;
+    width: calc(100% - 55px);
+    margin-left: 55px;
 }
 
 a, a:hover, a:focus {
-    color: #fff;
+    color: var(--branco-diferenciado);
     text-decoration: none;
 }

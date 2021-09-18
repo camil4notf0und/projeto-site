@@ -1,5 +1,3 @@
-var videos = document.getElementsByClassName("videos__video");
-
 var animacao = 0;
 
 var scroll;
@@ -7,8 +5,17 @@ window.addEventListener("scroll", function (event) {
     scroll = this.scrollY;
 });
 
+var pagCarregou = false;
+
+window.onload = function () {
+    [...videos].forEach((e) => {
+        e.classList.remove("desfoca");
+    });
+    pagCarregou = true;
+};
+
 function apareceVideos() {
-    if(scroll >= 400) {
+    if(scroll >= 400 && pagCarregou == true) {
         if(animacao<videos.length) {
             videos[animacao].style.opacity = "1";
             videos[animacao].style.transform = "scale(1)";
@@ -27,11 +34,11 @@ setInterval(apareceVideos, 250);
 
 
 
-var botaoOffCanvas = document.querySelector("#botaoAbreOffCanvas");
+
 var botaoAviso = document.querySelector("#botaoAbreAviso");
 var btnsMinimiza = document.getElementsByClassName("btn-minimiza");
 var btnMaximiza = document.getElementsByClassName("btn-maximiza")[0];
-var titulosOffCanvas = document.getElementsByClassName("offcanvas-title-segundo-plano");
+
 
 
 function abreOffCanvas() {
@@ -56,12 +63,6 @@ btnsMinimiza[4].onclick = abreOffCanvas;
 btnsMinimiza[5].onclick = abreOffCanvas;
 
 btnMaximiza.onclick = maximiza;
-
-
-
-var offCanvasDois = document.getElementById("offcanvasScrollingDois");
-var panoDeFundo = document.getElementById("panoDeFundo");
-
 
 
 function flowPodcast() {

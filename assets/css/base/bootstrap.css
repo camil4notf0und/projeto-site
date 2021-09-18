@@ -37,17 +37,17 @@
 
 
 .modal-dialog {
-    border: 5px solid var(--verde-principal);
-    border-radius: 10px;
-    max-width: 720px;
-    animation: led 0.75s infinite alternate;
+    border: 2.5px solid var(--branco-diferenciado);
+    border-radius: 7.5px;
+    min-width: 75%;
+    animation: led 0.5s infinite alternate;
 }
 @keyframes led {
     from {
-        box-shadow: 0 0 0 var(--verde-principal);
+        box-shadow: 0 0 0 var(--branco-diferenciado);
     }
     to {
-        box-shadow: 0 0 10px var(--verde-principal);
+        box-shadow: 0 0 7.5px var(--branco-diferenciado);
     }
 }
 
@@ -56,20 +56,20 @@
     border: none;
     border-radius: 5px;
     background-color: var(--preto-diferenciado);
-    height: 550px;
+    height: 90vh;
 }
 .aviso-segundo-plano .modal-content {
     height: 100%;
 }
 .modal-title {
-    color: var(--verde-principal);
+    color: var(--branco-diferenciado);
 }
 .modal-header, .modal-footer {
-    border-color: var(--verde-principal);
+    border-color: var(--branco-diferenciado);
 }
 .modal-footer, .offcanvas-body {
     justify-content: center;
-    color: var(--verde-principal);
+    color: var(--branco-diferenciado);
 }
 .modal-alerta {
     margin: 0;
@@ -93,7 +93,7 @@
 }
 .fa-times, .btn-minimiza, .btn-maximiza {
     background: none;
-    color: var(--verde-principal);
+    color: var(--branco-diferenciado);
     cursor: pointer;
     border: none;
     opacity: 0.5;
@@ -104,7 +104,7 @@
     padding: .5rem;
 }
 .fa-times:hover, .btn-minimiza:hover, .btn-maximiza:hover {
-    color: var(--verde-principal);
+    color: var(--branco-diferenciado);
     text-shadow: 0 0 10px var(--verde-principal), 0 0 20px var(--verde-principal);
     opacity: 1;
 }
@@ -139,11 +139,11 @@ html .btn-close {
     display: flex;
 }
 .offcanvas-header {
-    border-bottom: 1px solid var(--verde-principal);
+    border-bottom: 1px solid var(--branco-diferenciado);
 }
 .offcanvas-title {
     font-size: 16px;
-    color: var(--verde-principal);
+    color: var(--branco-diferenciado);
 }
 
 
@@ -151,5 +151,5 @@ html .btn-close {
 	opacity: 1;
 }
 .tooltip .tooltip-inner {
-    color: var(--verde-principal);
+    color: var(--branco-diferenciado);
 }
