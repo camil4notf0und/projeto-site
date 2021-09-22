@@ -109,6 +109,18 @@ function onYouTubeIframeAPIReady() {
       'onReady': onPlayerReady
     }
   });
+  playerSete = new YT.Player('playerSete', {
+    height: '100%',
+    width: '100%',
+    videoId: 'fcdDbBJ-abc',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
 }
 
 
@@ -116,7 +128,7 @@ function onYouTubeIframeAPIReady() {
 
 
 function onPlayerReady(event) {
-  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis];
+  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis, playerSete];
 }
 
 
@@ -144,15 +156,15 @@ function playEPause() {
   if(pauseEplay == 0) {
     botoesPlay[qualTocando].style.display = "none";
     botoesPausa[qualTocando].style.display = "block";
-    botoesPlay[6].style.display = "none";
-    botoesPausa[6].style.display = "block";
+    botoesPlay[players.length].style.display = "none";
+    botoesPausa[players.length].style.display = "block";
     tocarVideo();
     pauseEplay = 1;
   }else {
     botoesPlay[qualTocando].style.display = "block";
     botoesPausa[qualTocando].style.display = "none";
-    botoesPlay[6].style.display = "block";
-    botoesPausa[6].style.display = "none";
+    botoesPlay[players.length].style.display = "block";
+    botoesPausa[players.length].style.display = "none";
     pausarVideo();
     pauseEplay = 0;
   }
@@ -173,6 +185,7 @@ function pulaParaFrenteVideo() {
   players[qualTocando].seekTo(tempoAtual + 10);
 }
 function fechaModal() {
+  segundoPlano();
   pararVideo();
   pauseEplay = 0;
   btnsFechaOffCanvas[0].click();
@@ -181,15 +194,18 @@ function fechaModal() {
 
 
 function continuaOuvindo() {
+  setTimeout(segundoPlano, 350);
   btnsFechaOffCanvas[1].click();
 }
 
 function continuaAssistindo() {
+  setTimeout(segundoPlano, 350);
   botaoAviso.click();
 }
 
 function ouvirVideoSelecionado() {
   botaoAviso.click();
+  setTimeout(segundoPlano, 350);
   fechaModal();
   videos[videoSelecionado].click();
   btnsMinimiza[qualTocando].click();
@@ -197,12 +213,14 @@ function ouvirVideoSelecionado() {
 
 
 function abreVideoSelecionado() {
+  setTimeout(segundoPlano, 350);
   videos[videoSelecionado].click();
 }
 function assistirVideoSelecionado() {
   botaoAviso.click();
+  setTimeout(segundoPlano, 350);
   fechaModal();
-  setTimeout(abreVideoSelecionado, 50);
+  setTimeout(abreVideoSelecionado, 350);
 }
 
 
@@ -233,3 +251,46 @@ btnContinuarOuvindo.onclick = continuaOuvindo;
 btnContinuarAssistindo.onclick = continuaAssistindo;
 btnOuvirVideoSelecionado.onclick = ouvirVideoSelecionado;
 btnAssistirVideoSelecionado.onclick = assistirVideoSelecionado;
+
+
+
+function adicionaVideo() {
+  /**
+  let player = new YT.Player('player', {
+    height: '100%',
+    width: '100%',
+    videoId: 'tHbFukPmM9s',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    }
+  });
+
+
+  let qualVideoLocal = qualVideo;
+  player.addEventListener("click", () => {
+    if(tocando == false) {
+      qualTocando = qualVideoLocal;
+      tocando = true;
+      for (i = 0; i < titulosOffCanvas.length; i++) {
+        titulosOffCanvas[i].classList.add("d-none");
+      }
+      titulosOffCanvas[qualTocando].classList.remove("d-none");
+      playEPause();
+    }else {
+      var abrirAvisoVar = videos[qualVideoLocal].getAttribute("data-abrir-aviso");
+      if(abrirAvisoVar == "true") {
+        abreAviso();
+        videoSelecionado = qualVideoLocal;
+      }
+      if(abrirAvisoVar == "false") {
+        botaoOffCanvas.click();
+      }
+    }
+  });
+  qualVideo++;
+
+  players.push(player);
+  */
+ void(0);
+}

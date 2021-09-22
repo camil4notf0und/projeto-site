@@ -8,23 +8,22 @@ window.addEventListener("scroll", function (event) {
 var pagCarregou = false;
 
 window.onload = function () {
-    [...videos].forEach((e) => {
-        e.classList.remove("desfoca");
-    });
     pagCarregou = true;
 };
 
 function apareceVideos() {
-    if(scroll >= 400 && pagCarregou == true) {
-        if(animacao<videos.length) {
-            videos[animacao].style.opacity = "1";
-            videos[animacao].style.transform = "scale(1)";
+    if(scroll >= 400 && pagCarregou == true && animacao < videos.length) {
+        if(videos.length % 3 == 0) {
+            videos[animacao].classList.remove("inicio-videos");
             animacao++;
-            videos[animacao].style.opacity = "1";
-            videos[animacao].style.transform = "scale(1)";
+            videos[animacao].classList.remove("inicio-videos");
             animacao++;
-            videos[animacao].style.opacity = "1";
-            videos[animacao].style.transform = "scale(1)";
+            videos[animacao].classList.remove("inicio-videos");
+            animacao++;
+        }else {
+            videos[animacao].classList.remove("inicio-videos");
+            videos[animacao].classList.add("final-videos");
+            videos[animacao].classList.remove("desfoca");
             animacao++;
         }
     }
@@ -35,13 +34,18 @@ setInterval(apareceVideos, 250);
 
 
 
-var botaoAviso = document.querySelector("#botaoAbreAviso");
+var botaoAviso = document.getElementById("botaoAbreAviso");
+
+botaoAviso.addEventListener("click", segundoPlano);
+botaoOffCanvas.addEventListener("click", segundoPlano);
+
 var btnsMinimiza = document.getElementsByClassName("btn-minimiza");
 var btnMaximiza = document.getElementsByClassName("btn-maximiza")[0];
 
 
 
 function abreOffCanvas() {
+    segundoPlano();
     botaoOffCanvas.click();
     let idModal = document.getElementsByClassName("modal")[qualTocando].id;
     btnMaximiza.setAttribute("data-bs-target", "#" + idModal);
@@ -55,17 +59,18 @@ function abreAviso() {
     btnContinuarAssistindo.setAttribute("data-bs-target", "#" + idModal);
 }
 
-btnsMinimiza[0].onclick = abreOffCanvas;
-btnsMinimiza[1].onclick = abreOffCanvas;
-btnsMinimiza[2].onclick = abreOffCanvas;
-btnsMinimiza[3].onclick = abreOffCanvas;
-btnsMinimiza[4].onclick = abreOffCanvas;
-btnsMinimiza[5].onclick = abreOffCanvas;
+[...btnsMinimiza].forEach(e => {
+    e.addEventListener("click", abreOffCanvas);
+}); 
 
 btnMaximiza.onclick = maximiza;
 
 
 function flowPodcast() {
+    [...videos].forEach(e => {
+        e.classList.add("inicio-videos");
+    });
+    animacao = 0;
     for(let f = 0; f < videos.length; f++) {
         let podcast = videos[f].getAttribute("data-podcast");
         if(podcast == "flow-podcast") {
@@ -79,6 +84,10 @@ function flowPodcast() {
 }
 
 function podpah() {
+    [...videos].forEach(e => {
+        e.classList.add("inicio-videos");
+    });
+    animacao = 0;
     for(let f = 0; f < videos.length; f++) {
         let podcast = videos[f].getAttribute("data-podcast");
         if(podcast == "flow-podcast") {
@@ -92,6 +101,10 @@ function podpah() {
 }
 
 function cienciaSemFim() {
+    [...videos].forEach(e => {
+        e.classList.add("inicio-videos");
+    });
+    animacao = 0;
     for(let f = 0; f < videos.length; f++) {
         let podcast = videos[f].getAttribute("data-podcast");
         if(podcast == "flow-podcast") {
@@ -105,6 +118,10 @@ function cienciaSemFim() {
 }
 
 function todos() {
+    [...videos].forEach(e => {
+        e.classList.add("inicio-videos");
+    });
+    animacao = 0;
     for(let f = 0; f < videos.length; f++) {
         videos[f].style.display = "block";
     }   

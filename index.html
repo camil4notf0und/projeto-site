@@ -17,6 +17,7 @@
         <script src="./assets/js/videos.js" defer></script>
         <script src="./assets/js/index.js" defer></script>
         <script src="./assets/js/API-ytb.js" defer></script>
+        <script src="./assets/js/offcanvas-move.js" defer></script>
         <script src="./assets/js/atalhos.js" defer></script>
     </head>
 
@@ -33,8 +34,8 @@
                             <li class="navegacao__item ativo">
                                 <a href="./index.html" class="navegacao__link"><i class="fas fa-home fa-lg"></i>Home</a>
                             </li>
-                            <li class="navegacao__item">
-                                <div class="btn-group dropend">
+                            <li class="navegacao__item ativo">
+                                <div class="btn-group">
                                     <button class="filtro__botao dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fas fa-filter fa-2x"></i> <h5 class="filtro__texto">Filtrar</h5>
                                     </button>
@@ -51,6 +52,9 @@
                             </li>
                             <li class="navegacao__item">
                                 <a href="#" class="navegacao__link"><i class="fas fa-bookmark fa-lg"></i>Salvos</a>
+                            </li>
+                            <li class="navegacao__item">
+                                <a onclick="adicionaVideo()" class="navegacao__link"><i class="fas fa-plus fa-lg"></i>Adicionar</a>
                             </li>
                         </ul>
                     </nav>
@@ -115,7 +119,7 @@
                 <h2 class="titulo-separador">Podcasts</h2>
             </section>
             <section class="videos">
-                <div class="videos__video desfoca" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" tabindex="0">
+                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" tabindex="0">
                     <div class="video__imagem">
                         <span></span>
                         <span></span>
@@ -130,7 +134,7 @@
                     <h2 class="video__titulo">Flow Podcast - #154 - Meta</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video desfoca" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-podcast="podpah" tabindex="0">
+                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-podcast="podpah" tabindex="0">
                     <div class="video__imagem">
                         <span></span>
                         <span></span>
@@ -145,7 +149,7 @@
                     <h2 class="video__titulo">Podpah - #46 - Diogo</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video desfoca" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-podcast="flow-podcast" tabindex="0">
+                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-podcast="flow-podcast" tabindex="0">
                     <div class="video__imagem">
                         <span></span>
                         <span></span>
@@ -160,7 +164,7 @@
                     <h2 class="video__titulo">Flow Podcast - #226 - Ninja</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video desfoca" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-podcast="podpah" tabindex="0">
+                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-podcast="podpah" tabindex="0">
                     <div class="video__imagem">
                         <span></span>
                         <span></span>
@@ -175,7 +179,7 @@
                     <h2 class="video__titulo">Podpah - #05 - Lucas</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video desfoca" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-podcast="flow-podcast" tabindex="0">
+                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-podcast="flow-podcast" tabindex="0">
                     <div class="video__imagem">
                         <span></span>
                         <span></span>
@@ -190,7 +194,7 @@
                     <h2 class="video__titulo">Flow Podcast - #227 - Gaule</h2>
                     <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video desfoca" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-podcast="ciencia-sem-fim" tabindex="0">
+                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-podcast="ciencia-sem-fim" tabindex="0">
                     <div class="video__imagem">
                         <span></span>
                         <span></span>
@@ -203,6 +207,21 @@
                         </div>
                     </div>
                     <h2 class="video__titulo">Ciência sem fim - #04 - Lito</h2>
+                    <p class="video__paragrafo"></p>
+                </div>
+                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropSete" data-podcast="flow-podcast" tabindex="0">
+                    <div class="video__imagem">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="video__hover">
+                            <div class="video__hover-margin">
+                                <i class="fas fa-play fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="video__titulo">Flow Podcast - #154 - Meta</h2>
                     <p class="video__paragrafo"></p>
                 </div>
             </section>
@@ -222,16 +241,16 @@
                             <div id="player" class="video-player"></div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
+                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
                                 <i class="fas fa-backward"></i>
                             </div>
-                            <div class="div-icone fa-playVideo">
+                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-um" data-bs-delay="500">
                                 <i class="fas fa-play"></i>
                             </div>
-                            <div class="div-icone fa-pauseVideo">
+                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
                                 <i class="fas fa-pause"></i>
                             </div>
-                            <div class="div-icone fa-forwardVideo">
+                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
                                 <i class="fas fa-forward"></i>
                             </div>
                         </div>
@@ -253,16 +272,16 @@
                             <div id="playerDois" class="video-player"></div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
+                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
                                 <i class="fas fa-backward"></i>
                             </div>
-                            <div class="div-icone fa-playVideo">
+                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
                                 <i class="fas fa-play"></i>
                             </div>
-                            <div class="div-icone fa-pauseVideo">
+                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
                                 <i class="fas fa-pause"></i>
                             </div>
-                            <div class="div-icone fa-forwardVideo">
+                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
                                 <i class="fas fa-forward"></i>
                             </div>
                         </div>
@@ -284,16 +303,16 @@
                             <div id="playerTres" class="video-player"></div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
+                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
                                 <i class="fas fa-backward"></i>
                             </div>
-                            <div class="div-icone fa-playVideo">
+                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
                                 <i class="fas fa-play"></i>
                             </div>
-                            <div class="div-icone fa-pauseVideo">
+                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
                                 <i class="fas fa-pause"></i>
                             </div>
-                            <div class="div-icone fa-forwardVideo">
+                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
                                 <i class="fas fa-forward"></i>
                             </div>
                         </div>
@@ -315,16 +334,16 @@
                             <div id="playerQuatro" class="video-player"></div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
+                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
                                 <i class="fas fa-backward"></i>
                             </div>
-                            <div class="div-icone fa-playVideo">
+                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
                                 <i class="fas fa-play"></i>
                             </div>
-                            <div class="div-icone fa-pauseVideo">
+                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
                                 <i class="fas fa-pause"></i>
                             </div>
-                            <div class="div-icone fa-forwardVideo">
+                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
                                 <i class="fas fa-forward"></i>
                             </div>
                         </div>
@@ -347,16 +366,16 @@
                             <div id="playerCinco" class="video-player"></div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
+                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
                                 <i class="fas fa-backward"></i>
                             </div>
-                            <div class="div-icone fa-playVideo">
+                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
                                 <i class="fas fa-play"></i>
                             </div>
-                            <div class="div-icone fa-pauseVideo">
+                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
                                 <i class="fas fa-pause"></i>
                             </div>
-                            <div class="div-icone fa-forwardVideo">
+                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
                                 <i class="fas fa-forward"></i>
                             </div>
                         </div>
@@ -378,16 +397,48 @@
                             <div id="playerSeis" class="video-player"></div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
+                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
                                 <i class="fas fa-backward"></i>
                             </div>
-                            <div class="div-icone fa-playVideo">
+                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
                                 <i class="fas fa-play"></i>
                             </div>
-                            <div class="div-icone fa-pauseVideo">
+                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
                                 <i class="fas fa-pause"></i>
                             </div>
-                            <div class="div-icone fa-forwardVideo">
+                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                <i class="fas fa-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="staticBackdropSete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog" id="modal-dialog-sete">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #154 - Metaforando</h5>
+                        <div>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar" data-bs-container="#modal-dialog-sete" data-bs-delay="250"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar" data-bs-container="#modal-dialog-sete" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div id="playerSete" class="video-player"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                <i class="fas fa-backward"></i>
+                            </div>
+                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
                                 <i class="fas fa-forward"></i>
                             </div>
                         </div>
@@ -406,22 +457,24 @@
                         <h5 class="offcanvas-title offcanvas-title-segundo-plano">Podpah - #05 - Lucas</h5>
                         <h5 class="offcanvas-title offcanvas-title-segundo-plano">Flow Podcast - #227 - Gaule</h5>
                         <h5 class="offcanvas-title offcanvas-title-segundo-plano">Ciência sem fim - #04 - Lito</h5>
+                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Ciência sem fim - #04 - Lito</h5>
                         <div>
-                            <button type="button" class="btn-maximiza" data-bs-toggle="modal"><i class="fas fa-plus fa-lg"></i></button>
-                            <button type="button" class="btn-close text-reset fechaOffCanvas" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                            <button type="button" id="btn-move" class="btn-move grab" data-bs-toggle="tooltip" data-bs-placement="top" title="Mover" data-bs-container="#offcanvasScrolling" data-bs-delay="250"><i class="fas fa-grip-horizontal fa-lg"></i></button>
+                            <button type="button" class="btn-maximiza" data-bs-toggle="modal"><i class="fas fa-plus fa-lg" data-bs-toggle="tooltip" data-bs-placement="top" title="Maximizar" data-bs-container="#offcanvasScrolling" data-bs-delay="250"></i></button>
+                            <button type="button" class="btn-close text-reset fechaOffCanvas" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar" data-bs-container="#offcanvasScrolling" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
                         </div>
                     </div>
                         <div class="offcanvas-body">
-                            <div  class="div-icone fa-backwardVideo">
+                            <div  class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
                                 <i class="fas fa-backward"></i>
                             </div>
-                            <div class="div-icone fa-playVideo">
+                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
                                 <i class="fas fa-play"></i>
                             </div>
-                            <div class="div-icone fa-pauseVideo">
+                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pause" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
                                 <i class="fas fa-pause"></i>
                             </div>
-                            <div class="div-icone fa-forwardVideo">
+                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
                                 <i class="fas fa-forward"></i>
                             </div>
                         </div>

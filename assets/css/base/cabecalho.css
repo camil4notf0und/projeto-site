@@ -72,6 +72,7 @@
 }
 .navegacao__item.ativo, .navegacao__item.ativo:hover {
     opacity: 1;
+    transform: none;
 }
 .navegacao__item:hover {
     opacity: 0.75;

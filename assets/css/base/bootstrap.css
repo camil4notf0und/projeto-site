@@ -91,21 +91,27 @@
 .modal-body {
     padding: 0;
 }
-.fa-times, .btn-minimiza, .btn-maximiza {
+.fa-times, .btn-minimiza, .btn-maximiza, .btn-move {
     background: none;
     color: var(--branco-diferenciado);
     cursor: pointer;
     border: none;
     opacity: 0.5;
-    text-shadow: 0 0 0 var(--verde-principal);
+    text-shadow: 0 0 0 var(--branco-diferenciado);
     transition: 0.10s text-shadow, 0.10s opacity;
+}
+.grab {
+    cursor: grab !important;
+}
+.grabbing {
+    cursor: grabbing !important;
 }
 .btn-minimiza {
     padding: .5rem;
 }
-.fa-times:hover, .btn-minimiza:hover, .btn-maximiza:hover {
+.fa-times:hover, .btn-minimiza:hover, .btn-maximiza:hover, .btn-move:hover {
     color: var(--branco-diferenciado);
-    text-shadow: 0 0 10px var(--verde-principal), 0 0 20px var(--verde-principal);
+    text-shadow: 0 0 10px var(--branco-diferenciado), 0 0 20px var(--branco-diferenciado);
     opacity: 1;
 }
 
@@ -116,7 +122,7 @@ html .btn-close {
 }
 .offcanvas, .modal-alerta {
     top: 65px;
-    right: 10px;
+    right: 25px;
     width: 300px;
     height: 105px;
     font-family: var(--fonte-tipo-dois);
@@ -152,4 +158,8 @@ html .btn-close {
 }
 .tooltip .tooltip-inner {
     color: var(--branco-diferenciado);
+}
+
+.dropdown-item {
+    cursor: pointer;
 }

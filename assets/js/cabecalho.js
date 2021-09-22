@@ -4,9 +4,6 @@ var principal = document.querySelector(".principal");
 var scroll;
 window.addEventListener("scroll", function (event) {
     scroll = this.scrollY;
-});
-
-function animacaoCabecalho() {
 	if(scroll>500) { cabecalho.style.transition = "opacity 1s, top  1s"};
 	if(scroll<=500) { cabecalho.style.top = "-70px"; }
 	if(scroll>510) { cabecalho.style.top = "0"; }
@@ -17,6 +14,4 @@ function animacaoCabecalho() {
 		cabecalho.style.position = "static";
 		principal.style.margin = "0";
 	}
-}
-
-setInterval(animacaoCabecalho, 1);
+});
