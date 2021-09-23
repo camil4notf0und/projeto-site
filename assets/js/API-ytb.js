@@ -20,6 +20,8 @@ var players;
 var pauseEplay = 0;
 
 
+var maximixaMinimiza = 0;
+
 
 
 
@@ -27,6 +29,9 @@ var botoesPulaParaTras = document.getElementsByClassName("fa-backwardVideo");
 var botoesPausa = document.getElementsByClassName("fa-pauseVideo");
 var botoesPlay = document.getElementsByClassName("fa-playVideo");
 var botoesPulaParaFrente = document.getElementsByClassName("fa-forwardVideo");
+var botoesFullScreen = document.getElementsByClassName("fa-full-screen");
+
+var iconesFullScreen = document.getElementsByClassName("icone--full-screen");
 
 var btnsFechaModal = document.getElementsByClassName("fecha-modal");
 var btnsFechaOffCanvas = document.getElementsByClassName("fechaOffCanvas")
@@ -185,7 +190,10 @@ function pulaParaFrenteVideo() {
   players[qualTocando].seekTo(tempoAtual + 10);
 }
 function fechaModal() {
-  segundoPlano();
+  setTimeout(segundoPlano, 350);
+  if(fullScreen == 1) {
+    telaCheia();
+  }
   pararVideo();
   pauseEplay = 0;
   btnsFechaOffCanvas[0].click();
@@ -247,10 +255,63 @@ btnsFechaOffCanvas[0].onclick = fechaModal;
   e.addEventListener("click", pulaParaFrenteVideo)
 });
 
+
+function telaCheia() {
+  if(fullScreen == 0) {
+    let modalDialog = document.getElementsByClassName("modal-dialog")[qualTocando];
+    let modalContent = document.getElementsByClassName("modal-content")[qualTocando];
+    let cabecalho = document.getElementsByClassName("modal-header")[qualTocando];
+    let rodape = document.getElementsByClassName("modal-footer")[qualTocando];
+
+    modalDialog.classList.add("full-screen");
+
+    modalContent.classList.add("full-screen-content");
+
+    cabecalho.classList.add("nao-aparece");
+
+    rodape.classList.add("sem-padding");
+
+    iconesFullScreen[qualTocando].classList.remove("fa-expand");
+    iconesFullScreen[qualTocando].classList.add("fa-compress");
+
+
+    fullScreen = 1;
+  }else {
+    let modalDialog = document.getElementsByClassName("modal-dialog")[qualTocando];
+    let modalContent = document.getElementsByClassName("modal-content")[qualTocando];
+    let cabecalho = document.getElementsByClassName("modal-header")[qualTocando];
+    let rodape = document.getElementsByClassName("modal-footer")[qualTocando];
+
+    modalDialog.classList.remove("full-screen");
+
+    modalContent.classList.remove("full-screen-content");
+
+    cabecalho.classList.remove("nao-aparece");
+
+    rodape.classList.remove("sem-padding");
+
+    iconesFullScreen[qualTocando].classList.add("fa-expand");
+    iconesFullScreen[qualTocando].classList.remove("fa-compress");
+
+    fullScreen = 0;
+  }
+}
+
+[...botoesFullScreen].forEach(e => {
+  e.addEventListener("click", telaCheia);
+});
+
 btnContinuarOuvindo.onclick = continuaOuvindo;
 btnContinuarAssistindo.onclick = continuaAssistindo;
 btnOuvirVideoSelecionado.onclick = ouvirVideoSelecionado;
 btnAssistirVideoSelecionado.onclick = assistirVideoSelecionado;
+
+
+
+[...divPlayers].forEach(div => {
+  div.addEventListener("click", playEPause);
+  div.addEventListener("dblclick", telaCheia);
+});
 
 
 

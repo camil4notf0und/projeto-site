@@ -23,16 +23,16 @@
     height: 100%;
 }
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    color: var(--verde-principal);
+    color: var(--branco-diferenciado);
     background: none;
 }
 
 .fa-chevron-right, .fa-chevron-left {
-    text-shadow: 0 0 0 var(--verde-principal);
+    text-shadow: 0 0 0 var(--branco-diferenciado);
     transition: 0.15s text-shadow;
 }
 .fa-chevron-left:hover, .fa-chevron-right:hover {
-    text-shadow: 0 0 10px var(--verde-principal), 0 0 20px var(--verde-principal), 0 0 30px var(--verde-principal);
+    text-shadow: 0 0 10px var(--branco-diferenciado), 0 0 20px var(--branco-diferenciado), 0 0 30px var(--branco-diferenciado);
 }
 
 
@@ -127,9 +127,9 @@ html .btn-close {
     height: 105px;
     font-family: var(--fonte-tipo-dois);
     border-radius: 5px;
-    border: 5px solid var(--verde-principal);
+    border: 3px solid var(--branco-diferenciado);
     background-color: var(--preto-diferenciado);
-    color: var(--verde-principal);
+    color: var(--branco-diferenciado);
     animation: led 0.75s infinite alternate;
 }
 .aviso-segundo-plano .offcanvas, .modal-alerta {

@@ -5,6 +5,9 @@ var offCanvasDois = document.getElementById("offcanvasScrollingDois");
 var panoDeFundo = document.getElementById("panoDeFundo");
 var tocando = false;
 var qualTocando, videoSelecionado, i;
+var divPlayers = document.getElementsByClassName("video-player");
+
+var fullScreen = 0;
 
 
 var qualVideo = 0;
@@ -15,6 +18,7 @@ var qualVideo = 0;
     if(tocando == false) {
       qualTocando = qualVideoLocal;
       tocando = true;
+      maximixaMinimiza = 0;
       for (i = 0; i < titulosOffCanvas.length; i++) {
         titulosOffCanvas[i].classList.add("d-none");
       }

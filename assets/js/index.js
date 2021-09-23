@@ -45,12 +45,16 @@ var btnMaximiza = document.getElementsByClassName("btn-maximiza")[0];
 
 
 function abreOffCanvas() {
+    maximixaMinimiza = 1;
+    teclaMPressionada = false;
     segundoPlano();
     botaoOffCanvas.click();
     let idModal = document.getElementsByClassName("modal")[qualTocando].id;
     btnMaximiza.setAttribute("data-bs-target", "#" + idModal);
 }
 function maximiza() {
+    maximixaMinimiza = 0;
+    teclaMPressionada = false;
     botaoOffCanvas.click();
 }
 function abreAviso() {
