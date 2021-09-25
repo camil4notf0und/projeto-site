@@ -71,8 +71,22 @@
     justify-content: center;
     color: var(--branco-diferenciado);
 }
+.modal-footer {
+    justify-content: space-between;
+    padding: .75rem 1rem;
+}
 .modal-alerta {
     margin: 0;
+}
+
+
+.div-icones--div-full-screen {
+    display: flex;
+    width: calc(50% + 53px);
+    justify-content: space-between;
+}
+.div-icones {
+    display: flex;
 }
 .div-icone {
     padding: 10px;
@@ -143,6 +157,9 @@ html .btn-close {
 }
 .offcanvas-body {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .60rem;
 }
 .offcanvas-header {
     border-bottom: 1px solid var(--branco-diferenciado);

@@ -33,6 +33,8 @@ var botoesFullScreen = document.getElementsByClassName("fa-full-screen");
 
 var iconesFullScreen = document.getElementsByClassName("icone--full-screen");
 
+var temposVideos = document.getElementsByClassName("tempo-video");
+
 var btnsFechaModal = document.getElementsByClassName("fecha-modal");
 var btnsFechaOffCanvas = document.getElementsByClassName("fechaOffCanvas")
 
@@ -175,9 +177,13 @@ function playEPause() {
   }
 }
 
-var tempoAtual;
+var tempoAtual, tempoTotal;
 function pegaTempoVideo() {
   tempoAtual = players[qualTocando].getCurrentTime();
+}
+
+function pegaTempoTotalVideo() {
+  tempoTotal = players[qualTocando].getDuration();
 }
 
 function pulaParaTrasVideo() {
@@ -200,9 +206,11 @@ function fechaModal() {
   tocando = false;
 }
 
+btnsFechaOffCanvas[1].addEventListener("click", () => {
+  setTimeout(segundoPlano, 350);
+});
 
 function continuaOuvindo() {
-  setTimeout(segundoPlano, 350);
   btnsFechaOffCanvas[1].click();
 }
 
@@ -256,7 +264,37 @@ btnsFechaOffCanvas[0].onclick = fechaModal;
 });
 
 
+function toggleFullScreen() {
+  
+}
+
+
+
 function telaCheia() {
+  /** 
+  if (!document.fullscreenElement &&    // alternative standard method
+    !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (document.documentElement.msRequestFullscreen) {
+    document.documentElement.msRequestFullscreen();
+  } else if (document.documentElement.mozRequestFullScreen) {
+    document.documentElement.mozRequestFullScreen();
+  } else if (document.documentElement.webkitRequestFullscreen) {
+    document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+  }
+} else {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
+}
+*/
   if(fullScreen == 0) {
     let modalDialog = document.getElementsByClassName("modal-dialog")[qualTocando];
     let modalContent = document.getElementsByClassName("modal-content")[qualTocando];
@@ -297,6 +335,115 @@ function telaCheia() {
   }
 }
 
+function mudaTempoVideo() {
+
+}
+
+function tempoVideo() {
+  if(tocando == true) {
+    pegaTempoVideo();
+    pegaTempoTotalVideo();
+    let spanSegundosSegundoPlanoAtual = temposVideos[players.length].querySelector(".segundos-atual");
+    let spanMinutosSegundoPlanoAtual = temposVideos[players.length].querySelector(".minutos-atual");
+    let spanHorasSegundoPlanoAtual = temposVideos[players.length].querySelector(".horas-atual");
+
+    let spanSegundosSegundoPlanoTotal = temposVideos[players.length].querySelector(".segundos-total");
+    let spanMinutosSegundoPlanoTotal = temposVideos[players.length].querySelector(".minutos-total");
+    let spanHorasSegundoPlanoTotal = temposVideos[players.length].querySelector(".horas-total");
+
+
+    let [segundosAtual, minutosAtual, horasAtual] = [tempoAtual, 0, 0];
+
+    while(segundosAtual > 60) {
+      minutosAtual++;
+
+      segundosAtual = segundosAtual - 60;
+    }
+
+    while(minutosAtual > 60) {
+        horasAtual++;
+
+        minutosAtual = minutosAtual - 60;
+    }
+    
+    
+    let spanSegundosAtual = temposVideos[qualTocando].querySelector(".segundos-atual");
+    let spanMinutosAtual = temposVideos[qualTocando].querySelector(".minutos-atual");
+    let spanHorasAtual = temposVideos[qualTocando].querySelector(".horas-atual");
+
+    if(segundosAtual < 10) {
+      spanSegundosAtual.textContent = "0" + parseInt(segundosAtual);
+      spanSegundosSegundoPlanoAtual.textContent = "0" + parseInt(segundosAtual);
+    }else {
+      spanSegundosAtual.textContent = parseInt(segundosAtual);
+      spanSegundosSegundoPlanoAtual.textContent = parseInt(segundosAtual);
+    }
+    if(minutosAtual < 10) {
+      spanMinutosAtual.textContent = "0" + parseInt(minutosAtual);
+      spanMinutosSegundoPlanoAtual.textContent = "0" + parseInt(minutosAtual);
+    }else {
+      spanMinutosAtual.textContent = parseInt(minutosAtual);
+      spanMinutosSegundoPlanoAtual.textContent = parseInt(minutosAtual);
+    }
+    if(horasAtual < 10) {
+      spanHorasAtual.textContent = "0" + parseInt(horasAtual);
+      spanHorasSegundoPlanoAtual.textContent = "0" + parseInt(horasAtual);
+    }else {
+      spanHorasAtual.textContent = parseInt(horasAtual);
+      spanHorasSegundoPlanoAtual.textContent = parseInt(horasAtual);
+    }
+
+
+
+    let [segundosTotal, minutosTotal, horasTotal] = [tempoTotal, 0, 0];
+
+    while(segundosTotal > 60) {
+      minutosTotal++;
+
+      segundosTotal = segundosTotal - 60;
+    }
+
+    while(minutosTotal > 60) {
+        horasTotal++;
+
+        minutosTotal = minutosTotal - 60;
+    }
+    
+    
+    let spanSegundosTotal = temposVideos[qualTocando].querySelector(".segundos-total");
+    let spanMinutosTotal = temposVideos[qualTocando].querySelector(".minutos-total");
+    let spanHorasTotal = temposVideos[qualTocando].querySelector(".horas-total");
+
+    if(segundosTotal < 10) {
+      spanSegundosTotal.textContent = "0" + parseInt(segundosTotal);
+      spanSegundosSegundoPlanoTotal.textContent = "0" + parseInt(segundosTotal);
+    }else {
+      spanSegundosTotal.textContent = parseInt(segundosTotal);
+      spanSegundosSegundoPlanoTotal.textContent = parseInt(segundosTotal);
+    }
+    if(minutosTotal < 10) {
+      spanMinutosTotal.textContent = "0" + parseInt(minutosTotal);
+      spanMinutosSegundoPlanoTotal.textContent = "0" + parseInt(minutosTotal);
+    }else {
+      spanMinutosTotal.textContent = parseInt(minutosTotal);
+      spanMinutosSegundoPlanoTotal.textContent = parseInt(minutosTotal);
+    }
+    if(horasTotal < 10) {
+      spanHorasTotal.textContent = "0" + parseInt(horasTotal);
+      spanHorasSegundoPlanoTotal.textContent = "0" + parseInt(horasTotal);
+    }else {
+      spanHorasTotal.textContent = parseInt(horasTotal);
+      spanHorasSegundoPlanoTotal.textContent = parseInt(horasTotal);
+    }
+  }
+}
+
+setInterval(tempoVideo, 1);
+
+[...temposVideos].forEach((e) => {
+  e.addEventListener("click", mudaTempoVideo);
+});
+
 [...botoesFullScreen].forEach(e => {
   e.addEventListener("click", telaCheia);
 });
@@ -307,10 +454,17 @@ btnOuvirVideoSelecionado.onclick = ouvirVideoSelecionado;
 btnAssistirVideoSelecionado.onclick = assistirVideoSelecionado;
 
 
-
+var cursor;
 [...divPlayers].forEach(div => {
   div.addEventListener("click", playEPause);
   div.addEventListener("dblclick", telaCheia);
+  div.addEventListener("mousemove", function() {
+    clearTimeout(cursor);
+    this.classList.remove("sem-cursor");
+    cursor = setTimeout(() => {
+      this.classList.add("sem-cursor");
+    }, 3000);
+  });
 });
 
 

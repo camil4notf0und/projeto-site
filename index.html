@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Site | Podcasts</title>
+        <link rel="stylesheet" href="./assets/css/barra-de-loading.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/0a54e825af.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +14,7 @@
         <link rel="stylesheet" href="./assets/css/base.css">
         <link rel="stylesheet" href="./assets/css/principais-css/index.css">
         <!-- <script src="./assets/js/cabecalho.js" defer></script> -->
+        <script src="./assets/js/barra-de-loading.js" defer></script>
         <script src="./assets/js/tooltip.js" defer></script>
         <script src="./assets/js/videos.js" defer></script>
         <script src="./assets/js/index.js" defer></script>
@@ -102,19 +104,6 @@
                     <h1 class="chamada__texto">Você aí, que gosta de ouvir podcast, mas está sem conteúdos, fique tranquilo, separamos os melhores poscast para você!</h1>
                 </div>
             </section>
-            <!-- <section class="filtro">
-                <div class="btn-group dropup">
-                    <button class="filtro__botao dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-filter fa-2x"></i> <h5 class="filtro__texto">Filtrar</h5>
-                    </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#" onclick="flowPodcast()">Flow Podcast</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="podpah()">PodPah</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="cienciaSemFim()">Ciência Sem Fim</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="todos()">Todos</a></li>
-                        </ul>
-                </div>
-            </section> -->
             <section class="videos-chamada">
                 <h2 class="titulo-separador">Podcasts</h2>
             </section>
@@ -243,20 +232,25 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-um" data-bs-delay="500">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
-                                <i class="fas fa-forward"></i>
-                            </div>
-                            <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-um" data-bs-delay="500">
-                                <i class="fas fa-expand icone--full-screen"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                    <i class="fas fa-expand icone--full-screen"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -279,20 +273,25 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
-                                <i class="fas fa-forward"></i>
-                            </div>
-                            <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
-                                <i class="fas fa-expand icone--full-screen"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                    <i class="fas fa-expand icone--full-screen"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -315,20 +314,25 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
-                                <i class="fas fa-forward"></i>
-                            </div>
-                            <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
-                                <i class="fas fa-expand icone--full-screen"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                    <i class="fas fa-expand icone--full-screen"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -351,20 +355,25 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
-                                <i class="fas fa-forward"></i>
-                            </div>
-                            <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
-                                <i class="fas fa-expand icone--full-screen"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                    <i class="fas fa-expand icone--full-screen"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -388,20 +397,25 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
-                                <i class="fas fa-forward"></i>
-                            </div>
-                            <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
-                                <i class="fas fa-expand icone--full-screen"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                    <i class="fas fa-expand icone--full-screen"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -424,20 +438,25 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
-                                <i class="fas fa-forward"></i>
-                            </div>
-                            <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
-                                <i class="fas fa-expand icone--full-screen"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                    <i class="fas fa-expand icone--full-screen"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -461,20 +480,25 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
-                                <i class="fas fa-forward"></i>
-                            </div>
-                            <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
-                                <i class="fas fa-expand icone--full-screen"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                    <i class="fas fa-expand icone--full-screen"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -500,17 +524,20 @@
                         </div>
                     </div>
                         <div class="offcanvas-body">
-                            <div  class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pause" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
-                                <i class="fas fa-forward"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones">
+                                <div  class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
+                                    <i class="fas fa-backward"></i>
+                                </div>
+                                <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pause" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
+                                    <i class="fas fa-pause"></i>
+                                </div>
+                                <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
+                                    <i class="fas fa-forward"></i>
+                                </div>
                             </div>
                         </div>
                     </div>

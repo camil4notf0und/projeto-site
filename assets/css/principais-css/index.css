@@ -12,7 +12,10 @@
     height: 100vh !important;
 }
 .sem-padding {
-    padding: 0 !important;
+    padding: 0 1rem !important;
+}
+.sem-cursor {
+    cursor: none !important;
 }
 
 .chamada {
@@ -269,7 +272,6 @@
 .video-player {
     width: 100%;
     height: 100%;
-    cursor: pointer;
 }
 .video-player-events {
     pointer-events: none;
@@ -316,4 +318,16 @@
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.25);
     transition: 1s;
+}
+
+.tempo-video {
+    color: var(--branco-diferenciado);
+    font-size: 17.5px;
+    width: 150px;
+    margin: 0;
+}
+.tempo-video div {
+    width: 20px;
+    display: inline-flex;
+    justify-content: center;
 }

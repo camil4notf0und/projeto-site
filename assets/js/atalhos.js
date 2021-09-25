@@ -11,6 +11,8 @@ document.addEventListener("keydown", function(e) {
   const teclaL = 76;
   const teclaF = 70;
   const teclaM = 77;
+  const teclaEspaco = 32;
+
     if(tecla === teclaEnter && tocando === true) {
       playEPause();
     }
@@ -18,6 +20,9 @@ document.addEventListener("keydown", function(e) {
       pulaParaTrasVideo();
     }
     if(tecla === teclaK && tocando == true) {
+      playEPause();
+    }
+    if(tecla === teclaEspaco && tocando == true) {
       playEPause();
     }
     if(tecla === teclaL && tocando == true) {
