@@ -31,6 +31,17 @@ var botoesPlay = document.getElementsByClassName("fa-playVideo");
 var botoesPulaParaFrente = document.getElementsByClassName("fa-forwardVideo");
 var botoesFullScreen = document.getElementsByClassName("fa-full-screen");
 
+var animaCliqueAtras = document.getElementsByClassName("cliqueAtras");
+var animaCliquePlayEPause = document.getElementsByClassName("cliquePlayEPause");
+var animaCliqueFrente = document.getElementsByClassName("cliqueFrente");
+
+[...animaCliqueAtras, ...animaCliquePlayEPause, ...animaCliqueFrente].forEach(elemento => {
+  elemento.classList.add("anima-clique");
+  elemento.classList.add("nao-aparece");
+});
+
+
+
 var iconesFullScreen = document.getElementsByClassName("icone--full-screen");
 
 var temposVideos = document.getElementsByClassName("tempo-video");
@@ -119,7 +130,7 @@ function onYouTubeIframeAPIReady() {
   playerSete = new YT.Player('playerSete', {
     height: '100%',
     width: '100%',
-    videoId: 'fcdDbBJ-abc',
+    videoId: 'FY3ZeJu9pj0',
     playerVars: {
       controls: '0',
       rel: '0'
@@ -166,6 +177,16 @@ function playEPause() {
     botoesPlay[players.length].style.display = "none";
     botoesPausa[players.length].style.display = "block";
     tocarVideo();
+    animaCliquePlayEPause[qualTocando].classList.remove("nao-aparece");
+    animaCliquePlayEPause[qualTocando].classList.remove("fa-pause");
+    animaCliquePlayEPause[qualTocando].classList.add("fa-play");
+    animaCliquePlayEPause[qualTocando].classList.remove("anima-clique");
+    setTimeout(() => {
+      animaCliquePlayEPause[qualTocando].classList.add("anima-clique");
+    }, 50);
+    setTimeout(() => {
+      animaCliquePlayEPause[qualTocando].classList.add("nao-aparece");
+    }, 350);
     pauseEplay = 1;
   }else {
     botoesPlay[qualTocando].style.display = "block";
@@ -173,6 +194,16 @@ function playEPause() {
     botoesPlay[players.length].style.display = "block";
     botoesPausa[players.length].style.display = "none";
     pausarVideo();
+    animaCliquePlayEPause[qualTocando].classList.remove("nao-aparece");
+    animaCliquePlayEPause[qualTocando].classList.remove("fa-play");
+    animaCliquePlayEPause[qualTocando].classList.add("fa-pause");
+    animaCliquePlayEPause[qualTocando].classList.remove("anima-clique");
+    setTimeout(() => {
+      animaCliquePlayEPause[qualTocando].classList.add("anima-clique");
+    }, 50);
+    setTimeout(() => {
+      animaCliquePlayEPause[qualTocando].classList.add("nao-aparece");
+    }, 350);
     pauseEplay = 0;
   }
 }
@@ -189,11 +220,27 @@ function pegaTempoTotalVideo() {
 function pulaParaTrasVideo() {
   pegaTempoVideo();
   players[qualTocando].seekTo(tempoAtual - 10);
+  animaCliqueAtras[qualTocando].classList.remove("nao-aparece");
+  animaCliqueAtras[qualTocando].classList.remove("anima-clique");
+  setTimeout(() => {
+    animaCliqueAtras[qualTocando].classList.add("anima-clique");
+  }, 50);
+  setTimeout(() => {
+    animaCliqueAtras[qualTocando].classList.add("nao-aparece");
+  }, 350);
 }
 
 function pulaParaFrenteVideo() {
   pegaTempoVideo();
   players[qualTocando].seekTo(tempoAtual + 10);
+  animaCliqueFrente[qualTocando].classList.remove("nao-aparece");
+  animaCliqueFrente[qualTocando].classList.remove("anima-clique");
+  setTimeout(() => {
+    animaCliqueFrente[qualTocando].classList.add("anima-clique");
+  }, 50);
+  setTimeout(() => {
+    animaCliqueFrente[qualTocando].classList.add("nao-aparece");
+  }, 350);
 }
 function fechaModal() {
   setTimeout(segundoPlano, 350);
@@ -354,13 +401,13 @@ function tempoVideo() {
 
     let [segundosAtual, minutosAtual, horasAtual] = [tempoAtual, 0, 0];
 
-    while(segundosAtual > 60) {
+    while(segundosAtual >= 60) {
       minutosAtual++;
 
       segundosAtual = segundosAtual - 60;
     }
 
-    while(minutosAtual > 60) {
+    while(minutosAtual >= 60) {
         horasAtual++;
 
         minutosAtual = minutosAtual - 60;
@@ -394,16 +441,15 @@ function tempoVideo() {
     }
 
 
-
     let [segundosTotal, minutosTotal, horasTotal] = [tempoTotal, 0, 0];
 
-    while(segundosTotal > 60) {
+    while(segundosTotal >= 60) {
       minutosTotal++;
 
       segundosTotal = segundosTotal - 60;
     }
 
-    while(minutosTotal > 60) {
+    while(minutosTotal >= 60) {
         horasTotal++;
 
         minutosTotal = minutosTotal - 60;
@@ -436,6 +482,7 @@ function tempoVideo() {
       spanHorasSegundoPlanoTotal.textContent = parseInt(horasTotal);
     }
   }
+
 }
 
 setInterval(tempoVideo, 1);

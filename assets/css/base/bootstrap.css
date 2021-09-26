@@ -1,11 +1,12 @@
 .carousel {
     width: 40%;
+    z-index: 2;
     animation: vinda 1s;
 }
 
 @keyframes vinda {
     from {
-        transform: translateX(-75px);
+        transform: translateX(-100%);
     }
     to {
         transform: translateX(0);
@@ -32,7 +33,7 @@
     transition: 0.15s text-shadow;
 }
 .fa-chevron-left:hover, .fa-chevron-right:hover {
-    text-shadow: 0 0 10px var(--branco-diferenciado), 0 0 20px var(--branco-diferenciado), 0 0 30px var(--branco-diferenciado);
+    text-shadow: 0 0 .25rem var(--branco-diferenciado), 0 0 .5rem var(--branco-diferenciado), 0 0 .75rem var(--branco-diferenciado);
 }
 
 
@@ -73,7 +74,7 @@
 }
 .modal-footer {
     justify-content: space-between;
-    padding: .75rem 1rem;
+    padding: .5rem 1rem;
 }
 .modal-alerta {
     margin: 0;
@@ -82,11 +83,15 @@
 
 .div-icones--div-full-screen {
     display: flex;
-    width: calc(50% + 53px);
+    width: 50%;
     justify-content: space-between;
 }
 .div-icones {
     display: flex;
+    transform: translate(-50%);
+}
+.offcanvas .div-icones {
+    transform: none;
 }
 .div-icone {
     padding: 10px;
@@ -179,4 +184,35 @@ html .btn-close {
 
 .dropdown-item {
     cursor: pointer;
+}
+
+.cliquePlayEPause, .cliqueAtras, .cliqueFrente {
+    position: absolute;
+    font-size: 60px;
+    color: white;
+    transform: scale(1) translate(-50%, -50%);
+    transition: .5s;
+}
+.cliquePlayEPause {
+    left: 50%;
+    top: 50%;
+}
+.cliqueAtras {
+    left: 25%;
+    top: 50%;
+}
+.cliqueFrente {
+    left: 75%;
+    top: 50%;
+}
+
+.anima-clique {
+    animation: clicouPlay 0.35s ease-in-out forwards 1;
+}
+
+@keyframes clicouPlay {
+    to {
+        opacity: 0;
+        transform: scale(1.5) translate(-30%, -30%);
+    }
 }

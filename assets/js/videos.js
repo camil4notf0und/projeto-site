@@ -1,5 +1,5 @@
 var videos = document.getElementsByClassName("videos__video");
-var titulosOffCanvas = document.getElementsByClassName("offcanvas-title-segundo-plano");
+var titulosOffCanvas = document.getElementById("offcanvas-title-segundo-plano");
 var botaoOffCanvas = document.getElementById("botaoAbreOffCanvas");
 var offCanvasDois = document.getElementById("offcanvasScrollingDois");
 var panoDeFundo = document.getElementById("panoDeFundo");
@@ -19,10 +19,7 @@ var qualVideo = 0;
       qualTocando = qualVideoLocal;
       tocando = true;
       maximixaMinimiza = 0;
-      for (i = 0; i < titulosOffCanvas.length; i++) {
-        titulosOffCanvas[i].classList.add("d-none");
-      }
-      titulosOffCanvas[qualTocando].classList.remove("d-none");
+      titulosOffCanvas.textContent = document.getElementsByClassName("modal")[qualTocando].querySelector(".modal-title").textContent;
       playEPause();
     }else {
       var abrirAvisoVar = videos[qualVideoLocal].getAttribute("data-abrir-aviso");
