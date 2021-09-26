@@ -12,7 +12,7 @@ footer a, footer a:hover {
 
 .rodape {
     height: 50px;
-    background-color: var(--verde-principal);
+    background-color: var(--branco-diferenciado);
     color: black;
     font-family: var(--fonte-tipo-dois);
     margin-top: 75px;

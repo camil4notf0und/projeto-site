@@ -150,7 +150,7 @@
 .video__imagem span {
     display: block;
     position: absolute;
-    background: var(--verde-principal);
+    background: var(--branco-diferenciado);
 }
 .video__imagem span:nth-child(1) {
     left: 0;
