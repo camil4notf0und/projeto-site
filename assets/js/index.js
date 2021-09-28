@@ -73,16 +73,13 @@ btnMaximiza.onclick = maximiza;
 function flowPodcast() {
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
+        e.classList.add("nao-aparece");
     });
     animacao = 0;
     for(let f = 0; f < videos.length; f++) {
         let podcast = videos[f].getAttribute("data-podcast");
         if(podcast == "flow-podcast") {
-            videos[f].style.display = "block";
-        }else if(podcast == "podpah") {
-            videos[f].style.display = "none";
-        }else if(podcast == "ciencia-sem-fim") {
-            videos[f].style.display = "none";
+            videos[f].classList.remove("nao-aparece");
         }
     }
 }
@@ -90,16 +87,13 @@ function flowPodcast() {
 function podpah() {
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
+        e.classList.add("nao-aparece");
     });
     animacao = 0;
     for(let f = 0; f < videos.length; f++) {
         let podcast = videos[f].getAttribute("data-podcast");
-        if(podcast == "flow-podcast") {
-            videos[f].style.display = "none";
-        }else if(podcast == "podpah") {
-            videos[f].style.display = "block";
-        }else if(podcast == "ciencia-sem-fim") {
-            videos[f].style.display = "none";
+        if(podcast == "podpah") {
+            videos[f].classList.remove("nao-aparece");
         }
     }
 }
@@ -107,16 +101,27 @@ function podpah() {
 function cienciaSemFim() {
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
+        e.classList.add("nao-aparece");
     });
     animacao = 0;
     for(let f = 0; f < videos.length; f++) {
         let podcast = videos[f].getAttribute("data-podcast");
-        if(podcast == "flow-podcast") {
-            videos[f].style.display = "none";
-        }else if(podcast == "podpah") {
-            videos[f].style.display = "none";
-        }else if(podcast == "ciencia-sem-fim") {
-            videos[f].style.display = "block";
+        if(podcast == "ciencia-sem-fim") {
+            videos[f].classList.remove("nao-aparece");
+        }
+    }
+}
+
+function balela() {
+    [...videos].forEach(e => {
+        e.classList.add("inicio-videos");
+        e.classList.add("nao-aparece");
+    });
+    animacao = 0;
+    for(let f = 0; f < videos.length; f++) {
+        let podcast = videos[f].getAttribute("data-podcast");
+        if(podcast == "balela") {
+            videos[f].classList.remove("nao-aparece");
         }
     }
 }
@@ -124,9 +129,7 @@ function cienciaSemFim() {
 function todos() {
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
+        e.classList.remove("nao-aparece")
     });
     animacao = 0;
-    for(let f = 0; f < videos.length; f++) {
-        videos[f].style.display = "block";
-    }   
 }
