@@ -10,8 +10,8 @@ body {
 }
 
 main, footer {
-    width: calc(100% - 55px);
-    margin-left: 55px;
+    width: 94%;
+    margin-left: 6%;
 }
 
 a, a:hover, a:focus {

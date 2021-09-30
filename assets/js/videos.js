@@ -7,6 +7,10 @@ var tocando = false;
 var qualTocando, videoSelecionado, i;
 var divPlayers = document.getElementsByClassName("video-player");
 
+
+var caixaDePesquisa = document.querySelector(".caixa-de-pesquisa");
+
+
 var fullScreen = 0;
 
 
@@ -105,3 +109,26 @@ function segundoPlano() {
       panoDeFundo.style.display = "none";
     }
 }
+
+
+
+caixaDePesquisa.addEventListener("input", function() {
+  
+
+  const pesquisa = this.value;
+
+  const pesquisador = new RegExp(pesquisa, "i");
+
+  [...videos].forEach((video) => {
+    video.classList.add("inicio-videos");
+    video.classList.add("nao-aparece");
+
+    let titulo = video.querySelector(".video__titulo").textContent;
+
+    if(pesquisador.test(titulo)) {
+      video.classList.remove("nao-aparece");
+    }
+
+    animacao = 0;
+  });
+});

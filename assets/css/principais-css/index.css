@@ -102,6 +102,20 @@
     margin:  25px auto 0 auto;
     width: 95%;
 }
+.titulo--pesquisa {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.caixa-de-pesquisa {
+    padding: 5px;
+    background-color: var(--preto-diferenciado);
+    border: 2px solid #3e3e3e;
+    color: #fff;
+    border-radius: 2px;
+    width: 25%;
+}
+
 .titulo-separador {
     color: var(--branco-diferenciado);
     font-size: 25px;
@@ -110,7 +124,7 @@
     display: block;
     position: relative;
     background: #3e3e3e;
-    left: 22.5%;
+    left: 15%;
     width: 55%;
     height: 2px;
 }

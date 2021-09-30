@@ -1,9 +1,9 @@
 var animacao = 0;
 
-var scroll;
-window.addEventListener("scroll", function (event) {
-    scroll = this.scrollY;
-});
+// var scroll;
+// window.addEventListener("scroll", function (event) {
+//     scroll = this.scrollY;
+// });
 
 var pagCarregou = false;
 
@@ -12,18 +12,26 @@ window.onload = function () {
 };
 
 function apareceVideos() {
-    if(scroll >= 400 && pagCarregou == true && animacao < videos.length) {
+    let videoAtual, tamanhoVideo, posicaoVideo, posicaoDesejada;
+    if(animacao < videos.length) {
+        videoAtual = videos[animacao];
+        tamanhoVideo = videoAtual.getBoundingClientRect()["height"];
+        posicaoVideo = window.innerHeight - videoAtual.getBoundingClientRect()["y"];
+        posicaoDesejada = tamanhoVideo / 2;
+    }
+
+    if(posicaoDesejada <= posicaoVideo && pagCarregou == true && animacao < videos.length) {
         if(videos.length % 3 == 0) {
-            videos[animacao].classList.remove("inicio-videos");
+            videoAtual.classList.remove("inicio-videos");
             animacao++;
-            videos[animacao].classList.remove("inicio-videos");
+            videoAtual.classList.remove("inicio-videos");
             animacao++;
-            videos[animacao].classList.remove("inicio-videos");
+            videoAtual.classList.remove("inicio-videos");
             animacao++;
         }else {
-            videos[animacao].classList.remove("inicio-videos");
-            videos[animacao].classList.add("final-videos");
-            videos[animacao].classList.remove("desfoca");
+            videoAtual.classList.remove("inicio-videos");
+            videoAtual.classList.add("final-videos");
+            videoAtual.classList.remove("desfoca");
             animacao++;
         }
     }
@@ -71,6 +79,8 @@ btnMaximiza.onclick = maximiza;
 
 
 function flowPodcast() {
+    caixaDePesquisa.value = "";
+
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
         e.classList.add("nao-aparece");
@@ -85,6 +95,8 @@ function flowPodcast() {
 }
 
 function podpah() {
+    caixaDePesquisa.value = "";
+
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
         e.classList.add("nao-aparece");
@@ -99,6 +111,8 @@ function podpah() {
 }
 
 function cienciaSemFim() {
+    caixaDePesquisa.value = "";
+
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
         e.classList.add("nao-aparece");
@@ -113,6 +127,8 @@ function cienciaSemFim() {
 }
 
 function balela() {
+    caixaDePesquisa.value = "";
+
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
         e.classList.add("nao-aparece");
@@ -127,6 +143,8 @@ function balela() {
 }
 
 function todos() {
+    caixaDePesquisa.value = "";
+
     [...videos].forEach(e => {
         e.classList.add("inicio-videos");
         e.classList.remove("nao-aparece")

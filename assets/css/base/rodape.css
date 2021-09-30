@@ -11,7 +11,6 @@ footer a, footer a:hover {
 }
 
 .rodape {
-    height: 50px;
     background-color: var(--branco-diferenciado);
     color: black;
     font-family: var(--fonte-tipo-dois);
@@ -25,23 +24,21 @@ footer a, footer a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 .rodape__credito {
     display: flex;
     justify-content: space-between;
-    width: 350px;
 }
 .rodape__credito-separa {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 225px;
 }
 .rodape__site-separa {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 165px;
 }
 .rodape__credito-creditos, .rodape__site-site {
     font-size: 17.5px;
@@ -53,10 +50,16 @@ footer a, footer a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 250px;
 }
 .rodape__site-imagem {
     width: 35px;
     height: 35px;
     border-radius: 5px;
+}
+
+
+@media screen and (max-width: 400px) {
+    .rodape__separa, .rodape__credito, .rodape__credito-separa, .rodape__site {
+        flex-direction: column;
+    }
 }
