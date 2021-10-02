@@ -20,6 +20,7 @@
         <script src="./assets/js/index.js" defer></script>
         <script src="./assets/js/API-ytb.js" defer></script>
         <script src="./assets/js/offcanvas-move.js" defer></script>
+        <script src="./assets/js/gera-cookie.js" defer></script>
         <script src="./assets/js/atalhos.js" defer></script>
     </head>
 
@@ -36,25 +37,8 @@
                             <li class="navegacao__item ativo">
                                 <a href="./index.html" class="navegacao__link"><i class="fas fa-home fa-lg"></i>Home</a>
                             </li>
-                            <li class="navegacao__item ativo">
-                                <div class="btn-group">
-                                    <button class="filtro__botao dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-filter fa-2x"></i> <h5 class="filtro__texto">Filtrar</h5>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" onclick="flowPodcast()">Flow Podcast</a></li>
-                                        <li><button class="dropdown-item" onclick="podpah()">PodPah</button></li>
-                                        <li><button class="dropdown-item" onclick="cienciaSemFim()">Ciência Sem Fim</button></li>
-                                        <li><button class="dropdown-item" onclick="balela()">Balela</button></li>
-                                        <li><button class="dropdown-item" onclick="todos()">Todos</button></li>
-                                    </ul>
-                                </div>
-                            </li>
                             <li class="navegacao__item">
                                 <a href="#" class="navegacao__link"><i class="fas fa-info-circle fa-lg"></i>Sobre</a>
-                            </li>
-                            <li class="navegacao__item">
-                                <a href="#" class="navegacao__link"><i class="fas fa-bookmark fa-lg"></i>Salvos</a>
                             </li>
                             <li class="navegacao__item">
                                 <a onclick="adicionaVideo()" class="navegacao__link"><i class="fas fa-plus fa-lg"></i>Adicionar</a>
@@ -107,133 +91,184 @@
             </section>
             <section class="videos-chamada">
                 <span class="borda-videos-chamada"></span>
-                <div class="titulo--pesquisa">
-                    <h2 class="titulo-separador">Podcasts</h2>
+                <div class="titulo--pesquisa inicio-videos">
+                    <div class="titulo--acoes">
+                        <h2 class="titulo-separador">Podcasts</h2>
+                        <div class="filtro">
+                            <h2 class="filtro__texto">Filtro: </h2>
+                            <select name="filtro" id="filtro" class="filtro__botao">
+                                <option value="todos">Todos</option>
+                                <option value="flow podcast">Flow Podcast</option>
+                                <option value="podpah">PodPah</option>
+                                <option value="ciencia sem fim">Ciência Sem Fim</option>
+                                <option value="balela">Balela</option>
+                            </select>
+                        </div>
+                        <button class="btn-salvos" id="btn-salvos"><i class="far fa-bookmark"></i>Salvos</button>
+                    </div>
                     <input type="search" class="caixa-de-pesquisa" placeholder="Encontre um podcast">
                 </div> 
             </section>
             <section class="videos">
-                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" >
-                    <div class="background-video">
-                        <button class="video__imagem" tabindex="0">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <div class="video__hover">
-                                <div class="video__hover-margin">
-                                    <i class="fas fa-play fa-2x"></i>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="0" title="Flow Podcast - #154 - Vitor Metaforando">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
-                        <h2 class="video__titulo">Flow Podcast - #154 - Vitor Metaforando</h2>
-                        <p class="video__paragrafo"></p>
+                            </button>
+                            <h2 class="video__titulo">Flow Podcast - #154 - Vitor Metaforando</h2>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-podcast="podpah" >
-                    <div class="background-video">
-                        <button class="video__imagem" tabindex="0">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <div class="video__hover">
-                                <div class="video__hover-margin">
-                                    <i class="fas fa-play fa-2x"></i>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-podcast="podpah" data-salvado="false" data-numero-podcast="1" title="Podpah - #46 - Diogo Defante">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
-                        <h2 class="video__titulo">Podpah - #46 - Diogo Defante</h2>
-                        <p class="video__paragrafo"></p>
+                            </button>
+                            <h2 class="video__titulo">Podpah - #46 - Diogo Defante</h2>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-podcast="flow-podcast" >
-                    <div class="background-video">
-                        <button class="video__imagem" tabindex="0">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <div class="video__hover">
-                                <div class="video__hover-margin">
-                                    <i class="fas fa-play fa-2x"></i>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="2" title="Flow Podcast - #226 - Poderosíssimo Ninja">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
-                        <h2 class="video__titulo">Flow Podcast - #226 - Poderosíssimo Ninja</h2>
-                        <p class="video__paragrafo"></p>
+                            </button>
+                            <h2 class="video__titulo">Flow Podcast - #226 - Poderosíssimo Ninja</h2>
+                            <div class="video__acoes"></div>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-podcast="podpah" >
-                    <div class="background-video">
-                        <button class="video__imagem" tabindex="0">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <div class="video__hover">
-                                <div class="video__hover-margin">
-                                    <i class="fas fa-play fa-2x"></i>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-podcast="podpah" data-salvado="false" data-numero-podcast="3" title="Podpah - #05 - Lucas Inutilismo">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
-                        <h2 class="video__titulo">Podpah - #05 - Lucas Inutilismo</h2>
-                        <p class="video__paragrafo"></p>
+                            </button>
+                            <h2 class="video__titulo">Podpah - #05 - Lucas Inutilismo</h2>
+                            <div class="video__acoes"></div>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-podcast="flow-podcast" >
-                    <div class="background-video">
-                        <button class="video__imagem" tabindex="0">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <div class="video__hover">
-                                <div class="video__hover-margin">
-                                    <i class="fas fa-play fa-2x"></i>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="4" title="Flow Podcast - #227 - Gaules">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
-                        <h2 class="video__titulo">Flow Podcast - #227 - Gaules</h2>
-                        <p class="video__paragrafo"></p>
+                            </button>
+                            <h2 class="video__titulo">Flow Podcast - #227 - Gaules</h2>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-podcast="ciencia-sem-fim" >
-                    <div class="background-video">
-                        <button class="video__imagem" tabindex="0">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <div class="video__hover">
-                                <div class="video__hover-margin">
-                                    <i class="fas fa-play fa-2x"></i>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-podcast="ciencia-sem-fim" data-salvado="false" data-numero-podcast="5" title="Ciência sem fim - #04 - Lito Sousa">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
-                        <h2 class="video__titulo">Ciência sem fim - #04 - Lito Sousa</h2>
-                        <p class="video__paragrafo"></p>
+                            </button>
+                            <h2 class="video__titulo">Ciência sem fim - #04 - Lito Sousa</h2>
+                            <div class="video__acoes"></div>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="videos__video desfoca inicio-videos" data-bs-toggle="modal" data-bs-target="#staticBackdropSete" data-podcast="balela" >
-                    <div class="background-video">
-                        <button class="video__imagem" tabindex="0">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <div class="video__hover">
-                                <div class="video__hover-margin">
-                                    <i class="fas fa-play fa-2x"></i>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSete" data-podcast="balela" data-salvado="false" data-numero-podcast="6" title="Balela - #97 - Luba">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
-                        <h2 class="video__titulo">Balela - #97 - Luba</h2>
-                        <p class="video__paragrafo"></p>
+                            </button>
+                            <h2 class="video__titulo">Balela - #97 - Luba</h2>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
                     </div>
                 </div>
             </section>
-            <section class="modais"></section>
+            <section class="modais">
                 <!-- Modal 1 -->
                 <div class="modal fade" id="staticBackdropUm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog" id="modal-dialog-um">

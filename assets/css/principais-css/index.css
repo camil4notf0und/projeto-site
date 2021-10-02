@@ -79,10 +79,17 @@
 
 
 .filtro {
-    width: 90%;
-    margin: 75px auto 40px auto;
     display: flex;
     align-items: center;
+    margin: 0 25px;
+}
+
+.btn-salvos {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--branco-diferenciado);
 }
 .filtro__botao {
     display: flex;
@@ -91,10 +98,18 @@
     border: none;
     color: var(--branco-diferenciado);
     padding: 0;
+    border: 2px solid #3e3e3e;
+    font-size: 17.5px;
+}
+.filtro__botao option {
+    background-color: var(--preto-diferenciado);
+    font-size: 17.5px;
 }
 .filtro__texto {
     font-size: 20px;
     margin: 0;
+    color: var(--branco-diferenciado);
+    margin-right: 5px;
 }
 
 
@@ -104,6 +119,12 @@
 }
 .titulo--pesquisa {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transition: 1.5s opacity, 0.25s ease-in-out transform;
+}
+
+.titulo--acoes {
     display: flex;
     justify-content: space-between;
 }
@@ -119,6 +140,7 @@
 .titulo-separador {
     color: var(--branco-diferenciado);
     font-size: 25px;
+    margin: 0;
 }
 .borda-videos-chamada {
     display: block;
@@ -136,24 +158,24 @@
     margin: 0 auto;
     font-family: var(--fonte-tipo-dois);
 }
-.videos__video {
-    min-width: 280px;
-    max-width: 325px;
-    margin: 15px 0;
-    width: 30%;
-    height: 200px;
+.videos__video { 
+    width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     cursor: pointer;
+}
+.video__fundo {
+    margin: 15px 0;
     border-radius: 5px;
     background-color: #3e3e3e;
+    min-width: 280px;
+    max-width: 325px;
+    padding: 7.5px;
     transition: 1.5s opacity, 0.25s ease-in-out transform;
 }
 .background-video {
-    width: 95%;
-    height: 92.5%;
+    width: 100%;
 }
 .inicio-videos {
     opacity: 0;
@@ -254,25 +276,25 @@
 
 
 
-.videos__video:nth-child(1) .video__imagem {
+.video__fundo:nth-child(1) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-metaforando.webp);
 }
-.videos__video:nth-child(2) .video__imagem {
+.video__fundo:nth-child(2) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-defante.webp);
 }
-.videos__video:nth-child(3) .video__imagem {
+.video__fundo:nth-child(3) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-ninja.webp);
 }
-.videos__video:nth-child(4) .video__imagem {
+.video__fundo:nth-child(4) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-lucas.jpg);
 }
-.videos__video:nth-child(5) .video__imagem {
+.video__fundo:nth-child(5) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-gaules.webp);
 }
-.videos__video:nth-child(6) .video__imagem {
+.video__fundo:nth-child(6) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-lito.jpg);
 }
-.videos__video:nth-child(7) .video__imagem {
+.video__fundo:nth-child(7) .videos__video .video__imagem {
     background-image: url(https://i.ytimg.com/vi/FY3ZeJu9pj0/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDCUOBI9j9PxCdXIdNZTZMX-beEpw);
 }
 .video__titulo {
@@ -299,6 +321,11 @@
 .video__hover-margin {
     margin: 0 auto;
 }
+.video__acoes {
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 .video-player {
     width: 100%;
@@ -359,4 +386,19 @@
     width: 17.5px;
     display: inline-flex;
     justify-content: center;
+}
+
+.videos .fas, .videos .far, .titulo--pesquisa .fas, .titulo--pesquisa .far {
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+.video__fundo .video__acoes .fas, .video__fundo .video__acoes .far {
+    font-size: 20px;
+    color: var(--branco-diferenciado);
+    cursor: pointer;
+}
+
+.video__fundo .video__acoes .fas:first-child, .video__fundo .video__acoes .far:first-child {
+    margin-right: 15px;
 }

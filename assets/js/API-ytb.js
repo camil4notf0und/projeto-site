@@ -514,6 +514,22 @@ var cursor;
   });
 });
 
+ouvirVideo.forEach((elemento) => {
+  elemento.addEventListener("click", function() {
+    let video = this.parentNode.parentNode.querySelector(".videos__video");
+    let abrirAvisoVar = video.getAttribute("data-abrir-aviso");
+
+    if(abrirAvisoVar == "false") {
+      video.click();
+      setTimeout(() => {
+        btnsMinimiza[qualTocando].click();
+      }, 500);
+    }else if(abrirAvisoVar == "true") {
+      video.click();
+    }
+  });
+});
+
 
 
 function adicionaVideo() {
