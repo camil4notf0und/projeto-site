@@ -2,7 +2,6 @@
     width: 6vw;
     height: 100%;
     background: var(--preto-escuro);
-    border-right: 1px solid rgba(232, 232, 232, 0.75);
     font-family: var(--fonte-tipo-dois);
     position: fixed;
     top: 0;
@@ -43,7 +42,7 @@
 .navegacao {
     display: flex;
     width: 80%;
-    margin: 50px 0 0 17.5px;
+    margin: 50px 0 0 10%;
     flex-direction: column;
 }
 

@@ -117,7 +117,7 @@
     font-family: var(--fonte-tipo-dois);
 }
 .videos__video {
-    width: 30%;
+    width: 40vh;
     display: flex;
     flex-direction: column;
     cursor: pointer;
