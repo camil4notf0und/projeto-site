@@ -2,6 +2,14 @@
     display: none !important;
 }
 
+
+main {
+    margin: 10px 5% 60px 3%;
+
+}
+
+
+
 .cabecalho {
     font-family: var(--fonte-titulo);
 }
@@ -21,19 +29,26 @@
     font-family: 'Roboto Condensed', sans-serif;
     color: var(--branco-diferenciado);
     font-weight: 500;
-    margin: 0 5px;
-    font-size: 17.5px;
-    line-height: 23px;
+    margin: 10px 15px;
+    font-size: 18px;
+    line-height: 35px;
 }
 
 .sobre__subtitulo {
-    color: #FF1655;
+    color: var(--rosinha-nem-claro-nem-escuro);
     font-weight: 500;
     font-size: 30px;
+    margin: 25px 10% 25px 0;
+    padding: 5px;
 }
 
-ul {
-    margin-left: 20px;
+.texto__principal {
+    margin: 0 8px 30px;
+}
+
+.sobre__lista {
+    margin-left: 25px;
+    list-style-type: circle;
 }
 
 .separador {
@@ -70,3 +85,8 @@ ul {
     text-align: center;
 }
 
+.rodape__separa {
+    background-color: var(--branco-diferenciado);
+    width: 100%;
+    padding: 0 10%;
+}
