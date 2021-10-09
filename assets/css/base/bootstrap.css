@@ -90,6 +90,10 @@
     transform: translate(-50%);
     width: 25%;
 }
+.full-screen--velocidade {
+    display: flex;
+    align-items: center;
+}
 .offcanvas .div-icones {
     transform: none;
     width: auto;
@@ -189,7 +193,7 @@ html .btn-close {
 
 .cliquePlayEPause, .cliqueAtras, .cliqueFrente {
     position: absolute;
-    font-size: 60px;
+    font-size: 50px;
     color: white;
     transform: scale(1) translate(-50%, -50%);
     transition: .5s;

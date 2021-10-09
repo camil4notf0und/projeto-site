@@ -18,6 +18,10 @@
     cursor: none !important;
 }
 
+.borda-embaixo {
+    border-bottom: 2px solid #fff !important;
+}
+
 .chamada {
     display: flex;
     width: 100%;
@@ -84,14 +88,14 @@
     margin: 0 25px;
 }
 
-.btn-salvos {
+.btn-salvos, .btn-assistidos {
     display: flex;
     align-items: center;
     background: none;
     border: none;
     color: var(--branco-diferenciado);
 }
-.filtro__botao {
+.filtro__botao, .velocidade-video {
     display: flex;
     align-items: center;
     background: none;
@@ -101,7 +105,10 @@
     border: 2px solid #3e3e3e;
     font-size: 17.5px;
 }
-.filtro__botao option {
+.velocidade-video {
+    margin-right: 25px;
+}
+.filtro__botao option, .velocidade-video option {
     background-color: var(--preto-diferenciado);
     font-size: 17.5px;
 }
@@ -157,6 +164,16 @@
     justify-content: space-around;
     margin: 0 auto;
     font-family: var(--fonte-tipo-dois);
+}
+.container-acoes-videos {
+    width: 90%;
+    margin: 25px auto 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.apagar-historico, .nenhum-video-encontrado {
+    color: var(--branco-diferenciado);
+    cursor: pointer;
 }
 .videos__video { 
     width: 100%;
@@ -276,25 +293,25 @@
 
 
 
-.video__fundo:nth-child(1) .videos__video .video__imagem {
+.video__fundo:nth-child(2) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-metaforando.webp);
 }
-.video__fundo:nth-child(2) .videos__video .video__imagem {
+.video__fundo:nth-child(3) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-defante.webp);
 }
-.video__fundo:nth-child(3) .videos__video .video__imagem {
+.video__fundo:nth-child(4) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-ninja.webp);
 }
-.video__fundo:nth-child(4) .videos__video .video__imagem {
+.video__fundo:nth-child(5) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-lucas.jpg);
 }
-.video__fundo:nth-child(5) .videos__video .video__imagem {
+.video__fundo:nth-child(6) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-gaules.webp);
 }
-.video__fundo:nth-child(6) .videos__video .video__imagem {
+.video__fundo:nth-child(7) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-lito.jpg);
 }
-.video__fundo:nth-child(7) .videos__video .video__imagem {
+.video__fundo:nth-child(8) .videos__video .video__imagem {
     background-image: url(https://i.ytimg.com/vi/FY3ZeJu9pj0/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDCUOBI9j9PxCdXIdNZTZMX-beEpw);
 }
 .video__titulo {

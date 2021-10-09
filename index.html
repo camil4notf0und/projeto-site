@@ -105,13 +105,18 @@
                             </select>
                         </div>
                         <button class="btn-salvos" id="btn-salvos"><i class="far fa-bookmark"></i>Salvos</button>
+                        <button class="btn-assistidos" id="btn-assistidos"><i class="fas fa-history"></i>Histórico</button>
                     </div>
                     <input type="search" class="caixa-de-pesquisa" placeholder="Encontre um podcast">
                 </div> 
             </section>
             <section class="videos">
+                <div class="container-acoes-videos nao-aparece" id="acoes-videos">
+                    <h2 class="nenhum-video-encontrado nao-aparece">Nenhum Podcast Encontrado</h2>
+                    <h2 class="apagar-historico nao-aparece"><i class="fas fa-trash"></i>Apagar Histórico</h2>
+                </div>
                 <div class="video__fundo inicio-videos ">
-                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="0" title="Flow Podcast - #154 - Vitor Metaforando">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="0" data-assistido="false" title="Flow Podcast - #154 - Vitor Metaforando">
                         <div class="background-video">
                             <button class="video__imagem" tabindex="0">
                                 <span></span>
@@ -133,7 +138,7 @@
                     </div>
                 </div>
                 <div class="video__fundo inicio-videos ">
-                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-podcast="podpah" data-salvado="false" data-numero-podcast="1" title="Podpah - #46 - Diogo Defante">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-podcast="podpah" data-salvado="false" data-numero-podcast="1" data-assistido="false" title="Podpah - #46 - Diogo Defante">
                         <div class="background-video">
                             <button class="video__imagem" tabindex="0">
                                 <span></span>
@@ -155,7 +160,7 @@
                     </div>
                 </div>
                 <div class="video__fundo inicio-videos ">
-                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="2" title="Flow Podcast - #226 - Poderosíssimo Ninja">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="2" data-assistido="false" title="Flow Podcast - #226 - Poderosíssimo Ninja">
                         <div class="background-video">
                             <button class="video__imagem" tabindex="0">
                                 <span></span>
@@ -178,7 +183,7 @@
                     </div>
                 </div>
                 <div class="video__fundo inicio-videos ">
-                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-podcast="podpah" data-salvado="false" data-numero-podcast="3" title="Podpah - #05 - Lucas Inutilismo">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-podcast="podpah" data-salvado="false" data-numero-podcast="3" data-assistido="false" title="Podpah - #05 - Lucas Inutilismo">
                         <div class="background-video">
                             <button class="video__imagem" tabindex="0">
                                 <span></span>
@@ -201,7 +206,7 @@
                     </div>
                 </div>
                 <div class="video__fundo inicio-videos ">
-                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="4" title="Flow Podcast - #227 - Gaules">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="4" data-assistido="false" title="Flow Podcast - #227 - Gaules">
                         <div class="background-video">
                             <button class="video__imagem" tabindex="0">
                                 <span></span>
@@ -223,7 +228,7 @@
                     </div>
                 </div>
                 <div class="video__fundo inicio-videos ">
-                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-podcast="ciencia-sem-fim" data-salvado="false" data-numero-podcast="5" title="Ciência sem fim - #04 - Lito Sousa">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-podcast="ciencia-sem-fim" data-salvado="false" data-numero-podcast="5" data-assistido="false" title="Ciência sem fim - #04 - Lito Sousa">
                         <div class="background-video">
                             <button class="video__imagem" tabindex="0">
                                 <span></span>
@@ -246,7 +251,7 @@
                     </div>
                 </div>
                 <div class="video__fundo inicio-videos ">
-                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSete" data-podcast="balela" data-salvado="false" data-numero-podcast="6" title="Balela - #97 - Luba">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSete" data-podcast="balela" data-salvado="false" data-numero-podcast="6" data-assistido="false" title="Balela - #97 - Luba">
                         <div class="background-video">
                             <button class="video__imagem" tabindex="0">
                                 <span></span>
@@ -305,8 +310,20 @@
                                         <i class="fas fa-forward"></i>
                                     </div>
                                 </div>
-                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-um" data-bs-delay="500">
-                                    <i class="fas fa-expand icone--full-screen"></i>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -349,8 +366,20 @@
                                         <i class="fas fa-forward"></i>
                                     </div>
                                 </div>
-                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
-                                    <i class="fas fa-expand icone--full-screen"></i>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -393,8 +422,20 @@
                                         <i class="fas fa-forward"></i>
                                     </div>
                                 </div>
-                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
-                                    <i class="fas fa-expand icone--full-screen"></i>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -437,8 +478,20 @@
                                         <i class="fas fa-forward"></i>
                                     </div>
                                 </div>
-                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
-                                    <i class="fas fa-expand icone--full-screen"></i>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -481,8 +534,20 @@
                                         <i class="fas fa-forward"></i>
                                     </div>
                                 </div>
-                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
-                                    <i class="fas fa-expand icone--full-screen"></i>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -525,8 +590,20 @@
                                         <i class="fas fa-forward"></i>
                                     </div>
                                 </div>
-                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
-                                    <i class="fas fa-expand icone--full-screen"></i>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -570,8 +647,20 @@
                                         <i class="fas fa-forward"></i>
                                     </div>
                                 </div>
-                                <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
-                                    <i class="fas fa-expand icone--full-screen"></i>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>

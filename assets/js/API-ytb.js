@@ -170,6 +170,9 @@ function pararVideo() {
 function pausarVideo() {
   players[qualTocando].pauseVideo();
 }
+
+var limpaAnimacao, limpaAnimacaoDois;
+
 function playEPause() {
   if(pauseEplay == 0) {
     botoesPlay[qualTocando].style.display = "none";
@@ -181,10 +184,12 @@ function playEPause() {
     animaCliquePlayEPause[qualTocando].classList.remove("fa-pause");
     animaCliquePlayEPause[qualTocando].classList.add("fa-play");
     animaCliquePlayEPause[qualTocando].classList.remove("anima-clique");
-    setTimeout(() => {
+    clearTimeout(limpaAnimacao);
+    clearTimeout(limpaAnimacaoDois);
+    limpaAnimacao = setTimeout(() => {
       animaCliquePlayEPause[qualTocando].classList.add("anima-clique");
     }, 50);
-    setTimeout(() => {
+    limpaAnimacaoDois = setTimeout(() => {
       animaCliquePlayEPause[qualTocando].classList.add("nao-aparece");
     }, 350);
     pauseEplay = 1;
@@ -198,10 +203,12 @@ function playEPause() {
     animaCliquePlayEPause[qualTocando].classList.remove("fa-play");
     animaCliquePlayEPause[qualTocando].classList.add("fa-pause");
     animaCliquePlayEPause[qualTocando].classList.remove("anima-clique");
-    setTimeout(() => {
+    clearTimeout(limpaAnimacao);
+    clearTimeout(limpaAnimacaoDois);
+    limpaAnimacao = setTimeout(() => {
       animaCliquePlayEPause[qualTocando].classList.add("anima-clique");
     }, 50);
-    setTimeout(() => {
+    limpaAnimacaoDois = setTimeout(() => {
       animaCliquePlayEPause[qualTocando].classList.add("nao-aparece");
     }, 350);
     pauseEplay = 0;
@@ -222,10 +229,12 @@ function pulaParaTrasVideo() {
   players[qualTocando].seekTo(tempoAtual - 10);
   animaCliqueAtras[qualTocando].classList.remove("nao-aparece");
   animaCliqueAtras[qualTocando].classList.remove("anima-clique");
-  setTimeout(() => {
+  clearTimeout(limpaAnimacao);
+  clearTimeout(limpaAnimacaoDois);
+  limpaAnimacao = setTimeout(() => {
     animaCliqueAtras[qualTocando].classList.add("anima-clique");
   }, 50);
-  setTimeout(() => {
+  limpaAnimacaoDois = setTimeout(() => {
     animaCliqueAtras[qualTocando].classList.add("nao-aparece");
   }, 350);
 }
@@ -235,10 +244,12 @@ function pulaParaFrenteVideo() {
   players[qualTocando].seekTo(tempoAtual + 10);
   animaCliqueFrente[qualTocando].classList.remove("nao-aparece");
   animaCliqueFrente[qualTocando].classList.remove("anima-clique");
-  setTimeout(() => {
+  clearTimeout(limpaAnimacao);
+  clearTimeout(limpaAnimacaoDois);
+  limpaAnimacao = setTimeout(() => {
     animaCliqueFrente[qualTocando].classList.add("anima-clique");
   }, 50);
-  setTimeout(() => {
+  limpaAnimacaoDois = setTimeout(() => {
     animaCliqueFrente[qualTocando].classList.add("nao-aparece");
   }, 350);
 }
@@ -252,6 +263,15 @@ function fechaModal() {
   btnsFechaOffCanvas[0].click();
   tocando = false;
 }
+
+var velocidade;
+function pegaVelocidade() {
+  velocidade = players[qualTocando].getPlaybackRate();
+}
+function mudaVelocidade() {
+  players[qualTocando].setPlaybackRate(parseFloat(botoesVelocidade[qualTocando].value));
+}
+
 
 btnsFechaOffCanvas[1].addEventListener("click", () => {
   setTimeout(segundoPlano, 350);
@@ -308,6 +328,10 @@ btnsFechaOffCanvas[0].onclick = fechaModal;
 
 [...botoesPulaParaFrente].forEach(e => {
   e.addEventListener("click", pulaParaFrenteVideo)
+});
+
+[...botoesVelocidade].forEach((e) => {
+  e.addEventListener("click", mudaVelocidade);
 });
 
 
@@ -515,6 +539,7 @@ var cursor;
 });
 
 ouvirVideo.forEach((elemento) => {
+  elemento.title = "Ouvir Podcast";
   elemento.addEventListener("click", function() {
     let video = this.parentNode.parentNode.querySelector(".videos__video");
     let abrirAvisoVar = video.getAttribute("data-abrir-aviso");

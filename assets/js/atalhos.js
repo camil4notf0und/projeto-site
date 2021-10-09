@@ -1,4 +1,15 @@
 var teclaMPressionada = false;
+var digitando = false;
+
+var inputs = document.getElementsByTagName("input");
+[...inputs].forEach((campo) => {
+  campo.addEventListener("focus", () => {
+    digitando = true;
+  });
+  campo.addEventListener("blur", () => {
+    digitando = false;
+  });
+});
 
 document.addEventListener("keydown", function(e) {
 	const tecla = e.keyCode;
@@ -12,45 +23,46 @@ document.addEventListener("keydown", function(e) {
   const teclaF = 70;
   const teclaM = 77;
   const teclaEspaco = 32;
-
-    if(tecla === teclaEnter && tocando === true) {
-      playEPause();
-    }
-    if(tecla === teclaJ && tocando == true) {
-      pulaParaTrasVideo();
-    }
-    if(tecla === teclaK && tocando == true) {
-      playEPause();
-    }
-    if(tecla === teclaEspaco && tocando == true) {
-      playEPause();
-    }
-    if(tecla === teclaL && tocando == true) {
-      pulaParaFrenteVideo();
-    }
-    if(tecla === teclaEsc && tocando == true) {
-      btnsFechaModal[qualTocando].click();
-    }
-    if(tecla === teclaEsquerda && tocando == true) {
-      pulaParaTrasVideo();
-    }
-    if(tecla === teclaDireita && tocando == true) {
-      pulaParaFrenteVideo();
-    }
-    if(tecla === teclaF && tocando == true) {
-      telaCheia();
-    }
-    if(tecla === teclaM && tocando == true && teclaMPressionada == false) {
-      if(maximixaMinimiza == 0) {
-        teclaMPressionada = true;
-        setTimeout(() => {
-          btnsMinimiza[qualTocando].click();
-        }, 450);
-      }else {
-        teclaMPressionada = true;
-        setTimeout(() => {
-          btnMaximiza.click();
-        }, 450);
+    if(tocando === true && digitando === false) {
+      if(tecla === teclaEnter) {
+        playEPause();
+      }
+      if(tecla === teclaJ) {
+        pulaParaTrasVideo();
+      }
+      if(tecla === teclaK) {
+        playEPause();
+      }
+      if(tecla === teclaEspaco) {
+        playEPause();
+      }
+      if(tecla === teclaL) {
+        pulaParaFrenteVideo();
+      }
+      if(tecla === teclaEsc) {
+        btnsFechaModal[qualTocando].click();
+      }
+      if(tecla === teclaEsquerda) {
+        pulaParaTrasVideo();
+      }
+      if(tecla === teclaDireita) {
+        pulaParaFrenteVideo();
+      }
+      if(tecla === teclaF) {
+        telaCheia();
+      }
+      if(tecla === teclaM && teclaMPressionada == false) {
+        if(maximixaMinimiza == 0) {
+          teclaMPressionada = true;
+          setTimeout(() => {
+            btnsMinimiza[qualTocando].click();
+          }, 450);
+        }else {
+          teclaMPressionada = true;
+          setTimeout(() => {
+            btnMaximiza.click();
+          }, 450);
+        }
       }
     }
 });
