@@ -2,7 +2,7 @@
     width: 6%;
     height: 100%;
     background: var(--preto-escuro);
-    border-right: 1px solid rgba(232, 232, 232, 0.75);
+    border-right: 1px solid var(--vermelho-escuro);
     font-family: var(--fonte-tipo-dois);
     position: fixed;
     top: 0;
@@ -10,8 +10,8 @@
     z-index: 3;
     overflow: hidden;
     transition: 0.25s;
-    transform: translate(-100%);
-    animation: ida .5s forwards;
+    /* transform: translate(-100%); */
+    /* animation: ida .5s forwards; */
 }
 .cabecalho:hover {
     width: 17.5vw;
@@ -30,10 +30,27 @@
     justify-content: center;
     align-items: center;
     width: 85%;
+    position: relative;
 }
 .podpato_logo {
     width: 90%;
     cursor: pointer;
+}
+.link__logo::before {
+    content: "";
+    position: absolute;
+    background-color: #b70037;
+    height: 3px;
+    width: 0px;
+    bottom: -10px;
+    left: 50%;
+    opacity: 0;
+    transition: .35s;
+}
+.link__logo:hover::before {
+    opacity: 1;
+    width: 90%;
+    left: 5%;
 }
 
 .navegacao--configs {
@@ -65,13 +82,15 @@
 .navegacao--configs .fa-chevron-down {
     margin-left: 3px;
     transform: rotate(180deg);
-    font-size: 15px;
+    font-size: 15px !important;
 }
 .navegacao__item {
     opacity: 0.5;
     margin-bottom: 25px;
     transition: 0.25s transform, 0.25s opacity;
+    position: relative;
 }
+
 .navegacao__item.ativo, .navegacao__item.ativo:hover {
     opacity: 1;
     transform: none;
@@ -84,7 +103,25 @@
     text-decoration: none;
     color: var(--branco-diferenciado);
     font-size: 20px;
+    font-weight: 400;
 }
+.navegacao__link::before {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    height: 3px;
+    width: 0px;
+    bottom: -10px;
+    left: 50%;
+    opacity: 0;
+    transition: .35s;
+}
+.navegacao__link:hover::before {
+    opacity: 1;
+    width: 100%;
+    left: 0;
+}
+
 .botao-configs .fa-cog:nth-child(2) {
     display: none;
 }

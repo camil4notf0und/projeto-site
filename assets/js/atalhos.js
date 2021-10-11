@@ -39,8 +39,11 @@ document.addEventListener("keydown", function(e) {
       if(tecla === teclaL) {
         pulaParaFrenteVideo();
       }
-      if(tecla === teclaEsc) {
+      if(tecla === teclaEsc && fullScreen === 0) {
         btnsFechaModal[qualTocando].click();
+      }
+      if(tecla === teclaEsc && fullScreen === 1) {
+        telaCheia();
       }
       if(tecla === teclaEsquerda) {
         pulaParaTrasVideo();

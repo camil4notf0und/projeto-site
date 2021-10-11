@@ -1,8 +1,8 @@
 .carousel {
     width: 40%;
     z-index: 2;
-    transform: translateX(-125%);
-    animation: vinda 1s forwards .5s;
+    /* transform: translateX(-125%);
+    animation: vinda 1s forwards .5s; */
 }
 
 @keyframes vinda {
@@ -36,10 +36,10 @@
 
 
 .modal-dialog {
-    border: 2.5px solid var(--branco-diferenciado);
+    border: 2.5px solid var(--vermelho-escuro);
     border-radius: 7.5px;
     min-width: 75%;
-    animation: led 0.5s infinite alternate;
+    /* animation: led 0.5s infinite alternate; */
 }
 @keyframes led {
     from {
@@ -62,9 +62,10 @@
 }
 .modal-title {
     color: var(--branco-diferenciado);
+    font-weight: 500;
 }
 .modal-header, .modal-footer {
-    border-color: var(--branco-diferenciado);
+    border-color: var(--vermelho-escuro);
 }
 .modal-footer, .offcanvas-body {
     justify-content: center;
@@ -149,12 +150,11 @@ html .btn-close {
     right: 25px;
     width: 300px;
     height: 105px;
-    font-family: var(--fonte-tipo-dois);
     border-radius: 5px;
-    border: 3px solid var(--branco-diferenciado);
+    border: 3px solid var(--vermelho-escuro);
     background-color: var(--preto-diferenciado);
     color: var(--branco-diferenciado);
-    animation: led 0.75s infinite alternate;
+    /* animation: led 0.75s infinite alternate; */
 }
 .aviso-segundo-plano .offcanvas, .modal-alerta {
     left: 10px;
@@ -172,7 +172,7 @@ html .btn-close {
     padding: .60rem;
 }
 .offcanvas-header {
-    border-bottom: 1px solid var(--branco-diferenciado);
+    border-bottom: 1px solid var(--vermelho-escuro);
 }
 .offcanvas-title {
     font-size: 16px;

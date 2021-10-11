@@ -342,9 +342,9 @@ function toggleFullScreen() {
 
 
 function telaCheia() {
-  /** 
+   /** 
   if (!document.fullscreenElement &&    // alternative standard method
-    !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+    !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement && fullScreen == 0) {  // current working methods
   if (document.documentElement.requestFullscreen) {
     document.documentElement.requestFullscreen();
   } else if (document.documentElement.msRequestFullscreen) {
@@ -354,6 +354,8 @@ function telaCheia() {
   } else if (document.documentElement.webkitRequestFullscreen) {
     document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
   }
+  
+
 } else {
   if (document.exitFullscreen) {
     document.exitFullscreen();
@@ -366,6 +368,7 @@ function telaCheia() {
   }
 }
 */
+
   if(fullScreen == 0) {
     let modalDialog = document.getElementsByClassName("modal-dialog")[qualTocando];
     let modalContent = document.getElementsByClassName("modal-content")[qualTocando];

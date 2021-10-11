@@ -295,8 +295,9 @@ btnMaximiza.onclick = maximiza;
 function flowPodcast() {  
   containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
-  if(btnAssistidos.classList.contains("borda-embaixo")) {
-    btnAssistidos.classList.remove("borda-embaixo");
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -357,8 +358,9 @@ function flowPodcast() {
 function podpah() {
   containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
-  if(btnAssistidos.classList.contains("borda-embaixo")) {
-    btnAssistidos.classList.remove("borda-embaixo");
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -419,8 +421,9 @@ function podpah() {
 function cienciaSemFim() {
   containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
-  if(btnAssistidos.classList.contains("borda-embaixo")) {
-    btnAssistidos.classList.remove("borda-embaixo");
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -481,8 +484,9 @@ function cienciaSemFim() {
 function balela() {
   containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
-  if(btnAssistidos.classList.contains("borda-embaixo")) {
-    btnAssistidos.classList.remove("borda-embaixo");
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -543,8 +547,9 @@ function balela() {
 function todos() {
   containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
-  if(btnAssistidos.classList.contains("borda-embaixo")) {
-    btnAssistidos.classList.remove("borda-embaixo");
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -607,7 +612,7 @@ btnSalvos.addEventListener("click", function() {
   let bookmark = this.querySelector(".fa-bookmark");
   containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
-  if(btnAssistidos.classList.contains("borda-embaixo")) {
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
     btnAssistidos.click();
   }
 
@@ -688,12 +693,13 @@ btnAssistidos.addEventListener("click", () => {
   caixaDePesquisa.value = "";
   pesquisador = new RegExp("", "i");
 
-  if(btnAssistidos.classList.contains("borda-embaixo")) {
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
     containerAcoesVideos.classList.add("nao-aparece");
     containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
     let videosNaoAparece = 0;
-    btnAssistidos.classList.remove("borda-embaixo");
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
     [...videosFundo].forEach(e => {
       e.classList.add("inicio-videos");
       e.classList.remove("nao-aparece");
@@ -705,7 +711,8 @@ btnAssistidos.addEventListener("click", () => {
     containerAcoesVideos.classList.remove("nao-aparece");
     containerAcoesVideos.querySelector(".apagar-historico").classList.remove("nao-aparece");
 
-    btnAssistidos.classList.add("borda-embaixo");
+    btnAssistidos.querySelector(".fa-clock").classList.remove("far");
+    btnAssistidos.querySelector(".fa-clock").classList.add("fas");
     [...videosFundo].forEach(e => {
       e.classList.add("inicio-videos");
       e.classList.add("nao-aparece");
