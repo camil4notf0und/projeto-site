@@ -51,8 +51,14 @@ var animacao = 0;
 var pagCarregou = false;
 
 window.onload = function () {
+  document.querySelector(".carregando").classList.add("nao-aparece");
     pagCarregou = true;
-    document.querySelector(".videos-chamada .titulo--pesquisa").classList.remove("inicio-videos");
+    document.querySelector(".videos-chamada").classList.remove("inicio-videos");
+    let bordaCarregando = document.querySelector("div.animation");
+    bordaCarregando.classList.remove("animation");
+    setTimeout(() => {
+      bordaCarregando.classList.add("no-animation");
+    }, 50);
 };
 
 function apareceVideos() {
@@ -680,6 +686,7 @@ btnAssistidos.addEventListener("click", () => {
   filtro.value = "todos";
 
   caixaDePesquisa.value = "";
+  pesquisador = new RegExp("", "i");
 
   if(btnAssistidos.classList.contains("borda-embaixo")) {
     containerAcoesVideos.classList.add("nao-aparece");

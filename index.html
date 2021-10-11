@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="./assets/img/podpato-fav-icon.png"/>
         <title>Site | Podcasts</title>
         <link rel="stylesheet" href="./assets/css/barra-de-loading.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -23,7 +24,6 @@
         <script src="./assets/js/gera-cookie.js" defer></script>
         <script src="./assets/js/atalhos.js" defer></script>
     </head>
-
     <body>
         <header class="cabecalho">
             <div class="cabecalho__separa">
@@ -89,9 +89,11 @@
                     <h1 class="chamada__texto">Você aí, que gosta de ouvir podcast, mas está sem conteúdos, fique tranquilo, separamos os melhores poscast para você!</h1>
                 </div>
             </section>
-            <section class="videos-chamada">
-                <span class="borda-videos-chamada"></span>
-                <div class="titulo--pesquisa inicio-videos">
+            <section class="videos-chamada inicio-videos">
+                <span class="borda-videos-chamada">
+                    <div class="animation"></div>
+                </span>
+                <div class="titulo--pesquisa">
                     <div class="titulo--acoes">
                         <h2 class="titulo-separador">Podcasts</h2>
                         <div class="filtro">
@@ -114,6 +116,22 @@
                 <div class="container-acoes-videos nao-aparece" id="acoes-videos">
                     <h2 class="nenhum-video-encontrado nao-aparece">Nenhum Podcast Encontrado</h2>
                     <h2 class="apagar-historico nao-aparece"><i class="fas fa-trash"></i>Apagar Histórico</h2>
+                </div>
+                <div class="carregando">
+                    <div class="envolve">
+                        <div class="colunas">
+                            <span style="--i: 1;"></span>
+                            <span style="--i: 2;"></span>
+                            <span style="--i: 3;"></span>
+                            <span style="--i: 4;"></span>
+                            <div class="linhas">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="video__fundo inicio-videos ">
                     <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="0" data-assistido="false" title="Flow Podcast - #154 - Vitor Metaforando">

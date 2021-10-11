@@ -534,7 +534,7 @@ var cursor;
     this.classList.remove("sem-cursor");
     cursor = setTimeout(() => {
       this.classList.add("sem-cursor");
-    }, 3000);
+    }, 2000);
   });
 });
 

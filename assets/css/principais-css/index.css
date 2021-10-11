@@ -123,12 +123,12 @@
 .videos-chamada{
     margin:  25px auto 0 auto;
     width: 95%;
+    transition: 1.5s opacity, 0.25s ease-in-out transform;
 }
 .titulo--pesquisa {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    transition: 1.5s opacity, 0.25s ease-in-out transform;
 }
 
 .titulo--acoes {
@@ -153,10 +153,114 @@
     display: block;
     position: relative;
     background: #3e3e3e;
-    left: 15%;
+    left: 22.5%;
     width: 55%;
     height: 2px;
+    margin-bottom: 25px;
+    overflow: hidden;
 }
+/* .borda-videos-chamada div {
+    width: 50%;
+    height: 100%;
+    background-color: var(--branco-diferenciado);
+    transform: translateX(-90%);
+}
+.borda-videos-chamada div.animation {
+    animation: 1.5s ease-in-out infinite alternate ida-volta;
+}
+.borda-videos-chamada div.no-animation {
+    animation: 1.5s ease-in-out forwards ida-sempre;
+}
+@keyframes ida-volta {
+    to {
+        transform: translateX(180%);
+    }
+}
+@keyframes ida-sempre {
+    to {
+        transform: translateX(250%);
+    }
+} */
+
+
+.carregando {
+    width: 94%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+.carregando div.envolve {
+    width: 150px;
+    height: 150px;
+}
+.carregando div.envolve div.colunas {
+    display: flex;
+    width: inherit;
+    height: inherit;
+}
+.carregando div.envolve div.colunas span {
+    width: 25%;
+    background-color: #333333;
+    border: 2px solid var(--preto-diferenciado);
+    animation: 1.5s linear infinite colorir;
+    animation-delay: calc(0.1s * var(--i));
+}
+.carregando div.envolve div.linhas {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+}
+.carregando div.envolve div.linhas div {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: var(--preto-diferenciado);
+}
+.carregando div.envolve div.linhas div:nth-child(1) {
+    top: 0%;
+}
+.carregando div.envolve div.linhas div:nth-child(2) {
+    top: 25%;
+}
+.carregando div.envolve div.linhas div:nth-child(3) {
+    top: 50%;
+}
+.carregando div.envolve div.linhas div:nth-child(4) {
+    top: 75%;
+}
+
+
+@keyframes colorir {
+    0% {
+        background-color: #333333;
+    }
+    10% {
+        background-color: var(--branco-diferenciado);
+    }
+    40%, 100% {
+        background-color: #333333;
+    }
+}
+
+
+.carregando div.envolve span:nth-child(1) {
+    margin-top: 75%;
+    height: 25%;
+}
+.carregando div.envolve span:nth-child(2) {
+    margin-top: 50%;
+    height: 50%;
+}
+.carregando div.envolve span:nth-child(3) {
+    margin-top: 25%;
+    height: 75%;
+}
+.carregando div.envolve span:nth-child(4) {
+    height: 100%;
+}
+
 .videos {
     display: flex;
     flex-wrap: wrap;
@@ -174,6 +278,10 @@
 .apagar-historico, .nenhum-video-encontrado {
     color: var(--branco-diferenciado);
     cursor: pointer;
+}
+.nenhum-video-encontrado {
+    margin-top: 75px;
+    cursor: default;
 }
 .videos__video { 
     width: 100%;
@@ -293,25 +401,25 @@
 
 
 
-.video__fundo:nth-child(2) .videos__video .video__imagem {
+.video__fundo:nth-child(3) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-metaforando.webp);
 }
-.video__fundo:nth-child(3) .videos__video .video__imagem {
+.video__fundo:nth-child(4) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-defante.webp);
 }
-.video__fundo:nth-child(4) .videos__video .video__imagem {
+.video__fundo:nth-child(5) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-ninja.webp);
 }
-.video__fundo:nth-child(5) .videos__video .video__imagem {
+.video__fundo:nth-child(6) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-lucas.jpg);
 }
-.video__fundo:nth-child(6) .videos__video .video__imagem {
+.video__fundo:nth-child(7) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-gaules.webp);
 }
-.video__fundo:nth-child(7) .videos__video .video__imagem {
+.video__fundo:nth-child(8) .videos__video .video__imagem {
     background-image: url(../../img/thumbnail-lito.jpg);
 }
-.video__fundo:nth-child(8) .videos__video .video__imagem {
+.video__fundo:nth-child(9) .videos__video .video__imagem {
     background-image: url(https://i.ytimg.com/vi/FY3ZeJu9pj0/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDCUOBI9j9PxCdXIdNZTZMX-beEpw);
 }
 .video__titulo {
