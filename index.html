@@ -1,31 +1,36 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Site | Podcasts</title>
+        <link rel="shortcut icon" href="./assets/img/podpato-fav-icon.png"/>
+        <title>PodPato | Podcasts</title>
+        <link rel="stylesheet" href="./assets/css/barra-de-loading.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/0a54e825af.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Gayathri&family=Sansita&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/0a54e825af.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/css/base.css">
         <link rel="stylesheet" href="./assets/css/principais-css/index.css">
         <script src="./assets/js/cabecalho.js" defer></script>
+        <script src="./assets/js/barra-de-loading.js" defer></script>
         <script src="./assets/js/tooltip.js" defer></script>
+        <script src="./assets/js/videos.js" defer></script>
         <script src="./assets/js/index.js" defer></script>
         <script src="./assets/js/API-ytb.js" defer></script>
+        <script src="./assets/js/offcanvas-move.js" defer></script>
+        <script src="./assets/js/gera-cookie.js" defer></script>
+        <script src="./assets/js/atalhos.js" defer></script>
     </head>
     <body>
         <header class="cabecalho">
             <div class="cabecalho__separa">
-                <a href="./index.html">
-                    <div class="logo-titulo">
-                        <i class="fas fa-microphone-alt fa-3x"></i>
-                        <h5 class="logo__titulo">Nome do site</h5>
-                    </div>
+                <a href="./index.html" class="link__logo">
+                    <img src="assets/img/podpato.png" alt="Logo do site Podpato" class="podpato_logo">
                 </a>
+
                 <div class="navegacao--configs">
                     <nav class="navegacao">
                         <ul class="navegacao__lista">
@@ -35,10 +40,13 @@
                             <li class="navegacao__item">
                                 <a href="#" class="navegacao__link"><i class="fas fa-info-circle fa-lg"></i>Sobre</a>
                             </li>
+                            <li class="navegacao__item">
+                                <a onclick="adicionaVideo()" class="navegacao__link"><i class="fas fa-plus fa-lg"></i>Adicionar</a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="configs">
-                        <div class="dropdown">
+                        <div class="dropup">
                             <a class="botao-configs" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-cog fa-lg"></i><i class="fas fa-cog fa-lg fa-spin"></i>Configs<i class="fas fa-chevron-down fa-xs"></i>
                             </a>
@@ -48,11 +56,12 @@
                               <li><a class="dropdown-item" href="#">Another action</a></li>
                               <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
+        
         <main class="principal">
             <section class="chamada">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -80,112 +89,211 @@
                     <h1 class="chamada__texto">Você aí, que gosta de ouvir podcast, mas está sem conteúdos, fique tranquilo, separamos os melhores poscast para você!</h1>
                 </div>
             </section>
-            <section class="filtro">
-                <div class="btn-group dropup">
-                    <button class="filtro__botao dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-filter fa-2x"></i> <h5 class="filtro__texto">Filtrar</h5>
-                    </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="Javascript: flowPodcast();">Flow Podcast</a></li>
-                        <li><a class="dropdown-item" href="Javascript: podpah();">PodPah</a></li>
-                        <li><a class="dropdown-item" href="Javascript: cienciaSemFim();">Ciência Sem Fim</a></li>
-                        <li><a class="dropdown-item" href="Javascript: todos();">Todos</a></li>
-                        </ul>
-                </div>
+            <section class="videos-chamada inicio-videos">
+                <span class="borda-videos-chamada">
+                    <div class="animation"></div>
+                </span>
+                <div class="titulo--pesquisa">
+                    <div class="titulo--acoes">
+                        <h2 class="titulo-separador">Podcasts</h2>
+                        <div class="filtro">
+                            <h2 class="filtro__texto">Filtro: </h2>
+                            <select name="filtro" id="filtro" class="filtro__botao">
+                                <option value="todos">Todos</option>
+                                <option value="flow podcast">Flow Podcast</option>
+                                <option value="podpah">PodPah</option>
+                                <option value="ciencia sem fim">Ciência Sem Fim</option>
+                                <option value="balela">Balela</option>
+                            </select>
+                        </div>
+                        <button class="btn-salvos" id="btn-salvos"><i class="far fa-bookmark"></i>Salvos</button>
+                        <button class="btn-assistidos" id="btn-assistidos"><i class="far fa-clock"></i>Histórico</button>
+                    </div>
+                    <div class="borda-animada">
+                        <input type="search" class="caixa-de-pesquisa" placeholder="Encontre um podcast">
+                    </div>
+                </div> 
             </section>
             <section class="videos">
-                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" tabindex="0">
-                    <div class="video__imagem">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <div class="video__hover">
-                            <div class="video__hover-margin">
-                                <i class="fas fa-play fa-2x"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 class="video__titulo">Flow Podcast - #154 - Meta</h2>
-                    <p class="video__paragrafo"></p>
+                <div class="container-acoes-videos nao-aparece" id="acoes-videos">
+                    <h2 class="nenhum-video-encontrado nao-aparece">Nenhum Podcast Encontrado</h2>
+                    <h2 class="apagar-historico nao-aparece"><i class="fas fa-trash"></i>Apagar Histórico</h2>
                 </div>
-                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-podcast="podpah" tabindex="0">
-                    <div class="video__imagem">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <div class="video__hover">
-                            <div class="video__hover-margin">
-                                <i class="fas fa-play fa-2x"></i>
+                <div class="carregando">
+                    <div class="envolve">
+                        <div class="colunas">
+                            <span style="--i: 1;"></span>
+                            <span style="--i: 2;"></span>
+                            <span style="--i: 3;"></span>
+                            <span style="--i: 4;"></span>
+                            <div class="linhas">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
                             </div>
                         </div>
                     </div>
-                    <h2 class="video__titulo">Podpah - #46 - Diogo</h2>
-                    <p class="video__paragrafo"></p>
                 </div>
-                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-podcast="flow-podcast" tabindex="0">
-                    <div class="video__imagem">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <div class="video__hover">
-                            <div class="video__hover-margin">
-                                <i class="fas fa-play fa-2x"></i>
-                            </div>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropUm" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="0" data-assistido="false" title="Flow Podcast - #154 - Vitor Metaforando">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
+                                </div>
+                            </button>
+                            <h2 class="video__titulo">Flow Podcast - #154 - Vitor Metaforando</h2>
                         </div>
                     </div>
-                    <h2 class="video__titulo">Flow Podcast - #226 - Ninja</h2>
-                    <p class="video__paragrafo"></p>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
                 </div>
-                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-podcast="podpah" tabindex="0">
-                    <div class="video__imagem">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <div class="video__hover">
-                            <div class="video__hover-margin">
-                                <i class="fas fa-play fa-2x"></i>
-                            </div>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropDois" data-podcast="podpah" data-salvado="false" data-numero-podcast="1" data-assistido="false" title="Podpah - #46 - Diogo Defante">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
+                                </div>
+                            </button>
+                            <h2 class="video__titulo">Podpah - #46 - Diogo Defante</h2>
                         </div>
                     </div>
-                    <h2 class="video__titulo">Podpah - #05 - Lucas</h2>
-                    <p class="video__paragrafo"></p>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
                 </div>
-                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-podcast="flow-podcast" tabindex="0">
-                    <div class="video__imagem">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <div class="video__hover">
-                            <div class="video__hover-margin">
-                                <i class="fas fa-play fa-2x"></i>
-                            </div>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropTres" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="2" data-assistido="false" title="Flow Podcast - #226 - Poderosíssimo Ninja">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
+                                </div>
+                            </button>
+                            <h2 class="video__titulo">Flow Podcast - #226 - Poderosíssimo Ninja</h2>
+                            <div class="video__acoes"></div>
                         </div>
                     </div>
-                    <h2 class="video__titulo">Flow Podcast - #227 - Gaule</h2>
-                    <p class="video__paragrafo"></p>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
                 </div>
-                <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-podcast="ciencia-sem-fim" tabindex="0">
-                    <div class="video__imagem">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <div class="video__hover">
-                            <div class="video__hover-margin">
-                                <i class="fas fa-play fa-2x"></i>
-                            </div>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropQuatro" data-podcast="podpah" data-salvado="false" data-numero-podcast="3" data-assistido="false" title="Podpah - #05 - Lucas Inutilismo">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
+                                </div>
+                            </button>
+                            <h2 class="video__titulo">Podpah - #05 - Lucas Inutilismo</h2>
+                            <div class="video__acoes"></div>
                         </div>
                     </div>
-                    <h2 class="video__titulo">Ciência sem fim - #04 - Lito</h2>
-                    <p class="video__paragrafo"></p>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropCinco" data-podcast="flow-podcast" data-salvado="false" data-numero-podcast="4" data-assistido="false" title="Flow Podcast - #227 - Gaules">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
+                                </div>
+                            </button>
+                            <h2 class="video__titulo">Flow Podcast - #227 - Gaules</h2>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSeis" data-podcast="ciencia-sem-fim" data-salvado="false" data-numero-podcast="5" data-assistido="false" title="Ciência sem fim - #04 - Lito Sousa">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
+                                </div>
+                            </button>
+                            <h2 class="video__titulo">Ciência sem fim - #04 - Lito Sousa</h2>
+                            <div class="video__acoes"></div>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+                <div class="video__fundo inicio-videos ">
+                    <div class="videos__video" data-bs-toggle="modal" data-bs-target="#staticBackdropSete" data-podcast="balela" data-salvado="false" data-numero-podcast="6" data-assistido="false" title="Balela - #97 - Luba">
+                        <div class="background-video">
+                            <button class="video__imagem" tabindex="0">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <div class="video__hover">
+                                    <div class="video__hover-margin">
+                                        <i class="fas fa-play fa-2x"></i>
+                                    </div>
+                                </div>
+                            </button>
+                            <h2 class="video__titulo">Balela - #97 - Luba</h2>
+                        </div>
+                    </div>
+                    <div class="video__acoes">
+                        <i class="fas fa-headphones"></i>
+                        <i class="far fa-bookmark"></i>
+                    </div>
                 </div>
             </section>
-            <section class="modais"></section>
+            <section class="modais">
                 <!-- Modal 1 -->
                 <div class="modal fade" id="staticBackdropUm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog" id="modal-dialog-um">
@@ -193,25 +301,50 @@
                         <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #154 - Metaforando</h5>
                         <div>
-                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar" data-bs-container="#modal-dialog-um" data-bs-delay="250"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar" data-bs-container="#modal-dialog-um" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar (M)" data-bs-container="#modal-dialog-um" data-bs-delay="250"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar (Esc)" data-bs-container="#modal-dialog-um" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
                         </div>
                         </div>
                         <div class="modal-body">
-                            <div id="player"></div>
+                            <div class="video-player">
+                                <i class="fas fa-backward cliqueAtras"></i>
+                                <i class="fas fa-play cliquePlayEPause"></i>
+                                <i class="fas fa-forward cliqueFrente"></i>
+                                <div id="player" class="video-player-events"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo">
-                                <i class="fas fa-forward"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar (J)" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play (K)" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar (K)" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar (L)" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-um" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -222,27 +355,52 @@
                     <div class="modal-dialog" id="modal-dialog-dois">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Podpah - #46 - Diogo</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Podpah - #46 - Diogo Defante</h5>
                         <div>
-                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar" data-bs-container="#modal-dialog-dois" data-bs-delay="250"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar" data-bs-container="#modal-dialog-dois" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar (M)" data-bs-container="#modal-dialog-dois" data-bs-delay="250"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar (Esc)" data-bs-container="#modal-dialog-dois" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
                         </div>
                         </div>
                         <div class="modal-body">
-                            <div id="playerDois"></div>
+                            <div class="video-player">
+                                <i class="fas fa-backward cliqueAtras"></i>
+                                <i class="fas fa-play cliquePlayEPause"></i>
+                                <i class="fas fa-forward cliqueFrente"></i>
+                                <div id="playerDois" class="video-player-events"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo">
-                                <i class="fas fa-forward"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar (J)" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play (K)" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar (K)" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar (L)" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-dois" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -253,27 +411,52 @@
                     <div class="modal-dialog" id="modal-dialog-tres">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #226 - Ninja</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #226 - Poderosíssimo Ninja</h5>
                         <div>
-                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar" data-bs-container="#modal-dialog-tres" data-bs-delay="250"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar" data-bs-container="#modal-dialog-tres" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar (M)" data-bs-container="#modal-dialog-tres" data-bs-delay="250"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar (Esc)" data-bs-container="#modal-dialog-tres" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
                         </div>
                         </div>
                         <div class="modal-body">
-                            <div id="playerTres"></div>
+                            <div class="video-player">
+                                <i class="fas fa-backward cliqueAtras"></i>
+                                <i class="fas fa-play cliquePlayEPause"></i>
+                                <i class="fas fa-forward cliqueFrente"></i>
+                                <div id="playerTres" class="video-player-events"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo">
-                                <i class="fas fa-forward"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar (J)" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play (K)" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar (K)" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar (L)" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-tres" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -286,25 +469,50 @@
                         <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Podpah - #05 - Lucas Inutilismo</h5>
                         <div>
-                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar" data-bs-container="#modal-dialog-quatro" data-bs-delay="250"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar" data-bs-container="#modal-dialog-quatro" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar (M)" data-bs-container="#modal-dialog-quatro" data-bs-delay="250"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar (Esc)" data-bs-container="#modal-dialog-quatro" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
                         </div>
                         </div>
                         <div class="modal-body">
-                            <div id="playerQuatro"></div>
+                            <div class="video-player">
+                                <i class="fas fa-backward cliqueAtras"></i>
+                                <i class="fas fa-play cliquePlayEPause"></i>
+                                <i class="fas fa-forward cliqueFrente"></i>
+                                <div id="playerQuatro" class="video-player-events"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo">
-                                <i class="fas fa-forward"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar (J)" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play (K)" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar (K)" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar (L)" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-quatro" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -315,28 +523,52 @@
                     <div class="modal-dialog" id="modal-dialog-cinco">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #227 - Gaule
-                        </h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Flow Podcast - #227 - Gaules</h5>
                         <div>
-                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar" data-bs-container="#modal-dialog-cinco" data-bs-delay="250"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar" data-bs-container="#modal-dialog-cinco" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar (M)" data-bs-container="#modal-dialog-cinco" data-bs-delay="250"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar (Esc)" data-bs-container="#modal-dialog-cinco" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
                         </div>
                         </div>
                         <div class="modal-body">
-                            <div id="playerCinco"></div>
+                            <div class="video-player">
+                                <i class="fas fa-backward cliqueAtras"></i>
+                                <i class="fas fa-play cliquePlayEPause"></i>
+                                <i class="fas fa-forward cliqueFrente"></i>
+                                <div id="playerCinco" class="video-player-events"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo">
-                                <i class="fas fa-forward"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar (J)" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play (K)" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar (K)" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar (L)" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-cinco" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -347,27 +579,109 @@
                     <div class="modal-dialog" id="modal-dialog-seis">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Ciência sem Fim - #04 - Lito</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Ciência sem Fim - #04 - Lito Sousa</h5>
                         <div>
-                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar" data-bs-container="#modal-dialog-seis" data-bs-delay="250"><i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar" data-bs-container="#modal-dialog-seis" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar (M)" data-bs-container="#modal-dialog-seis" data-bs-delay="250"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar (Esc)" data-bs-container="#modal-dialog-seis" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
                         </div>
                         </div>
                         <div class="modal-body">
-                            <div id="playerSeis"></div>
+                            <div class="video-player">
+                                <i class="fas fa-backward cliqueAtras"></i>
+                                <i class="fas fa-play cliquePlayEPause"></i>
+                                <i class="fas fa-forward cliqueFrente"></i>
+                                <div id="playerSeis" class="video-player-events"></div>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <div  class="div-icone fa-backwardVideo">
-                                <i class="fas fa-backward"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar (J)" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play (K)" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar (K)" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar (L)" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-seis" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="div-icone fa-playVideo">
-                                <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="staticBackdropSete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog" id="modal-dialog-sete">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Balela - #97 - Luba</h5>
+                        <div>
+                            <button class="btn-minimiza" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Minimizar (M)" data-bs-container="#modal-dialog-sete" data-bs-delay="250"><i class="fas fa-minus"></i></button>
+                            <button type="button" class="btn-close fecha-modal" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar (Esc)" data-bs-container="#modal-dialog-sete" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
+                        </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="video-player">
+                                <i class="fas fa-backward cliqueAtras"></i>
+                                <i class="fas fa-play cliquePlayEPause"></i>
+                                <i class="fas fa-forward cliqueFrente"></i>
+                                <div id="playerSete" class="video-player-events"></div>
                             </div>
-                            <div class="div-icone fa-pauseVideo">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo">
-                                <i class="fas fa-forward"></i>
+                        </div>
+                        <div class="modal-footer">
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones--div-full-screen">
+                                <div class="div-icones">
+                                    <div class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar (J)" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-backward"></i>
+                                    </div>
+                                    <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play (K)" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pausar (K)" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-pause"></i>
+                                    </div>
+                                    <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar (L)" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-forward"></i>
+                                    </div>
+                                </div>
+                                <div class="full-screen--velocidade">
+                                    <select name="velocidade" id="velocidade" class="velocidade-video" data-bs-toggle="tooltip" data-bs-placement="top" title="Velocidade" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <option value="0.25">0.25x</option>
+                                        <option value="0.5">0.5x</option>
+                                        <option value="0.75">0.75x</option>
+                                        <option value="1">1 x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="1.75">1.75x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <div class="div-icone fa-full-screen" data-bs-toggle="tooltip" data-bs-placement="top" title="Tela Cheia (F)" data-bs-container="#modal-dialog-sete" data-bs-delay="500">
+                                        <i class="fas fa-expand icone--full-screen"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -379,30 +693,28 @@
                     <button class="btn btn-primary d-none" id="botaoAbreOffCanvas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
                     <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling">
                         <div class="offcanvas-header">
-                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Flow Podcast - #154 - Meta</h5>
-                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Podpah - #46 - Diogo</h5>
-                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Flow Podcast - #226 - Ninja</h5>
-                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Podpah - #05 - Lucas</h5>
-                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Flow Podcast - #227 - Gaule
-                        </h5>
-                        <h5 class="offcanvas-title offcanvas-title-segundo-plano">Ciência sem fim - #04 - Lito</h5>
+                        <h5 class="offcanvas-title" id="offcanvas-title-segundo-plano"></h5>
                         <div>
-                            <button type="button" class="btn-maximiza" data-bs-toggle="modal"><i class="fas fa-plus fa-lg"></i></button>
-                            <button type="button" class="btn-close text-reset fechaOffCanvas" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fas fa-times fa-lg"></i></button>
+                            <button type="button" id="btn-move" class="btn-move grab" data-bs-toggle="tooltip" data-bs-placement="top" title="Mover" data-bs-container="#offcanvasScrolling" data-bs-delay="250"><i class="fas fa-grip-horizontal fa-lg"></i></button>
+                            <button type="button" class="btn-maximiza" data-bs-toggle="modal"><i class="fas fa-plus fa-lg" data-bs-toggle="tooltip" data-bs-placement="top" title="Maximizar (M)" data-bs-container="#offcanvasScrolling" data-bs-delay="250"></i></button>
+                            <button type="button" class="btn-close text-reset fechaOffCanvas" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-toggle="tooltip" data-bs-placement="top" title="Fechar (Esc)" data-bs-container="#offcanvasScrolling" data-bs-delay="250"><i class="fas fa-times fa-lg"></i></button>
                         </div>
-                        </div>
+                    </div>
                         <div class="offcanvas-body">
-                            <div  class="div-icone fa-backwardVideo">
-                                <i class="fas fa-backward"></i>
-                            </div>
-                            <div class="div-icone fa-playVideo">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="div-icone fa-pauseVideo">
-                                <i class="fas fa-pause"></i>
-                            </div>
-                            <div class="div-icone fa-forwardVideo">
-                                <i class="fas fa-forward"></i>
+                            <h3 class="tempo-video"><div class="horas-atual"></div>:<div class="minutos-atual"></div>:<div class="segundos-atual"></div> / <div class="horas-total"></div>:<div class="minutos-total"></div>:<div class="segundos-total"></div></h3>
+                            <div class="div-icones">
+                                <div  class="div-icone fa-backwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Voltar (J)" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
+                                    <i class="fas fa-backward"></i>
+                                </div>
+                                <div class="div-icone fa-playVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Play (K)" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="div-icone fa-pauseVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Pause (K)" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
+                                    <i class="fas fa-pause"></i>
+                                </div>
+                                <div class="div-icone fa-forwardVideo" data-bs-toggle="tooltip" data-bs-placement="top" title="Avançar (L)" data-bs-container="#offcanvasScrolling" data-bs-delay="500">
+                                    <i class="fas fa-forward"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
