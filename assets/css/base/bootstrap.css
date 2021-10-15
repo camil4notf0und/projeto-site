@@ -36,8 +36,6 @@
 
 
 .modal-dialog {
-    border: 2.5px solid var(--vermelho-escuro);
-    border-radius: 7.5px;
     min-width: 75%;
     /* animation: led 0.5s infinite alternate; */
 }
@@ -53,9 +51,10 @@
 
 .modal-content {
     border: none;
-    border-radius: 5px;
     background-color: var(--preto-diferenciado);
     height: 90vh;
+    border: 2.5px solid var(--vermelho-escuro);
+    border-radius: 7.5px;
 }
 .aviso-segundo-plano .modal-content {
     height: 100%;

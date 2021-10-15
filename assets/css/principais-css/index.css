@@ -4,12 +4,12 @@
 .full-screen {
     min-width: 100% !important;
     margin: 0 !important;
-    border-radius: 0 !important;
-    border: none !important;
     animation: none !important;
 }
 .full-screen-content {
     height: 100vh !important;
+    border: none;
+    border-radius: 0;
 }
 .sem-padding {
     padding: 0 1rem !important;
@@ -352,6 +352,7 @@
 .apagar-historico, .nenhum-video-encontrado {
     color: var(--branco-diferenciado);
     cursor: pointer;
+    font-weight: 400;
 }
 .nenhum-video-encontrado {
     margin-top: 75px;
@@ -609,6 +610,9 @@
     cursor: pointer;
 }
 
-.video__fundo .video__acoes .fas:first-child, .video__fundo .video__acoes .far:first-child {
+.video__fundo .fa-trash, .video__fundo .fa-headphones {
     margin-right: 15px;
+}
+.video__fundo .fa-bookmark {
+    margin: 0;
 }

@@ -19,6 +19,7 @@ var salvaVideo = document.querySelectorAll(".video__fundo .fa-bookmark");
 
 var botaoAviso = document.getElementById("botaoAbreAviso");
 
+var apagaHistoricoVideo = document.querySelectorAll(".video__fundo .fa-trash");
 
 
 var btnsMinimiza = document.getElementsByClassName("btn-minimiza");
@@ -263,6 +264,18 @@ salvaVideo.forEach((elemento) => {
   });
 });
 
+apagaHistoricoVideo.forEach((elemento) => {
+  elemento.title = "Apagar Histórico";
+  elemento.addEventListener("click", function() {
+    let video = this.parentNode.parentNode.querySelector(".videos__video");
+
+    video.setAttribute("data-assistido", "false");
+
+    btnAssistidos.click();
+    btnAssistidos.click();
+  })
+});
+
 botaoAviso.addEventListener("click", segundoPlano);
 botaoOffCanvas.addEventListener("click", segundoPlano);
 
@@ -298,6 +311,10 @@ function flowPodcast() {
   if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
     btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
     btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -361,6 +378,10 @@ function podpah() {
   if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
     btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
     btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -424,6 +445,10 @@ function cienciaSemFim() {
   if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
     btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
     btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -487,6 +512,10 @@ function balela() {
   if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
     btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
     btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -550,6 +579,10 @@ function todos() {
   if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
     btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
     btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
   }
   if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
       
@@ -703,6 +736,8 @@ btnAssistidos.addEventListener("click", () => {
     [...videosFundo].forEach(e => {
       e.classList.add("inicio-videos");
       e.classList.remove("nao-aparece");
+
+      e.querySelector(".fa-trash").classList.add("nao-aparece");
     });
 
 
@@ -716,6 +751,8 @@ btnAssistidos.addEventListener("click", () => {
     [...videosFundo].forEach(e => {
       e.classList.add("inicio-videos");
       e.classList.add("nao-aparece");
+
+      e.querySelector(".fa-trash").classList.remove("nao-aparece");
     });
     animacao = 0;
     let videosNaoAparece = 0;
