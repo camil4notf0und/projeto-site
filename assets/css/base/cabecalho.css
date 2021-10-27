@@ -10,8 +10,6 @@
     z-index: 3;
     overflow: hidden;
     transition: 0.25s;
-    transform: translate(-100%);
-    animation: ida .5s forwards;
 }
 .cabecalho:hover {
     width: 17.5vw;
