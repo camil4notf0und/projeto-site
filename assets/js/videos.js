@@ -12,22 +12,10 @@ var divPlayers = document.getElementsByClassName("video-player");
 const filtro = document.getElementById("filtro");
 var colapsado = false;
 
-var btnSalvos = document.getElementById("btn-salvos");
-var btnAssistidos = document.getElementById("btn-assistidos");
-
-var salvaVideo = document.querySelectorAll(".video__fundo .fa-bookmark");
-
-var botaoAviso = document.getElementById("botaoAbreAviso");
-
-var apagaHistoricoVideo = document.querySelectorAll(".video__fundo .fa-trash");
-
-
-var btnsMinimiza = document.getElementsByClassName("btn-minimiza");
-var btnMaximiza = document.getElementsByClassName("btn-maximiza")[0];
 
 
 
-var ouvirVideo = document.querySelectorAll(".video__fundo .fa-headphones");;
+var ouvirVideo = document.querySelectorAll(".video__fundo .fa-headphones");
 
 var caixaDePesquisa = document.querySelector(".caixa-de-pesquisa");
 
@@ -39,39 +27,16 @@ var botoesVelocidade = document.getElementsByClassName("velocidade-video");
 var fullScreen = 0;
 
 
-var qualVideo = 0;
-
-
 var animacao = 0;
-
-// var scroll;
 // window.addEventListener("scroll", function (event) {
-//     scroll = this.scrollY;
-// });
-
-var pagCarregou = false;
 
 window.onload = function () {
-  document.querySelector(".carregando").classList.add("nao-aparece");
-    pagCarregou = true;
     document.querySelector(".videos-chamada").classList.remove("inicio-videos");
-    let bordaCarregando = document.querySelector("div.animation");
-    bordaCarregando.classList.remove("animation");
     setTimeout(() => {
-      bordaCarregando.classList.add("no-animation");
-    }, 50);
-};
-
-function apareceVideos() {
+    });
     let videoAtual, tamanhoVideo, posicaoVideo, posicaoDesejada;
-    if(animacao < videos.length) {
-        videoAtual = videosFundo[animacao];
         tamanhoVideo = videoAtual.getBoundingClientRect()["height"];
-        posicaoVideo = window.innerHeight - videoAtual.getBoundingClientRect()["y"];
-        posicaoDesejada = tamanhoVideo / 2;
     }
-    if(posicaoDesejada <= posicaoVideo && pagCarregou == true && animacao < videos.length) {
-        /**
         if(videos.length % 3 == 0) {
             videoAtual.classList.remove("inicio-videos");
             animacao++;
@@ -84,7 +49,7 @@ function apareceVideos() {
             videoAtual.classList.remove("desfoca");
             animacao++;
         }
-        */
+        
         videoAtual.classList.remove("inicio-videos");
         animacao++;
         if(videoAtual.classList.contains("nao-aparece")) {
@@ -101,6 +66,8 @@ setInterval(apareceVideos, 250);
 
 
 
+=======
+>>>>>>> f79c64bc4a8198e0c05feba7169dd6c42ccd5ed1
 [...videos].forEach((video) => {
   var qualVideoLocal = qualVideo;
   video.addEventListener("click", () => {
@@ -155,7 +122,6 @@ setInterval(apareceVideos, 250);
     let quebrado = videoTitulo.textContent.split("");
     let vezes = quebrado.length;
 
-    for(let i = 0; i < vezes; i++) {
       if(i >= 35) {
         quebrado.splice(i, quebrado.length - 35);
       } 
@@ -177,8 +143,6 @@ function segundoPlano() {
     if(tocando == false) {
           for (x = 0; x < videos.length; x++) {
               videos[x].setAttribute("data-bs-toggle", "modal");
-              videos[x].setAttribute("data-abrir-aviso", "false");
-          }
     }
     if(tocando == true) {
           for (x = 0; x < videos.length; x++) {

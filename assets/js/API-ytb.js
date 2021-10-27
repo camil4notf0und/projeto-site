@@ -526,6 +526,18 @@ btnContinuarAssistindo.onclick = continuaAssistindo;
 btnOuvirVideoSelecionado.onclick = ouvirVideoSelecionado;
 btnAssistirVideoSelecionado.onclick = assistirVideoSelecionado;
 
+var cursor;
+[...divPlayers].forEach(div => {
+  div.addEventListener("click", playEPause);
+  div.addEventListener("dblclick", telaCheia);
+  div.addEventListener("mousemove", function() {
+    clearTimeout(cursor);
+    this.classList.remove("sem-cursor");
+    cursor = setTimeout(() => {
+      this.classList.add("sem-cursor");
+    }, 3000);
+  });
+});
 
 var cursor;
 [...divPlayers].forEach(div => {
@@ -558,6 +570,28 @@ ouvirVideo.forEach((elemento) => {
 });
 
 
+  let qualVideoLocal = qualVideo;
+  player.addEventListener("click", () => {
+    if(tocando == false) {
+      qualTocando = qualVideoLocal;
+      tocando = true;
+      for (i = 0; i < titulosOffCanvas.length; i++) {
+        titulosOffCanvas[i].classList.add("d-none");
+      }
+      titulosOffCanvas[qualTocando].classList.remove("d-none");
+      playEPause();
+    }else {
+      var abrirAvisoVar = videos[qualVideoLocal].getAttribute("data-abrir-aviso");
+      if(abrirAvisoVar == "true") {
+        abreAviso();
+        videoSelecionado = qualVideoLocal;
+      }
+      if(abrirAvisoVar == "false") {
+        botaoOffCanvas.click();
+      }
+    }
+  });
+  qualVideo++;
 
 function adicionaVideo() {
   /**

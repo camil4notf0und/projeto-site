@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Site | Sobre</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/css/base.css">
+        <link rel="stylesheet" href="./assets/css/principais-css/sobre.css">
+        <script src="./assets/js/cabecalho.js" defer></script>
+        <script src="./assets/js/sobre.js" defer></script>
+        <script src="https://kit.fontawesome.com/0a54e825af.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <header class="cabecalho">
+            <div class="cabecalho__separa">
+
+                <a href="./index.html" class="link__logo">
+                    <img src="assets/img/podpato.png" alt="Logo do site Podpato" class="podpato_logo">
+                </a>
+    
+                <div class="navegacao--configs">
+                    <nav class="navegacao">
+                        <ul class="navegacao__lista">
+                            <li class="navegacao__item ativo">
+                                <a href="./index.html" class="navegacao__link"><i class="fas fa-home fa-lg"></i>Home</a>
+                            </li>
+                            <li class="navegacao__item ativo">
+                                <a href="./sobre.html" class="navegacao__link"><i class="fas fa-info-circle fa-lg"></i>Sobre</a>
+                            </li>
+                            <li class="navegacao__item">
+                                <a onclick="adicionaVideo()" class="navegacao__link"><i class="fas fa-plus fa-lg"></i>Adicionar</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="configs">
+                        <div class="dropup">
+                            <a class="botao-configs" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-cog fa-lg"></i><i class="fas fa-cog fa-lg fa-spin"></i>Configs<i class="fas fa-chevron-down fa-xs"></i>
+                            </a>
+                          
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </header>
+
+        <main>
+            <div class="sobre">
+                <p class="sobre__titulo"> Como o Podpato funciona?</p>
+
+                <p class="sobre__texto">
+                    Bom, para facilitar vamos separar essa parte em tópicos, entre eles, um pouco sobre os recursos do site, sobre o nosos objetivos e sobre os criadores.
+                </p>                
+
+                <div class="recursos">
+                    <div class="separa_topicos">
+                        <h2 class="sobre__subtitulo">Recursos</h2>
+                        <hr class="separador">
+
+                    </div>
+                    <div class="sobre__texto recursos__texto">
+                        <p>
+                            Estamos trabalhando nisso ainda, mas nosso site já é em grande parte funcional, alguns exemplos disso são:
+                        </p>
+                        <ul>
+                            <li>- Você pode salvar seus podcasts favoritos, sair do site, e quando você voltar todos seus salvos estarão te esperando;</li>
+                            <li>- Se algum podcast que você gosta muito não foi adicionado ainda, você pode fazer isso ou até mesmo adicionar o seu próprio;</li>
+                            <li>- No botão filtrar você pode adicionar um filtro para mostrar apenas os vídeos de um podcast;</li>
+                            <li>- Temos uma aba de pesquisa para ser uma opção mais específica que o filtrar;</li>
+                            <li>- No ícone de fone de ouvido abaixo dos vídeos, você pode apenas escutar o podcast ao invés de ver o vídeo.</li>
+                        </ul>
+                        <p>
+                            Essas são apenas algumas funções que podem te ajudar a navegar pelo site, mas durante sua jornada dentre os podcasts você pode descobrir várias outras funcionalidades. 
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="conteudo">
+                    <div class="separa_topicos">
+                        <h2 class="sobre__subtitulo">Conteudos</h2>
+                        <hr class="separador">
+
+                    </div>
+                    <div class="sobre__texto conteudo__texto">
+                        <p>
+                            Referente ao nosso conteúdo dentro do Podpato, nós procuramos uma maneira de trazer uma grande variabilidade de podcasts mas ao mesmo tempo não causar nenhum problema ao criador de conteúdo que fez o podcast, assim chegamos a um método que é bom para os dois lados:
+                        </p>
+                        <ul>
+                            <li>- Todos nossos vídeos são retirados direto do youtube e estão diretamente ligados, ou seja, os criadores de conteúdo não tem nenhum prejuizo, todas as visualizações continuam sendo contadas e os videos remunerados, claro apenas os que foram monetizados.</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="objetivos">
+                    <div class="separa_topicos">
+                        <h2 class="sobre__subtitulo">Objetivos</h2>
+                        <hr class="separador">
+
+                    </div>
+                    <div class="sobre__texto objetivos__texto">
+                        <p>
+                            Nosso objetivo com a criação do site é ter uma plataforma direcionada apenas para podcasts, e criar uma comunidade interativa onde você pode dar sugestões de mudanças no site, conversar sobre os podcasts, falar diretamente com os criadores do site e fazer amigos que tenham gostos parecidos e escutem os mesmos podcasts que você.
+                        </p>
+                        <p>
+                            Tudo isso para trazer uma melhor experiência para você!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="criadores">
+                    <div class="separa_topicos">
+                        <h2 class="sobre__subtitulo">Criadores</h2>
+                        <hr class="separador">
+
+                    </div>
+                    <div class="perfils">
+                        <div class="camila perfils__borda">
+                            <div class="perfils__imagem">
+                                <img src="#" alt="Camila Cardoso foto" class="fotos">
+
+                            </div>
+                            <div class="sobre__texto perfils__texto">
+                                <h4>Camila Cardoso</h4>
+                                <p>
+                                    textinho
+                                </p>
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="felipe_henrique perfils__borda">
+                            <div class="perfils__imagem">
+                                <img src="#" alt="Felipe Henrique foto" class="fotos">
+
+                            </div>
+                            <div class="sobre__texto perfils__texto">
+                                <h4>Felipe Henrique</h4>
+                                <p>
+                                    textinho
+                                </p>
+
+                            </div>
+                            
+                        </div>
+
+                        
+                        <div class="felipe_matheus perfils__borda">
+                            <div class="perfils__imagem">
+                                <img src="#" alt="Felipe Matheus foto" class="fotos">
+
+                            </div>
+                            <div class="sobre__texto perfils__texto">
+                                <h4>Felipe Matheus</h4>
+                                <p>
+                                    textinho
+                                </p>
+
+                            </div>
+                            
+                        </div>
+
+                        
+                        <div class="gabi perfils__borda">
+                            <div class="perfils__imagem">
+                                <img src="#" alt="Gabriely Macuco foto" class="fotos">
+
+                            </div>
+                            <div class="sobre__texto perfils__texto">
+                                <h4>Gabriely Macuco</h4>
+                                <p>
+                                    textinho
+                                </p>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+        <footer>
+            
+        </footer>
+    </body>
+
+</html>
