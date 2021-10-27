@@ -16,11 +16,11 @@ var playerSeis;
 
 var players;
 
-var tocando = false;
-var qualTocando;
-var videoSelecionado;
+
 var pauseEplay = 0;
 
+
+var maximixaMinimiza = 0;
 
 
 
@@ -29,6 +29,22 @@ var botoesPulaParaTras = document.getElementsByClassName("fa-backwardVideo");
 var botoesPausa = document.getElementsByClassName("fa-pauseVideo");
 var botoesPlay = document.getElementsByClassName("fa-playVideo");
 var botoesPulaParaFrente = document.getElementsByClassName("fa-forwardVideo");
+var botoesFullScreen = document.getElementsByClassName("fa-full-screen");
+
+var animaCliqueAtras = document.getElementsByClassName("cliqueAtras");
+var animaCliquePlayEPause = document.getElementsByClassName("cliquePlayEPause");
+var animaCliqueFrente = document.getElementsByClassName("cliqueFrente");
+
+[...animaCliqueAtras, ...animaCliquePlayEPause, ...animaCliqueFrente].forEach(elemento => {
+  elemento.classList.add("anima-clique");
+  elemento.classList.add("nao-aparece");
+});
+
+
+
+var iconesFullScreen = document.getElementsByClassName("icone--full-screen");
+
+var temposVideos = document.getElementsByClassName("tempo-video");
 
 var btnsFechaModal = document.getElementsByClassName("fecha-modal");
 var btnsFechaOffCanvas = document.getElementsByClassName("fechaOffCanvas")
@@ -111,6 +127,18 @@ function onYouTubeIframeAPIReady() {
       'onReady': onPlayerReady
     }
   });
+  playerSete = new YT.Player('playerSete', {
+    height: '100%',
+    width: '100%',
+    videoId: 'FY3ZeJu9pj0',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
 }
 
 
@@ -118,7 +146,7 @@ function onYouTubeIframeAPIReady() {
 
 
 function onPlayerReady(event) {
-  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis];
+  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis, playerSete];
 }
 
 
@@ -142,179 +170,125 @@ function pararVideo() {
 function pausarVideo() {
   players[qualTocando].pauseVideo();
 }
+
+var limpaAnimacao, limpaAnimacaoDois;
+
 function playEPause() {
   if(pauseEplay == 0) {
     botoesPlay[qualTocando].style.display = "none";
     botoesPausa[qualTocando].style.display = "block";
-    botoesPlay[6].style.display = "none";
-    botoesPausa[6].style.display = "block";
+    botoesPlay[players.length].style.display = "none";
+    botoesPausa[players.length].style.display = "block";
     tocarVideo();
+    animaCliquePlayEPause[qualTocando].classList.remove("nao-aparece");
+    animaCliquePlayEPause[qualTocando].classList.remove("fa-pause");
+    animaCliquePlayEPause[qualTocando].classList.add("fa-play");
+    animaCliquePlayEPause[qualTocando].classList.remove("anima-clique");
+    clearTimeout(limpaAnimacao);
+    clearTimeout(limpaAnimacaoDois);
+    limpaAnimacao = setTimeout(() => {
+      animaCliquePlayEPause[qualTocando].classList.add("anima-clique");
+    }, 50);
+    limpaAnimacaoDois = setTimeout(() => {
+      animaCliquePlayEPause[qualTocando].classList.add("nao-aparece");
+    }, 350);
     pauseEplay = 1;
   }else {
     botoesPlay[qualTocando].style.display = "block";
     botoesPausa[qualTocando].style.display = "none";
-    botoesPlay[6].style.display = "block";
-    botoesPausa[6].style.display = "none";
+    botoesPlay[players.length].style.display = "block";
+    botoesPausa[players.length].style.display = "none";
     pausarVideo();
+    animaCliquePlayEPause[qualTocando].classList.remove("nao-aparece");
+    animaCliquePlayEPause[qualTocando].classList.remove("fa-play");
+    animaCliquePlayEPause[qualTocando].classList.add("fa-pause");
+    animaCliquePlayEPause[qualTocando].classList.remove("anima-clique");
+    clearTimeout(limpaAnimacao);
+    clearTimeout(limpaAnimacaoDois);
+    limpaAnimacao = setTimeout(() => {
+      animaCliquePlayEPause[qualTocando].classList.add("anima-clique");
+    }, 50);
+    limpaAnimacaoDois = setTimeout(() => {
+      animaCliquePlayEPause[qualTocando].classList.add("nao-aparece");
+    }, 350);
     pauseEplay = 0;
   }
 }
 
-var tempoAtual;
+var tempoAtual, tempoTotal;
 function pegaTempoVideo() {
   tempoAtual = players[qualTocando].getCurrentTime();
+}
+
+function pegaTempoTotalVideo() {
+  tempoTotal = players[qualTocando].getDuration();
 }
 
 function pulaParaTrasVideo() {
   pegaTempoVideo();
   players[qualTocando].seekTo(tempoAtual - 10);
+  animaCliqueAtras[qualTocando].classList.remove("nao-aparece");
+  animaCliqueAtras[qualTocando].classList.remove("anima-clique");
+  clearTimeout(limpaAnimacao);
+  clearTimeout(limpaAnimacaoDois);
+  limpaAnimacao = setTimeout(() => {
+    animaCliqueAtras[qualTocando].classList.add("anima-clique");
+  }, 50);
+  limpaAnimacaoDois = setTimeout(() => {
+    animaCliqueAtras[qualTocando].classList.add("nao-aparece");
+  }, 350);
 }
 
 function pulaParaFrenteVideo() {
   pegaTempoVideo();
   players[qualTocando].seekTo(tempoAtual + 10);
+  animaCliqueFrente[qualTocando].classList.remove("nao-aparece");
+  animaCliqueFrente[qualTocando].classList.remove("anima-clique");
+  clearTimeout(limpaAnimacao);
+  clearTimeout(limpaAnimacaoDois);
+  limpaAnimacao = setTimeout(() => {
+    animaCliqueFrente[qualTocando].classList.add("anima-clique");
+  }, 50);
+  limpaAnimacaoDois = setTimeout(() => {
+    animaCliqueFrente[qualTocando].classList.add("nao-aparece");
+  }, 350);
 }
 function fechaModal() {
+  setTimeout(segundoPlano, 350);
+  if(fullScreen == 1) {
+    telaCheia();
+  }
   pararVideo();
   pauseEplay = 0;
   btnsFechaOffCanvas[0].click();
   tocando = false;
 }
 
-var i;
+var velocidade;
+function pegaVelocidade() {
+  velocidade = players[qualTocando].getPlaybackRate();
+}
+function mudaVelocidade() {
+  players[qualTocando].setPlaybackRate(parseFloat(botoesVelocidade[qualTocando].value));
+}
 
-function videoUm() {
-  if(tocando == false) {
-    qualTocando = 0;
-    tocando = true;
-		for (i = 0; i < titulosOffCanvas.length; i++) {
-      titulosOffCanvas[i].classList.add("d-none");
-		}
-    titulosOffCanvas[qualTocando].classList.remove("d-none");
-    playEPause();
-  }else {
-    var abrirAvisoVar = videos[0].getAttribute("data-abrir-aviso");
-    if(abrirAvisoVar == "true") {
-      abreAviso();
-      videoSelecionado = 0;
-    }
-    if(abrirAvisoVar == "false") {
-      botaoOffCanvas.click();
-    }
-  }
-}
-function videoDois() {
-  if(tocando == false) {
-    qualTocando = 1;
-    tocando = true;
-    for (i = 0; i < titulosOffCanvas.length; i++) {
-      titulosOffCanvas[i].classList.add("d-none");
-		}
-    titulosOffCanvas[qualTocando].classList.remove("d-none");
-    playEPause();
-  }else {
-    var abrirAvisoVar = videos[1].getAttribute("data-abrir-aviso");
-    if(abrirAvisoVar == "true") {
-      abreAviso();
-      videoSelecionado = 1;
-    }
-    if(abrirAvisoVar == "false") {
-      botaoOffCanvas.click();
-    }
-  }
-}
-function videoTres() {
-  if(tocando == false) {
-    qualTocando = 2;
-    tocando = true;
-    for (i = 0; i < titulosOffCanvas.length; i++) {
-      titulosOffCanvas[i].classList.add("d-none");
-		}
-    titulosOffCanvas[qualTocando].classList.remove("d-none");
-    playEPause();
-  }else {
-    var abrirAvisoVar = videos[2].getAttribute("data-abrir-aviso");
-    if(abrirAvisoVar == "true") {
-      abreAviso();
-      videoSelecionado = 2;
-    }
-    if(abrirAvisoVar == "false") {
-      botaoOffCanvas.click();
-    }
-  }
-}
-function videoQuatro() {
-  if(tocando == false) {
-    qualTocando = 3;
-    tocando = true;
-    for (i = 0; i < titulosOffCanvas.length; i++) {
-      titulosOffCanvas[i].classList.add("d-none");
-		}
-    titulosOffCanvas[qualTocando].classList.remove("d-none");
-    playEPause();
-  }else {
-    var abrirAvisoVar = videos[3].getAttribute("data-abrir-aviso");
-    if(abrirAvisoVar == "true") {
-      abreAviso();
-      videoSelecionado = 3;
-    }
-    if(abrirAvisoVar == "false") {
-      botaoOffCanvas.click();
-    }
-  }
-}
-function videoCinco() {
-  if(tocando == false) {
-    qualTocando = 4;
-    tocando = true;
-    for (i = 0; i < titulosOffCanvas.length; i++) {
-      titulosOffCanvas[i].classList.add("d-none");
-		}
-    titulosOffCanvas[qualTocando].classList.remove("d-none");
-    playEPause();
-  }else {
-    var abrirAvisoVar = videos[4].getAttribute("data-abrir-aviso");
-    if(abrirAvisoVar == "true") {
-      abreAviso();
-      videoSelecionado = 4;
-    }
-    if(abrirAvisoVar == "false") {
-      botaoOffCanvas.click();
-    }
-  }
-}
-function videoSeis() {
-  if(tocando == false) {
-    qualTocando = 5;
-    tocando = true;
-    for (i = 0; i < titulosOffCanvas.length; i++) {
-      titulosOffCanvas[i].classList.add("d-none");
-		}
-    titulosOffCanvas[qualTocando].classList.remove("d-none");
-    playEPause();
-  }else {
-    var abrirAvisoVar = videos[5].getAttribute("data-abrir-aviso");
-    if(abrirAvisoVar == "true") {
-      abreAviso();
-      videoSelecionado = 5;
-    }
-    if(abrirAvisoVar == "false") {
-      botaoOffCanvas.click();
-    }
-  }
-}
+
+btnsFechaOffCanvas[1].addEventListener("click", () => {
+  setTimeout(segundoPlano, 350);
+});
 
 function continuaOuvindo() {
   btnsFechaOffCanvas[1].click();
 }
 
 function continuaAssistindo() {
+  setTimeout(segundoPlano, 350);
   botaoAviso.click();
-  //  videos[qualTocando].click();
 }
 
 function ouvirVideoSelecionado() {
   botaoAviso.click();
+  setTimeout(segundoPlano, 350);
   fechaModal();
   videos[videoSelecionado].click();
   btnsMinimiza[qualTocando].click();
@@ -322,97 +296,230 @@ function ouvirVideoSelecionado() {
 
 
 function abreVideoSelecionado() {
+  setTimeout(segundoPlano, 350);
   videos[videoSelecionado].click();
 }
 function assistirVideoSelecionado() {
   botaoAviso.click();
+  setTimeout(segundoPlano, 350);
   fechaModal();
-  setTimeout(abreVideoSelecionado, 50);
+  setTimeout(abreVideoSelecionado, 350);
 }
 
-function segundoPlano() {
-  var x;
-  if(tocando == false) {
-		for (x = 0; x < videos.length; x++) {
-		    videos[x].setAttribute("data-bs-toggle", "modal");
-        videos[x].setAttribute("data-abrir-aviso", "false");
-		}
-  }
-  if(tocando == true) {
-		for (x = 0; x < videos.length; x++) {
-		    videos[x].removeAttribute("data-bs-toggle");
-        videos[x].setAttribute("data-abrir-aviso", "true");
-		}
-    videos[qualTocando].setAttribute("data-bs-toggle", "modal");
-    videos[qualTocando].setAttribute("data-abrir-aviso", "false");
-  }
-  let roleOffCanvasDois = offCanvasDois.getAttribute("role");
-  if(roleOffCanvasDois == "dialog") {
-    panoDeFundo.style.display = "block";
-  }else {
-    panoDeFundo.style.display = "none";
-  }
-}
 
-setInterval(segundoPlano, 1);
-
-
-
-//     aviso botoes      4 botoes  -  continuar ouvindo - continuar assistindo - assistir video selecionado - ouvir video selecionado
-
-//   continuar ouvindo   --   botaoAviso.click();
-//   continuar assistindo    --   botaoAviso.click(); + videos[qualTocando].click();
-//   assistir video selecionado   --   uma variavel ( videoSelecionado ) é modificada para o número do video clicado ( de 0 a 5 ) através do "true" do data-abre-aviso, aí =    
-//   ouvir video selecionado    --   
-
-
-videos[0].onclick = videoUm;
-videos[1].onclick = videoDois;
-videos[2].onclick = videoTres;
-videos[3].onclick = videoQuatro;
-videos[4].onclick = videoCinco;
-videos[5].onclick = videoSeis;
-
-btnsFechaModal[0].onclick = fechaModal;
-btnsFechaModal[1].onclick = fechaModal;
-btnsFechaModal[2].onclick = fechaModal;
-btnsFechaModal[3].onclick = fechaModal;
-btnsFechaModal[4].onclick = fechaModal;
-btnsFechaModal[5].onclick = fechaModal;
+[...btnsFechaModal].forEach(e => {
+  e.addEventListener("click", fechaModal);
+});
 
 btnsFechaOffCanvas[0].onclick = fechaModal;
 
-botoesPulaParaTras[0].onclick = pulaParaTrasVideo;
-botoesPulaParaTras[1].onclick = pulaParaTrasVideo;
-botoesPulaParaTras[2].onclick = pulaParaTrasVideo;
-botoesPulaParaTras[3].onclick = pulaParaTrasVideo;
-botoesPulaParaTras[4].onclick = pulaParaTrasVideo;
-botoesPulaParaTras[5].onclick = pulaParaTrasVideo;
-botoesPulaParaTras[6].onclick = pulaParaTrasVideo;
 
-botoesPlay[0].onclick = playEPause;
-botoesPlay[1].onclick = playEPause;
-botoesPlay[2].onclick = playEPause;
-botoesPlay[3].onclick = playEPause;
-botoesPlay[4].onclick = playEPause;
-botoesPlay[5].onclick = playEPause;
-botoesPlay[6].onclick = playEPause;
+[...botoesPulaParaTras].forEach(e => {
+  e.addEventListener("click", pulaParaTrasVideo)
+});
 
-botoesPausa[0].onclick = playEPause;
-botoesPausa[1].onclick = playEPause;
-botoesPausa[2].onclick = playEPause;
-botoesPausa[3].onclick = playEPause;
-botoesPausa[4].onclick = playEPause;
-botoesPausa[5].onclick = playEPause;
-botoesPausa[6].onclick = playEPause;
+[...botoesPlay].forEach(e => {
+  e.addEventListener("click", playEPause)
+});
 
-botoesPulaParaFrente[0].onclick = pulaParaFrenteVideo;
-botoesPulaParaFrente[1].onclick = pulaParaFrenteVideo;
-botoesPulaParaFrente[2].onclick = pulaParaFrenteVideo;
-botoesPulaParaFrente[3].onclick = pulaParaFrenteVideo;
-botoesPulaParaFrente[4].onclick = pulaParaFrenteVideo;
-botoesPulaParaFrente[5].onclick = pulaParaFrenteVideo;
-botoesPulaParaFrente[6].onclick = pulaParaFrenteVideo;
+[...botoesPausa].forEach(e => {
+  e.addEventListener("click", playEPause)
+});
+
+[...botoesPulaParaFrente].forEach(e => {
+  e.addEventListener("click", pulaParaFrenteVideo)
+});
+
+[...botoesVelocidade].forEach((e) => {
+  e.addEventListener("click", mudaVelocidade);
+});
+
+
+function toggleFullScreen() {
+  
+}
+
+
+
+function telaCheia() {
+   /** 
+  if (!document.fullscreenElement &&    // alternative standard method
+    !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement && fullScreen == 0) {  // current working methods
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (document.documentElement.msRequestFullscreen) {
+    document.documentElement.msRequestFullscreen();
+  } else if (document.documentElement.mozRequestFullScreen) {
+    document.documentElement.mozRequestFullScreen();
+  } else if (document.documentElement.webkitRequestFullscreen) {
+    document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+  }
+  
+} else {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
+}
+*/
+
+  if(fullScreen == 0) {
+    let modalDialog = document.getElementsByClassName("modal-dialog")[qualTocando];
+    let modalContent = document.getElementsByClassName("modal-content")[qualTocando];
+    let cabecalho = document.getElementsByClassName("modal-header")[qualTocando];
+    let rodape = document.getElementsByClassName("modal-footer")[qualTocando];
+
+    modalDialog.classList.add("full-screen");
+
+    modalContent.classList.add("full-screen-content");
+
+    cabecalho.classList.add("nao-aparece");
+
+    rodape.classList.add("sem-padding");
+
+    iconesFullScreen[qualTocando].classList.remove("fa-expand");
+    iconesFullScreen[qualTocando].classList.add("fa-compress");
+
+
+    fullScreen = 1;
+  }else {
+    let modalDialog = document.getElementsByClassName("modal-dialog")[qualTocando];
+    let modalContent = document.getElementsByClassName("modal-content")[qualTocando];
+    let cabecalho = document.getElementsByClassName("modal-header")[qualTocando];
+    let rodape = document.getElementsByClassName("modal-footer")[qualTocando];
+
+    modalDialog.classList.remove("full-screen");
+
+    modalContent.classList.remove("full-screen-content");
+
+    cabecalho.classList.remove("nao-aparece");
+
+    rodape.classList.remove("sem-padding");
+
+    iconesFullScreen[qualTocando].classList.add("fa-expand");
+    iconesFullScreen[qualTocando].classList.remove("fa-compress");
+
+    fullScreen = 0;
+  }
+}
+
+function mudaTempoVideo() {
+
+}
+
+function tempoVideo() {
+  if(tocando == true) {
+    pegaTempoVideo();
+    pegaTempoTotalVideo();
+    let spanSegundosSegundoPlanoAtual = temposVideos[players.length].querySelector(".segundos-atual");
+    let spanMinutosSegundoPlanoAtual = temposVideos[players.length].querySelector(".minutos-atual");
+    let spanHorasSegundoPlanoAtual = temposVideos[players.length].querySelector(".horas-atual");
+
+    let spanSegundosSegundoPlanoTotal = temposVideos[players.length].querySelector(".segundos-total");
+    let spanMinutosSegundoPlanoTotal = temposVideos[players.length].querySelector(".minutos-total");
+    let spanHorasSegundoPlanoTotal = temposVideos[players.length].querySelector(".horas-total");
+
+
+    let [segundosAtual, minutosAtual, horasAtual] = [tempoAtual, 0, 0];
+
+    while(segundosAtual >= 60) {
+      minutosAtual++;
+
+      segundosAtual = segundosAtual - 60;
+    }
+
+    while(minutosAtual >= 60) {
+        horasAtual++;
+
+        minutosAtual = minutosAtual - 60;
+    }
+    
+    
+    let spanSegundosAtual = temposVideos[qualTocando].querySelector(".segundos-atual");
+    let spanMinutosAtual = temposVideos[qualTocando].querySelector(".minutos-atual");
+    let spanHorasAtual = temposVideos[qualTocando].querySelector(".horas-atual");
+
+    if(segundosAtual < 10) {
+      spanSegundosAtual.textContent = "0" + parseInt(segundosAtual);
+      spanSegundosSegundoPlanoAtual.textContent = "0" + parseInt(segundosAtual);
+    }else {
+      spanSegundosAtual.textContent = parseInt(segundosAtual);
+      spanSegundosSegundoPlanoAtual.textContent = parseInt(segundosAtual);
+    }
+    if(minutosAtual < 10) {
+      spanMinutosAtual.textContent = "0" + parseInt(minutosAtual);
+      spanMinutosSegundoPlanoAtual.textContent = "0" + parseInt(minutosAtual);
+    }else {
+      spanMinutosAtual.textContent = parseInt(minutosAtual);
+      spanMinutosSegundoPlanoAtual.textContent = parseInt(minutosAtual);
+    }
+    if(horasAtual < 10) {
+      spanHorasAtual.textContent = "0" + parseInt(horasAtual);
+      spanHorasSegundoPlanoAtual.textContent = "0" + parseInt(horasAtual);
+    }else {
+      spanHorasAtual.textContent = parseInt(horasAtual);
+      spanHorasSegundoPlanoAtual.textContent = parseInt(horasAtual);
+    }
+
+
+    let [segundosTotal, minutosTotal, horasTotal] = [tempoTotal, 0, 0];
+
+    while(segundosTotal >= 60) {
+      minutosTotal++;
+
+      segundosTotal = segundosTotal - 60;
+    }
+
+    while(minutosTotal >= 60) {
+        horasTotal++;
+
+        minutosTotal = minutosTotal - 60;
+    }
+    
+    
+    let spanSegundosTotal = temposVideos[qualTocando].querySelector(".segundos-total");
+    let spanMinutosTotal = temposVideos[qualTocando].querySelector(".minutos-total");
+    let spanHorasTotal = temposVideos[qualTocando].querySelector(".horas-total");
+
+    if(segundosTotal < 10) {
+      spanSegundosTotal.textContent = "0" + parseInt(segundosTotal);
+      spanSegundosSegundoPlanoTotal.textContent = "0" + parseInt(segundosTotal);
+    }else {
+      spanSegundosTotal.textContent = parseInt(segundosTotal);
+      spanSegundosSegundoPlanoTotal.textContent = parseInt(segundosTotal);
+    }
+    if(minutosTotal < 10) {
+      spanMinutosTotal.textContent = "0" + parseInt(minutosTotal);
+      spanMinutosSegundoPlanoTotal.textContent = "0" + parseInt(minutosTotal);
+    }else {
+      spanMinutosTotal.textContent = parseInt(minutosTotal);
+      spanMinutosSegundoPlanoTotal.textContent = parseInt(minutosTotal);
+    }
+    if(horasTotal < 10) {
+      spanHorasTotal.textContent = "0" + parseInt(horasTotal);
+      spanHorasSegundoPlanoTotal.textContent = "0" + parseInt(horasTotal);
+    }else {
+      spanHorasTotal.textContent = parseInt(horasTotal);
+      spanHorasSegundoPlanoTotal.textContent = parseInt(horasTotal);
+    }
+  }
+
+}
+
+setInterval(tempoVideo, 1);
+
+[...temposVideos].forEach((e) => {
+  e.addEventListener("click", mudaTempoVideo);
+});
+
+[...botoesFullScreen].forEach(e => {
+  e.addEventListener("click", telaCheia);
+});
 
 btnContinuarOuvindo.onclick = continuaOuvindo;
 btnContinuarAssistindo.onclick = continuaAssistindo;
@@ -420,89 +527,72 @@ btnOuvirVideoSelecionado.onclick = ouvirVideoSelecionado;
 btnAssistirVideoSelecionado.onclick = assistirVideoSelecionado;
 
 
+var cursor;
+[...divPlayers].forEach(div => {
+  div.addEventListener("click", playEPause);
+  div.addEventListener("dblclick", telaCheia);
+  div.addEventListener("mousemove", function() {
+    clearTimeout(cursor);
+    this.classList.remove("sem-cursor");
+    cursor = setTimeout(() => {
+      this.classList.add("sem-cursor");
+    }, 2000);
+  });
+});
 
-document.addEventListener("keydown", function(e) {
-	const tecla = e.keyCode;
-	const teclaEnter = 13;
-	const teclaEsc = 27;
-	const teclaEsquerda = 37;
-	const teclaDireita = 39;
-  const teclaJ = 74;
-  const teclaK = 75;
-  const teclaL = 76;
-    if(tecla === teclaEnter && tocando === true) {
+ouvirVideo.forEach((elemento) => {
+  elemento.title = "Ouvir Podcast";
+  elemento.addEventListener("click", function() {
+    let video = this.parentNode.parentNode.querySelector(".videos__video");
+    let abrirAvisoVar = video.getAttribute("data-abrir-aviso");
+
+    if(abrirAvisoVar == "false") {
+      video.click();
+      setTimeout(() => {
+        btnsMinimiza[qualTocando].click();
+      }, 500);
+    }else if(abrirAvisoVar == "true") {
+      video.click();
+    }
+  });
+});
+
+
+
+function adicionaVideo() {
+  /**
+  let player = new YT.Player('player', {
+    height: '100%',
+    width: '100%',
+    videoId: 'tHbFukPmM9s',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    }
+  });
+  let qualVideoLocal = qualVideo;
+  player.addEventListener("click", () => {
+    if(tocando == false) {
+      qualTocando = qualVideoLocal;
+      tocando = true;
+      for (i = 0; i < titulosOffCanvas.length; i++) {
+        titulosOffCanvas[i].classList.add("d-none");
+      }
+      titulosOffCanvas[qualTocando].classList.remove("d-none");
       playEPause();
+    }else {
+      var abrirAvisoVar = videos[qualVideoLocal].getAttribute("data-abrir-aviso");
+      if(abrirAvisoVar == "true") {
+        abreAviso();
+        videoSelecionado = qualVideoLocal;
+      }
+      if(abrirAvisoVar == "false") {
+        botaoOffCanvas.click();
+      }
     }
-    if(tecla === teclaJ && tocando === true) {
-      pulaParaTrasVideo();
-    }
-    if(tecla === teclaK && tocando === true) {
-      playEPause();
-    }
-    if(tecla === teclaL && tocando === true) {
-      pulaParaFrenteVideo();
-    }
-    if(tecla === teclaEsc && tocando === true) {
-      btnsFechaModal[qualTocando].click();
-    }
-})
-
-  //   melhorado        //    apenas um modal que clicando em determinado video, ele da display none para todos e dps com a variavel ele da o display block
-//   todos os modais normais, o que muda são as classes no header e no footer, para cuidar de suas dimensoes, e os video ganham display: none; e outra div com o nome do video e um icone, ganha block, os botoes permanecem tanto no audio & video, como no somente audio
-
-//    os controles no footer do modal, fazem as suas funcoes utilizando o array dos players junto a variavel para modificar o video selecionado
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
-jsprotect
-www-embed-player.js:562 Failed to load resource: net::ERR_BLOCKED_BY_ADBLOCKER
-Qg @ www-embed-player.js:562
-www-embed-player.js:1010 Failed to load resource: net::ERR_BLOCKED_BY_ADBLOCKER
-Ym @ www-embed-player.js:1010
-player.getCurrentTime();
-5356.68387209346
-player.seekTo(player.getCurrentTime - 10);
-ej {i: Ti, h: iframe#player, m: div#player, j: 5, s: true, …}
-player.seekTo(player.getCurrentTime(); - 10);
-VM1789:1 Uncaught SyntaxError: missing ) after argument list
-var tempo = player.getCurrentTime();
-undefined
-tempo
-5191.739711
-player.seekTo(tempo - 10);
-ej {i: Ti, h: iframe#player, m: div#player, j: 5, s: true, …}
-www-embed-player.js:562 GET https://googleads.g.doubleclick.net/pagead/id net::ERR_BLOCKED_BY_ADBLOCKER
-Qg @ www-embed-player.js:562
-Ng @ www-embed-player.js:549
-(anonymous) @ www-embed-player.js:884
-Ve @ www-embed-player.js:411
-bl @ www-embed-player.js:881
-(anonymous) @ www-embed-player.js:900
-(anonymous) @ www-embed-player.js:486
-player.seekTo(tempo - 10);
-ej {i: Ti, h: iframe#player, m: div#player, j: 5, s: true, …}
-player.seekTo(tempo - 10);
-ej {i: Ti, h: iframe#player, m: div#player, j: 5, s: true, …}
-player.seekTo(tempo - 10);
-ej {i: Ti, h: iframe#player, m: div#player, j: 5, s: true, …}
-player.seekTo(tempo - 100);
-ej {i: Ti, h: iframe#player, m: div#player, j: 5, s: true, …}
-*/
+  });
+  qualVideo++;
+  players.push(player);
+  */
+ void(0);
+}

@@ -1,11 +1,10 @@
 :root {
-    --fonte-tipo-um: 'Gayathri', sans-serif;
-    --fonte-tipo-dois: 'Sansita', sans-serif;
+    --fonte-titulo: "Oswald", sans-serif;
 
-    --amarelo-principal: #FCFF6A;
-    --amarelo-principal-escuro: #F0F350;
+    --branco-diferenciado: #E8E8E8;
     --preto-diferenciado: #2D2D2D;
-    --branco-diferenciado: #FBFBFB;
-    --verde-principal: #4EC275;
-    --verde-principal-escuro: #53B274;
+    --preto-escuro: #1C1B1E;
+
+    --vermelho-escuro: #b70037;
+    --vermelho-claro: #e1003d;
 }

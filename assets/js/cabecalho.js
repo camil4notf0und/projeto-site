@@ -1,24 +1,9 @@
-var cabecalho = document.getElementsByClassName("cabecalho")[0];
-var principal = document.getElementsByClassName("principal")[0];
+const iconesCabecalho = document.querySelectorAll(".navegacao--configs .fas");
 
+const widthCabecalho = document.getElementsByTagName("header")[0].clientWidth;
 
+const tamanhoIcones = widthCabecalho * 0.4725;
 
-var scroll;
-window.addEventListener("scroll", function (event) {
-    scroll = this.scrollY;
+iconesCabecalho.forEach((icone) => {
+	icone.style.fontSize = `${tamanhoIcones}px`;
 });
-
-function animacaoCabecalho() {
-	if(scroll>500) { cabecalho.style.transition = "opacity 1s, top  1s"};
-	if(scroll<=500) { cabecalho.style.top = "-70px"; }
-	if(scroll>510) { cabecalho.style.top = "0"; }
-	if(scroll>=200) {
-		cabecalho.style.position = "fixed";
-		principal.style.margin = "61.89px 0 0 0";
-	}else {
-		cabecalho.style.position = "static";
-		principal.style.margin = "0";
-	}
-}
-
-setInterval(animacaoCabecalho, 1);
