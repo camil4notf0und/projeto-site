@@ -1,0 +1,20 @@
+@import url(./base/reset.css);
+@import url(./base/variaveis.css);
+@import url(./base/cabecalho.css);
+@import url(./base/bootstrap.css);
+@import url(./base/rodape.css);
+
+body {
+    background-color: var(--preto-diferenciado);
+    font-family: var(--fonte-titulo);
+}
+
+main, footer {
+    width: 94%;
+    margin-left: 6%;
+}
+
+a, a:hover, a:focus {
+    color: var(--branco-diferenciado);
+    text-decoration: none;
+}
