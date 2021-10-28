@@ -366,7 +366,7 @@
     cursor: pointer;
 }
 .video__fundo {
-    margin: 15px 0;
+    margin: 15px 10px;
     border-radius: 5px;
     background-color: #3e3e3e;
     min-width: 280px;
@@ -643,4 +643,8 @@
         align-items: center;
     }
 
+    .caixa-pesquisa {
+        margin-left: 70%;
+        margin-top: 20px;
+    }
 }
