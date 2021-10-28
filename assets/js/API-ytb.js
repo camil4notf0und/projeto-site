@@ -13,6 +13,8 @@ var playerTres;
 var playerQuatro;
 var playerCinco;
 var playerSeis;
+var playerSete;
+var playerOito
 
 var players;
 
@@ -139,6 +141,18 @@ function onYouTubeIframeAPIReady() {
       'onReady': onPlayerReady
     }
   });
+  playerOito = new YT.Player('playerOito', {
+    height: '100%',
+    width: '100%',
+    videoId: 'SZ3XNo8IuME',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
 }
 
 
@@ -146,7 +160,7 @@ function onYouTubeIframeAPIReady() {
 
 
 function onPlayerReady(event) {
-  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis, playerSete];
+  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis, playerSete, playerOito];
 }
 
 

@@ -507,6 +507,9 @@
 .video__fundo:nth-child(9) .videos__video .video__imagem {
     background-image: url(https://i.ytimg.com/vi/FY3ZeJu9pj0/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDCUOBI9j9PxCdXIdNZTZMX-beEpw);
 }
+.video__fundo:nth-child(10) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/SZ3XNo8IuME/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDzB1t1AAOyz4ms8sWBJtdJJfeQyA);
+}
 .video__titulo {
     font-size: 20px;
     font-weight: 300;

@@ -234,6 +234,8 @@ caixaDePesquisa.addEventListener("input", function() {
       cienciaSemFim();
     }else if(filtroSelecionado == "balela") {
       balela();
+    }else if(filtroSelecionado == "inteligencia ltda") {
+      inteligenciaLtda();
     }
     animacao = 0;
 });
@@ -573,6 +575,74 @@ function balela() {
   }
 }
 
+function inteligenciaLtda() {  
+  containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
+
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
+  }
+  if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+
+          if(podcast == "inteligencia-ltda" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }else {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+          let salvado = videos[f].getAttribute("data-salvado");
+
+          if(podcast == "inteligencia-ltda" && salvado == "true" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }
+}
+
+
 function todos() {
   containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
@@ -690,6 +760,8 @@ btnSalvos.addEventListener("click", function() {
         cienciaSemFim();
       }else if(filtroSelecionado == "balela") {
         balela();
+      }else if(filtroSelecionado == "inteligencia ltda") {
+        inteligenciaLtda();
       }
       animacao = 0;
     }
@@ -711,6 +783,8 @@ btnSalvos.addEventListener("click", function() {
       cienciaSemFim();
     }else if(filtroSelecionado == "balela") {
       balela();
+    }else if(filtroSelecionado == "inteligencia ltda") {
+      inteligenciaLtda();
     }
     animacao = 0;
   }
@@ -799,6 +873,8 @@ filtro.addEventListener("click", () => {
               cienciaSemFim();
           }else if(selecionado == "balela") {
               balela();
+          }else if(selecionado == "inteligencia ltda") {
+              inteligenciaLtda();
           }
       colapsado = false;
   }else {
