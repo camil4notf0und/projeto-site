@@ -507,6 +507,30 @@
 .video__fundo:nth-child(9) .videos__video .video__imagem {
     background-image: url(https://i.ytimg.com/vi/FY3ZeJu9pj0/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDCUOBI9j9PxCdXIdNZTZMX-beEpw);
 }
+.video__fundo:nth-child(10) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/Eiuze7mPz4s/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAgZ8WCqwL4NZVIOSoTxipQMvcb6w);
+}
+.video__fundo:nth-child(11) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/swjNJ66yuLY/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLASutPgzzxEED3NQoEYiq5Lw7OIRQ);
+}
+.video__fundo:nth-child(12) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/ipW0a5ZcMQY/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAX7yBS7b0yPEenlPSjhvXPc2GOyg);
+}
+.video__fundo:nth-child(13) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/v9DAcxkqi6U/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCtOWNl-GOg_cddjqTj77qbFYP43w);
+}
+.video__fundo:nth-child(14) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/n4_zrZ14xj0/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCsvqjXor4G_PxXQ8ZmW9ateUYKEA);
+}
+.video__fundo:nth-child(15) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/_GOUrk_2CCg/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCAPgANueoVM3y5K9y1R7Q36Bj4Hg);
+}
+.video__fundo:nth-child(16) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/Y-PWkXU4P8I/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDDMcs7CnQwUSMKsxpVfX285KJfQA);
+}
+.video__fundo:nth-child(17) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/b_vHm1jJ61s/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAPo8nRxbR-_G1GudmoiaiOEZwbww);
+}
 .video__titulo {
     font-size: 20px;
     font-weight: 300;
