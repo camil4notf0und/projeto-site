@@ -616,3 +616,31 @@
 .video__fundo .fa-bookmark {
     margin: 0;
 }
+
+@media screen and (max-width: 1100px) {
+
+    .carousel  {
+        display: none;
+    }
+
+    .titulo--pesquisa {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .titulo--acoes {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        padding-left: 5rem;
+    }
+
+    .chamada {
+        justify-content: space-around;
+    } 
+    
+    .chamada__texto  {
+        align-items: center;
+    }
+
+}
