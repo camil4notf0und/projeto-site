@@ -13,6 +13,11 @@ var playerTres;
 var playerQuatro;
 var playerCinco;
 var playerSeis;
+var playerSete;
+var playerOito;
+var playerNove;
+var playerDez;
+var playerOnze;
 
 var players;
 
@@ -139,6 +144,102 @@ function onYouTubeIframeAPIReady() {
       'onReady': onPlayerReady
     }
   });
+  playerOito = new YT.Player('playerOito', {
+    height: '100%',
+    width: '100%',
+    videoId: 'Eiuze7mPz4s',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
+  playerNove = new YT.Player('playerNove', {
+    height: '100%',
+    width: '100%',
+    videoId: 'swjNJ66yuLY',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
+  playerDez = new YT.Player('playerDez', {
+    height: '100%',
+    width: '100%',
+    videoId: 'ipW0a5ZcMQY',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
+  playerOnze = new YT.Player('playerOnze', {
+    height: '100%',
+    width: '100%',
+    videoId: 'v9DAcxkqi6U',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
+  playerDoze = new YT.Player('playerDoze', {
+    height: '100%',
+    width: '100%',
+    videoId: 'n4_zrZ14xj0',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
+  playerTreze = new YT.Player('playerTreze', {
+    height: '100%',
+    width: '100%',
+    videoId: '_GOUrk_2CCg',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
+  playerQuatorze = new YT.Player('playerQuatorze', {
+    height: '100%',
+    width: '100%',
+    videoId: 'Y-PWkXU4P8I',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
+  playerQuinze = new YT.Player('playerQuinze', {
+    height: '100%',
+    width: '100%',
+    videoId: 'b_vHm1jJ61s',
+    playerVars: {
+      controls: '0',
+      rel: '0'
+    },
+    events: {
+      'onReady': onPlayerReady
+    }
+  });
 }
 
 
@@ -146,7 +247,7 @@ function onYouTubeIframeAPIReady() {
 
 
 function onPlayerReady(event) {
-  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis, playerSete];
+  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis, playerSete, playerOito, playerNove, playerDez, playerOnze, playerDoze, playerTreze, playerQuatorze, playerQuinze];
 }
 
 
