@@ -223,7 +223,7 @@ html .btn-close {
 
 @media screen and (max-width: 700px) {
     .modal-dialog {
-        transform: rotate(90deg) translateX(-250px) !important;
+        transform: rotate(90deg) translateX(-50%) !important;
         position: relative !important;
         top: 50% !important;
     }
