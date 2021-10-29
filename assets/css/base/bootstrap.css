@@ -220,3 +220,14 @@ html .btn-close {
         transform: scale(1.5) translate(-30%, -30%);
     }
 }
+
+@media screen and (max-width: 700px) {
+    .modal-dialog {
+        transform: rotate(90deg) !important;
+        margin: 0 10% !important;
+    }
+    .modal-content {
+        width: 200% !important;
+        height: auto !important;
+    }
+}
