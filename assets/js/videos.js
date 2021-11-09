@@ -35,6 +35,11 @@ var caixaDePesquisa = document.querySelector(".caixa-de-pesquisa");
 
 var botoesVelocidade = document.getElementsByClassName("velocidade-video");
 
+var podcastCarregado = [];
+
+[...videos].forEach((video) => {
+  podcastCarregado.push(false);
+});
 
 var fullScreen = 0;
 
@@ -43,6 +48,7 @@ var qualVideo = 0;
 
 
 var animacao = 0;
+var carregarVideo = 0;
 
 // var scroll;
 // window.addEventListener("scroll", function (event) {
@@ -66,12 +72,17 @@ window.onload = function () {
 const podcastPronto = () => {
   videoAtual.classList.remove("inicio-videos");
   animacao++;
-  console.log(animacao);
   if(videoAtual.classList.contains("nao-aparece")) {
     apareceVideos();
   }
   carregandoPodcast = false;
 };
+const podcastProntoNaoVisto = () => {
+  podcastCarregado[carregarVideo] = true;
+  console.log(podcastCarregado);
+  carregarVideo++;
+  carregandoPodcast = false;
+}
 
 var videoAtual, tamanhoVideo, posicaoVideo, posicaoDesejada;
 function apareceVideos() {
@@ -81,33 +92,35 @@ function apareceVideos() {
         posicaoVideo = window.innerHeight - videoAtual.getBoundingClientRect()["y"];
         posicaoDesejada = tamanhoVideo / 2;
     }
-    if(posicaoDesejada <= posicaoVideo && pagCarregou == true && animacao < videos.length) {
-        if(typeof players[animacao] == "undefined" && carregandoPodcast == false) {
-          carregandoPodcast = true;
-          console.log(animacao);
-          
-          let videoId = videoAtual.querySelector(".videos__video").getAttribute("data-video-id");
-          let nomePlayer = videoAtual.querySelector(".videos__video").getAttribute("data-nome-player");
+    if(posicaoDesejada <= posicaoVideo && pagCarregou == true && animacao < videos.length && typeof players[animacao] != "undefined" && podcastCarregado[animacao] == true) {
+      console.log("animacao " + animacao);
+      videoAtual.classList.remove("inicio-videos");
+      animacao++;
+      if(videoAtual.classList.contains("nao-aparece")) {
+        apareceVideos();
+      }
+    }
+    
+    if(pagCarregou == true && carregarVideo < videos.length && typeof players[carregarVideo] == "undefined" && carregandoPodcast == false) {
+      carregandoPodcast = true;
 
-          players[animacao] = new YT.Player(nomePlayer, {
-            height: '100%',
-            width: '100%',
-            videoId: videoId,
-            playerVars: {
-              controls: '0',
-              rel: '0'
-            },
-            events: {
-              'onReady': podcastPronto
-            }
-          });
-        }else if(typeof players[animacao] != "undefined" && carregandoPodcast == false) {
-          videoAtual.classList.remove("inicio-videos");
-          animacao++;
-          if(videoAtual.classList.contains("nao-aparece")) {
-            apareceVideos();
-          }
+      let podcastAtual = videosFundo[carregarVideo];
+      
+      let videoId = podcastAtual.querySelector(".videos__video").getAttribute("data-video-id");
+      let nomePlayer = podcastAtual.querySelector(".videos__video").getAttribute("data-nome-player");
+      console.log(carregarVideo);
+      players[carregarVideo] = new YT.Player(nomePlayer, {
+        height: '100%',
+        width: '100%',
+        videoId: videoId,
+        playerVars: {
+          controls: '0',
+          rel: '0'
+        },
+        events: {
+          'onReady': podcastProntoNaoVisto
         }
+      });
     }
 }
 
