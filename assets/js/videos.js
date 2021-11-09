@@ -50,6 +50,7 @@ var animacao = 0;
 // });
 
 var pagCarregou = false;
+var carregandoPodcast = false;
 
 window.onload = function () {
   document.querySelector(".carregando").classList.add("nao-aparece");
@@ -62,8 +63,18 @@ window.onload = function () {
     }, 50);
 };
 
+const podcastPronto = () => {
+  videoAtual.classList.remove("inicio-videos");
+  animacao++;
+  console.log(animacao);
+  if(videoAtual.classList.contains("nao-aparece")) {
+    apareceVideos();
+  }
+  carregandoPodcast = false;
+};
+
+var videoAtual, tamanhoVideo, posicaoVideo, posicaoDesejada;
 function apareceVideos() {
-    let videoAtual, tamanhoVideo, posicaoVideo, posicaoDesejada;
     if(animacao < videos.length) {
         videoAtual = videosFundo[animacao];
         tamanhoVideo = videoAtual.getBoundingClientRect()["height"];
@@ -71,24 +82,31 @@ function apareceVideos() {
         posicaoDesejada = tamanhoVideo / 2;
     }
     if(posicaoDesejada <= posicaoVideo && pagCarregou == true && animacao < videos.length) {
-        /**
-        if(videos.length % 3 == 0) {
-            videoAtual.classList.remove("inicio-videos");
-            animacao++;
-            videoAtual.classList.remove("inicio-videos");
-            animacao++;
-            videoAtual.classList.remove("inicio-videos");
-            animacao++;
-        }else {
-            videoAtual.classList.remove("inicio-videos");
-            videoAtual.classList.remove("desfoca");
-            animacao++;
-        }
-        */
-        videoAtual.classList.remove("inicio-videos");
-        animacao++;
-        if(videoAtual.classList.contains("nao-aparece")) {
-          apareceVideos();
+        if(typeof players[animacao] == "undefined" && carregandoPodcast == false) {
+          carregandoPodcast = true;
+          console.log(animacao);
+          
+          let videoId = videoAtual.querySelector(".videos__video").getAttribute("data-video-id");
+          let nomePlayer = videoAtual.querySelector(".videos__video").getAttribute("data-nome-player");
+
+          players[animacao] = new YT.Player(nomePlayer, {
+            height: '100%',
+            width: '100%',
+            videoId: videoId,
+            playerVars: {
+              controls: '0',
+              rel: '0'
+            },
+            events: {
+              'onReady': podcastPronto
+            }
+          });
+        }else if(typeof players[animacao] != "undefined" && carregandoPodcast == false) {
+          videoAtual.classList.remove("inicio-videos");
+          animacao++;
+          if(videoAtual.classList.contains("nao-aparece")) {
+            apareceVideos();
+          }
         }
     }
 }
@@ -234,6 +252,14 @@ caixaDePesquisa.addEventListener("input", function() {
       cienciaSemFim();
     }else if(filtroSelecionado == "balela") {
       balela();
+    }else if(filtroSelecionado == "podversus") {
+      podversus();
+    }else if(filtroSelecionado == "inteligencia ltda") {
+      inteligenciaLtda();
+    }else if(filtroSelecionado == "groselha talk") {
+      groselhaTalk();
+    }else if(filtroSelecionado == "tourettcast") {
+      tourettcast();
     }
     animacao = 0;
 });
@@ -573,6 +599,274 @@ function balela() {
   }
 }
 
+function podversus() {
+  containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
+
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
+  }
+  if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+
+          if(podcast == "podversus" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }else {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+          let salvado = videos[f].getAttribute("data-salvado");
+
+          if(podcast == "podversus" && salvado == "true" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }
+}
+
+function inteligenciaLtda() {
+  containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
+
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
+  }
+  if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+
+          if(podcast == "inteligencia-ltda" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }else {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+          let salvado = videos[f].getAttribute("data-salvado");
+
+          if(podcast == "inteligencia-ltda" && salvado == "true" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }
+}
+
+function groselhaTalk() {
+  containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
+
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
+  }
+  if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+
+          if(podcast == "groselha-talk" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }else {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+          let salvado = videos[f].getAttribute("data-salvado");
+
+          if(podcast == "groselha-talk" && salvado == "true" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }
+}
+
+function tourettcast() {
+  containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
+
+  if(btnAssistidos.querySelector(".fa-clock").classList.contains("fas")) {
+    btnAssistidos.querySelector(".fa-clock").classList.remove("fas");
+    btnAssistidos.querySelector(".fa-clock").classList.add("far");
+
+    [...apagaHistoricoVideo].forEach((e) => {
+      e.classList.add("nao-aparece");
+    });
+  }
+  if(btnSalvos.querySelector(".fa-bookmark").classList.contains("far")) {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+
+          if(podcast == "tourettcast" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }else {
+      
+
+      [...videosFundo].forEach(e => {
+          e.classList.add("inicio-videos");
+          e.classList.add("nao-aparece");
+      });
+      animacao = 0;
+      let videosNaoAparece = 0;
+      for(let f = 0; f < videos.length; f++) {
+          let podcast = videos[f].getAttribute("data-podcast");
+          let titulo = videos[f].title;
+          let salvado = videos[f].getAttribute("data-salvado");
+
+          if(podcast == "tourettcast" && salvado == "true" && pesquisador.test(titulo)) {
+              videosFundo[f].classList.remove("nao-aparece");
+          }else {
+            videosNaoAparece++;
+          }
+          if(videosNaoAparece == videos.length) {
+            containerAcoesVideos.classList.remove("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.remove("nao-aparece");
+          }else {
+            containerAcoesVideos.classList.add("nao-aparece");
+            containerAcoesVideos.querySelector(".nenhum-video-encontrado").classList.add("nao-aparece");
+          }
+      }
+  }
+}
+
 function todos() {
   containerAcoesVideos.querySelector(".apagar-historico").classList.add("nao-aparece");
 
@@ -690,6 +984,14 @@ btnSalvos.addEventListener("click", function() {
         cienciaSemFim();
       }else if(filtroSelecionado == "balela") {
         balela();
+      }else if(filtroSelecionado == "podversus") {
+        podversus();
+      }else if(filtroSelecionado == "inteligencia ltda") {
+        inteligenciaLtda();
+      }else if(filtroSelecionado == "groselha talk") {
+        groselhaTalk();
+      }else if(filtroSelecionado == "tourettcast") {
+        tourettcast();
       }
       animacao = 0;
     }
@@ -711,6 +1013,14 @@ btnSalvos.addEventListener("click", function() {
       cienciaSemFim();
     }else if(filtroSelecionado == "balela") {
       balela();
+    }else if(filtroSelecionado == "podversus") {
+      podversus();
+    }else if(filtroSelecionado == "inteligencia ltda") {
+      inteligenciaLtda();
+    }else if(filtroSelecionado == "groselha talk") {
+      groselhaTalk();
+    }else if(filtroSelecionado == "tourettcast") {
+      tourettcast();
     }
     animacao = 0;
   }
@@ -790,15 +1100,23 @@ filtro.addEventListener("click", () => {
       let selecionado = filtro.value;
       
           if(selecionado == "todos") {
-              todos();
+            todos();
           }else if(selecionado == "flow podcast") {
-              flowPodcast();
+            flowPodcast();
           }else if(selecionado == "podpah") {
-              podpah();
+            podpah();
           }else if(selecionado == "ciencia sem fim") {
-              cienciaSemFim();
+            cienciaSemFim();
           }else if(selecionado == "balela") {
-              balela();
+            balela();
+          }else if(selecionado == "podversus") {
+            podversus();
+          }else if(selecionado == "inteligencia ltda") {
+            inteligenciaLtda();
+          }else if(selecionado == "groselha talk") {
+            groselhaTalk();
+          }else if(selecionado == "tourettcast") {
+            tourettcast();
           }
       colapsado = false;
   }else {
