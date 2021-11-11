@@ -101,7 +101,7 @@ function apareceVideos() {
       }
     }
     
-    if(pagCarregou == true && carregarVideo < videos.length && typeof players[carregarVideo] == "undefined" && carregandoPodcast == false) {
+    if(pagCarregou == true && carregarVideo < videos.length && typeof players[carregarVideo] == "undefined" && carregandoPodcast == false && podcastCarregado[carregarVideo] == false) {
       carregandoPodcast = true;
 
       let podcastAtual = videosFundo[carregarVideo];
@@ -121,6 +121,10 @@ function apareceVideos() {
           'onReady': podcastProntoNaoVisto
         }
       });
+    }else if(pagCarregou == true && carregarVideo < videos.length && typeof players[carregarVideo] != "undefined" && carregandoPodcast == false && podcastCarregado[carregarVideo] == true) {
+      carregandoPodcast = true;
+
+      podcastProntoNaoVisto();
     }
 }
 
@@ -369,7 +373,7 @@ function flowPodcast() {
           let titulo = videos[f].title;
 
           if(podcast == "flow-podcast" && pesquisador.test(titulo)) {
-              videosFundo[f].classList.remove("nao-aparece");
+            videosFundo[f].classList.remove("nao-aparece");
           }else {
             videosNaoAparece++;
           }
