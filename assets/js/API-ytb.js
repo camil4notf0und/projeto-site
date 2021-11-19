@@ -7,23 +7,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
-var player;
-var playerDois;
-var playerTres;
-var playerQuatro;
-var playerCinco;
-var playerSeis;
-var playerSete;
-var playerOito;
-var playerNove;
-var playerDez;
-var playerOnze;
-var playerDoze;
-var playerTreze;
-var playerQuatorze;
-var playerQuinze;
 
-var players;
+var players = [];
 
 
 var pauseEplay = 0;
@@ -62,16 +47,6 @@ var btnContinuarOuvindo = document.getElementById("btn-continua-ouvindo");
 var btnContinuarAssistindo = document.getElementById("btn-continua-assistindo");
 var btnOuvirVideoSelecionado = document.getElementById("btn-ouvir-selecionado");
 var btnAssistirVideoSelecionado = document.getElementById("btn-assistir-selecionado");
-
-
-
-// 4. The API will call this function when the video player is ready.
-
-
-function onPlayerReady(event) {
-  players = [player, playerDois, playerTres, playerQuatro, playerCinco, playerSeis, playerSete, playerOito, playerNove, playerDez, playerOnze, playerDoze, playerTreze, playerQuatorze, playerQuinze];
-}
-onPlayerReady();
 
 
 // 5. The API calls this function when the player's state changes.
@@ -266,34 +241,7 @@ function toggleFullScreen() {
 
 
 function telaCheia() {
-   /** 
-  if (!document.fullscreenElement &&    // alternative standard method
-    !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement && fullScreen == 0) {  // current working methods
-  if (document.documentElement.requestFullscreen) {
-    document.documentElement.requestFullscreen();
-  } else if (document.documentElement.msRequestFullscreen) {
-    document.documentElement.msRequestFullscreen();
-  } else if (document.documentElement.mozRequestFullScreen) {
-    document.documentElement.mozRequestFullScreen();
-  } else if (document.documentElement.webkitRequestFullscreen) {
-    document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-  }
-  
-
-} else {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.msExitFullscreen) {
-    document.msExitFullscreen();
-  } else if (document.mozCancelFullScreen) {
-    document.mozCancelFullScreen();
-  } else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
-  }
-}
-*/
-
-  if(fullScreen == 0) {
+  if(fullScreen == 0 && window.innerWidth > 700) {
     let modalDialog = document.getElementsByClassName("modal-dialog")[qualTocando];
     let modalContent = document.getElementsByClassName("modal-content")[qualTocando];
     let cabecalho = document.getElementsByClassName("modal-header")[qualTocando];
@@ -312,7 +260,7 @@ function telaCheia() {
 
 
     fullScreen = 1;
-  }else {
+  }else if(window.innerWidth > 700) {
     let modalDialog = document.getElementsByClassName("modal-dialog")[qualTocando];
     let modalContent = document.getElementsByClassName("modal-content")[qualTocando];
     let cabecalho = document.getElementsByClassName("modal-header")[qualTocando];

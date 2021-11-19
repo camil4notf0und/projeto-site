@@ -61,7 +61,7 @@ var carregandoPodcast = false;
 window.onload = function () {
   document.querySelector(".carregando").classList.add("nao-aparece");
     pagCarregou = true;
-    document.querySelector(".videos-chamada").classList.remove("inicio-videos");
+    document.querySelector(".videos-chamada").classList.remove("inicio-chamada");
     let bordaCarregando = document.querySelector("div.animation");
     bordaCarregando.classList.remove("animation");
     setTimeout(() => {
@@ -108,7 +108,6 @@ function apareceVideos() {
       
       let videoId = podcastAtual.querySelector(".videos__video").getAttribute("data-video-id");
       let nomePlayer = podcastAtual.querySelector(".videos__video").getAttribute("data-nome-player");
-      console.log(carregarVideo);
       players[carregarVideo] = new YT.Player(nomePlayer, {
         height: '100%',
         width: '100%',

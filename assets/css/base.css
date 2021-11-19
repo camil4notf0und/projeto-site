@@ -9,9 +9,15 @@ body {
     font-family: var(--fonte-titulo);
 }
 
+*::selection {
+    background: var(--vermelho-escuro);
+    color: var(--branco-diferenciado);
+}
+
 main, footer {
     width: 94%;
     margin-left: 6%;
+    margin-top: 75px;
 }
 
 a, a:hover, a:focus {
