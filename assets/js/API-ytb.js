@@ -76,8 +76,8 @@ function playEPause() {
   if(pauseEplay == 0) {
     botoesPlay[qualTocando].style.display = "none";
     botoesPausa[qualTocando].style.display = "block";
-    botoesPlay[players.length].style.display = "none";
-    botoesPausa[players.length].style.display = "block";
+    botoesPlay[videos.length].style.display = "none";
+    botoesPausa[videos.length].style.display = "block";
     tocarVideo();
     animaCliquePlayEPause[qualTocando].classList.remove("nao-aparece");
     animaCliquePlayEPause[qualTocando].classList.remove("fa-pause");
@@ -95,8 +95,8 @@ function playEPause() {
   }else {
     botoesPlay[qualTocando].style.display = "block";
     botoesPausa[qualTocando].style.display = "none";
-    botoesPlay[players.length].style.display = "block";
-    botoesPausa[players.length].style.display = "none";
+    botoesPlay[videos.length].style.display = "block";
+    botoesPausa[videos.length].style.display = "none";
     pausarVideo();
     animaCliquePlayEPause[qualTocando].classList.remove("nao-aparece");
     animaCliquePlayEPause[qualTocando].classList.remove("fa-play");
@@ -303,13 +303,13 @@ function tempoVideo() {
   if(tocando == true) {
     pegaTempoVideo();
     pegaTempoTotalVideo();
-    let spanSegundosSegundoPlanoAtual = temposVideos[players.length].querySelector(".segundos-atual");
-    let spanMinutosSegundoPlanoAtual = temposVideos[players.length].querySelector(".minutos-atual");
-    let spanHorasSegundoPlanoAtual = temposVideos[players.length].querySelector(".horas-atual");
+    let spanSegundosSegundoPlanoAtual = temposVideos[videos.length].querySelector(".segundos-atual");
+    let spanMinutosSegundoPlanoAtual = temposVideos[videos.length].querySelector(".minutos-atual");
+    let spanHorasSegundoPlanoAtual = temposVideos[videos.length].querySelector(".horas-atual");
 
-    let spanSegundosSegundoPlanoTotal = temposVideos[players.length].querySelector(".segundos-total");
-    let spanMinutosSegundoPlanoTotal = temposVideos[players.length].querySelector(".minutos-total");
-    let spanHorasSegundoPlanoTotal = temposVideos[players.length].querySelector(".horas-total");
+    let spanSegundosSegundoPlanoTotal = temposVideos[videos.length].querySelector(".segundos-total");
+    let spanMinutosSegundoPlanoTotal = temposVideos[videos.length].querySelector(".minutos-total");
+    let spanHorasSegundoPlanoTotal = temposVideos[videos.length].querySelector(".horas-total");
 
 
     let [segundosAtual, minutosAtual, horasAtual] = [tempoAtual, 0, 0];

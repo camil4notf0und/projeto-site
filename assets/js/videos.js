@@ -78,6 +78,7 @@ const podcastPronto = () => {
   carregandoPodcast = false;
 };
 const podcastProntoNaoVisto = () => {
+  tempoVideo();
   podcastCarregado[carregarVideo] = true;
   console.log(podcastCarregado);
   carregarVideo++;

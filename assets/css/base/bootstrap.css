@@ -176,6 +176,7 @@ html .btn-close {
 .offcanvas-title {
     font-size: 16px;
     color: var(--branco-diferenciado);
+    font-weight: 300;
 }
 
 
