@@ -557,6 +557,10 @@
 .video__fundo:nth-child(22) .videos__video .video__imagem {
     background-image: url(https://i.ytimg.com/vi/NZ0-Dqia1Xk/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAdnHT4e75oMyfwGd2uDr2d6KlunA);
 }
+.video__fundo:last-child {
+    margin-bottom: 75px;
+}
+
 .video__titulo {
     font-size: 20px;
     font-weight: 300;
@@ -689,6 +693,9 @@
         margin-top: 0;
         padding-left: 0;
     }
+    .rodape {
+        display: none;
+    }
 }
 @media screen and (max-width: 600px) {
     .videos-chamada {
@@ -705,6 +712,9 @@
     .btn-salvos span, .btn-assistidos span {
         display: none;
     }
+    .rodape {
+        display: none;
+    }
 }
 @media screen and (min-width: 600px) and (max-width: 800px) {
     .videos-chamada {
@@ -714,5 +724,8 @@
     }
     .filtro {
         margin: 0 2.5px;
+    }
+    .rodape {
+        display: none;
     }
 }
