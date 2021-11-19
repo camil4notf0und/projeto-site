@@ -42,3 +42,10 @@ footer a, footer a:hover {
 .fa-copyright {
     margin-right: 2px;
 }
+
+
+@media screen and (max-width: 700px) {
+    .rodape {
+        display: none;
+    }
+}
