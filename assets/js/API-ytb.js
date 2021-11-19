@@ -172,6 +172,20 @@ function mudaVelocidade() {
 }
 
 
+if(window.innerWidth < 900) {
+  setInterval(() => {
+    if(tocando == true) {
+      const velocidadeSelecionada = parseFloat(botoesVelocidade[qualTocando].value);
+      pegaVelocidade();
+
+      if(velocidadeSelecionada != velocidade) {
+        players[qualTocando].setPlaybackRate(velocidadeSelecionada);
+      }
+    }
+  }, 10);
+}
+
+
 btnsFechaOffCanvas[1].addEventListener("click", () => {
   setTimeout(segundoPlano, 350);
 });
