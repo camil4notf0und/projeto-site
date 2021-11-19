@@ -1142,3 +1142,34 @@ filtro.addEventListener("click", () => {
 filtro.addEventListener("blur", () => {
   colapsado = false;
 });
+
+if(window.innerWidth < 900) {
+  var ultimoFiltro = filtro.value;
+
+  setInterval(() => {
+    if(ultimoFiltro != filtro.value) {
+      let selecionado = filtro.value;
+  
+      if(selecionado == "todos") {
+        todos();
+      }else if(selecionado == "flow podcast") {
+        flowPodcast();
+      }else if(selecionado == "podpah") {
+        podpah();
+      }else if(selecionado == "ciencia sem fim") {
+        cienciaSemFim();
+      }else if(selecionado == "balela") {
+        balela();
+      }else if(selecionado == "podversus") {
+        podversus();
+      }else if(selecionado == "inteligencia ltda") {
+        inteligenciaLtda();
+      }else if(selecionado == "groselha talk") {
+        groselhaTalk();
+      }else if(selecionado == "tourettcast") {
+        tourettcast();
+      }
+      ultimoFiltro = filtro.value;
+    }
+  }, 10);
+}
