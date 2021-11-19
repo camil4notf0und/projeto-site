@@ -41,6 +41,20 @@ main {
     margin: 25px 10% 25px 0;
     padding: 5px;
 }
+.perfils__imagem {
+    width: 225px;
+    height: 175px;
+}
+.perfils__borda:nth-child(1) .perfils__imagem {
+    background: url(../../img/.jpg) center / cover no-repeat
+}
+.perfils__borda:nth-child(2) .perfils__imagem {
+    background: url(../../img/felipe-henrique.png) center / cover no-repeat
+}
+.perfils__borda:nth-child(3) .perfils__imagem {
+    background: url(../../img/felipe-laskos.jpg) center / cover no-repeat;
+}
+
 
 .texto__principal {
     margin: 0 8px 30px;
@@ -66,13 +80,14 @@ main {
 .perfils {
     display: flex;
     justify-content: space-around;
-    margin: 15px 0;
+    flex-wrap: wrap;
 }
 
 .perfils__borda {
     background-color: #3E3E3E;
     padding: 10px;
     border-radius: 5px;
+    margin: 15px;
 }
 
 .fotos {
@@ -84,9 +99,15 @@ main {
 .perfils__texto {
     text-align: center;
 }
-
-.rodape__separa {
-    background-color: var(--branco-diferenciado);
-    width: 100%;
-    padding: 0 10%;
+.nome {
+    font-weight: 500;
+    font-size: 25px;
+}
+.profissão {
+    font-weight: 400;
+    font-size: 20px;
+}
+.local {
+    font-weight: 300;
+    font-size: 15px;
 }

@@ -545,6 +545,18 @@
 .video__fundo:nth-child(18) .videos__video .video__imagem {
     background-image: url(https://i.ytimg.com/vi/EDy_W_-tLMA/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLC0K3K4m_xhvSEaTJgwMqQMH96E6A);
 }
+.video__fundo:nth-child(19) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/Gzjm2nd42as/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAsh5CxHXCIZgtMl2dDC-Gj9Rgrbg);
+}
+.video__fundo:nth-child(20) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/_JEJljSlhPg/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCpIkI6Hh5e1B0WcxJcJ064ogqcrg);
+}
+.video__fundo:nth-child(21) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/-Mfq9VxMVpQ/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCjVhDhMfeXmN6hGHnTeKdbIg52XQ);
+}
+.video__fundo:nth-child(22) .videos__video .video__imagem {
+    background-image: url(https://i.ytimg.com/vi/NZ0-Dqia1Xk/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAdnHT4e75oMyfwGd2uDr2d6KlunA);
+}
 .video__titulo {
     font-size: 20px;
     font-weight: 300;
