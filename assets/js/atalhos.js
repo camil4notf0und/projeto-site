@@ -12,49 +12,39 @@ var inputs = document.getElementsByTagName("input");
 });
 
 document.addEventListener("keydown", function(e) {
-	const tecla = e.keyCode;
-	const teclaEnter = 13;
-	const teclaEsc = 27;
-	const teclaEsquerda = 37;
-	const teclaDireita = 39;
-  const teclaJ = 74;
-  const teclaK = 75;
-  const teclaL = 76;
-  const teclaF = 70;
-  const teclaM = 77;
-  const teclaEspaco = 32;
-    if(tocando === true && digitando === false) {
-      if(tecla === teclaEnter) {
-        playEPause();
-      }
-      if(tecla === teclaJ) {
-        pulaParaTrasVideo();
-      }
-      if(tecla === teclaK) {
-        playEPause();
-      }
-      if(tecla === teclaEspaco) {
-        playEPause();
-      }
-      if(tecla === teclaL) {
-        pulaParaFrenteVideo();
-      }
-      if(tecla === teclaEsc && fullScreen === 0) {
+	const tecla = e.key;
+
+  const atalhosAceitos = {
+    Enter() {
+      playEPause();
+    },
+    j() {
+      pulaParaTrasVideo();
+    },
+    k() {
+      playEPause();
+    },
+    l() {
+      pulaParaFrenteVideo();
+    },
+    Escape() {
+      if(fullScreen === 0) {
         btnsFechaModal[qualTocando].click();
-      }
-      if(tecla === teclaEsc && fullScreen === 1) {
+      }else if(fullScreen === 1) {
         telaCheia();
       }
-      if(tecla === teclaEsquerda) {
-        pulaParaTrasVideo();
-      }
-      if(tecla === teclaDireita) {
-        pulaParaFrenteVideo();
-      }
-      if(tecla === teclaF) {
-        telaCheia();
-      }
-      if(tecla === teclaM && teclaMPressionada == false) {
+    },
+    ArrowLeft() {
+      pulaParaTrasVideo();
+    },
+    ArrowRight() {
+      pulaParaFrenteVideo();
+    },
+    f() {
+      telaCheia();
+    },
+    m() {
+      if(teclaMPressionada == false) {
         if(maximixaMinimiza == 0) {
           teclaMPressionada = true;
           setTimeout(() => {
@@ -68,4 +58,13 @@ document.addEventListener("keydown", function(e) {
         }
       }
     }
+  };
+  
+  if(tocando === true && digitando === false) {
+    const funcaoAtalho = atalhosAceitos[tecla];
+
+    if(funcaoAtalho) {
+      funcaoAtalho();
+    }
+  }
 });
