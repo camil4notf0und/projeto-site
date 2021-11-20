@@ -80,7 +80,6 @@ const podcastPronto = () => {
 const podcastProntoNaoVisto = () => {
   tempoVideo();
   podcastCarregado[carregarVideo] = true;
-  console.log(podcastCarregado);
   carregarVideo++;
   carregandoPodcast = false;
 }
@@ -94,7 +93,6 @@ function apareceVideos() {
         posicaoDesejada = tamanhoVideo / 2;
     }
     if(posicaoDesejada <= posicaoVideo && pagCarregou == true && animacao < videos.length && typeof players[animacao] != "undefined" && podcastCarregado[animacao] == true) {
-      console.log("animacao " + animacao);
       videoAtual.classList.remove("inicio-videos");
       animacao++;
       if(videoAtual.classList.contains("nao-aparece")) {

@@ -22,6 +22,7 @@ var maximixaMinimiza = 0;
 var botoesPulaParaTras = document.getElementsByClassName("fa-backwardVideo");
 var botoesPausa = document.getElementsByClassName("fa-pauseVideo");
 var botoesPlay = document.getElementsByClassName("fa-playVideo");
+var botoesRetorno = document.getElementsByClassName("fa-undoVideo");
 var botoesPulaParaFrente = document.getElementsByClassName("fa-forwardVideo");
 var botoesFullScreen = document.getElementsByClassName("fa-full-screen");
 
@@ -78,6 +79,8 @@ function playEPause() {
     botoesPausa[qualTocando].style.display = "block";
     botoesPlay[videos.length].style.display = "none";
     botoesPausa[videos.length].style.display = "block";
+    botoesRetorno[qualTocando].style.display = "none";
+    botoesRetorno[videos.length].style.display = "none";    
     tocarVideo();
     animaCliquePlayEPause[qualTocando].classList.remove("nao-aparece");
     animaCliquePlayEPause[qualTocando].classList.remove("fa-pause");
@@ -97,6 +100,8 @@ function playEPause() {
     botoesPausa[qualTocando].style.display = "none";
     botoesPlay[videos.length].style.display = "block";
     botoesPausa[videos.length].style.display = "none";
+    botoesRetorno[qualTocando].style.display = "none";
+    botoesRetorno[videos.length].style.display = "none";
     pausarVideo();
     animaCliquePlayEPause[qualTocando].classList.remove("nao-aparece");
     animaCliquePlayEPause[qualTocando].classList.remove("fa-play");
@@ -112,6 +117,17 @@ function playEPause() {
     }, 350);
     pauseEplay = 0;
   }
+}
+
+function reiniciaVideo() {
+  players[qualTocando].seekTo(0);
+
+  setTimeout(() => {
+    botoesPlay[qualTocando].style.display = "none";
+    botoesPausa[qualTocando].style.display = "block";
+    botoesPlay[videos.length].style.display = "none";
+    botoesPausa[videos.length].style.display = "block";
+  }, 50)
 }
 
 var tempoAtual, tempoTotal;
@@ -140,7 +156,11 @@ function pulaParaTrasVideo() {
 
 function pulaParaFrenteVideo() {
   pegaTempoVideo();
-  players[qualTocando].seekTo(tempoAtual + 10);
+  if(tempoAtual + 10 < tempoTotal) {
+    players[qualTocando].seekTo(tempoAtual + 10);
+  }else {
+    reiniciaVideo();
+  }
   animaCliqueFrente[qualTocando].classList.remove("nao-aparece");
   animaCliqueFrente[qualTocando].classList.remove("anima-clique");
   clearTimeout(limpaAnimacao);
@@ -239,6 +259,11 @@ btnsFechaOffCanvas[0].onclick = fechaModal;
   e.addEventListener("click", playEPause)
 });
 
+[...botoesRetorno].forEach(e => {
+  e.style.display = "none";
+  e.addEventListener("click", reiniciaVideo);
+});
+
 [...botoesPulaParaFrente].forEach(e => {
   e.addEventListener("click", pulaParaFrenteVideo)
 });
@@ -303,6 +328,30 @@ function tempoVideo() {
   if(tocando == true) {
     pegaTempoVideo();
     pegaTempoTotalVideo();
+
+    if(tempoAtual == tempoTotal) {
+      botoesPlay[qualTocando].style.display = "none";
+      botoesPausa[qualTocando].style.display = "none";
+      botoesPlay[videos.length].style.display = "none";
+      botoesPausa[videos.length].style.display = "none";
+      botoesRetorno[qualTocando].style.display = "block";
+      botoesRetorno[videos.length].style.display = "block";
+    }else {
+      botoesRetorno[qualTocando].style.display = "none";
+      botoesRetorno[videos.length].style.display = "none";
+      if(pauseEplay == 0) {
+        botoesPlay[qualTocando].style.display = "block";
+        botoesPausa[qualTocando].style.display = "none";
+        botoesPlay[videos.length].style.display = "block";
+        botoesPausa[videos.length].style.display = "none";
+      }else {
+        botoesPlay[qualTocando].style.display = "none";
+        botoesPausa[qualTocando].style.display = "block";
+        botoesPlay[videos.length].style.display = "none";
+        botoesPausa[videos.length].style.display = "block";
+      }
+    }
+
     let spanSegundosSegundoPlanoAtual = temposVideos[videos.length].querySelector(".segundos-atual");
     let spanMinutosSegundoPlanoAtual = temposVideos[videos.length].querySelector(".minutos-atual");
     let spanHorasSegundoPlanoAtual = temposVideos[videos.length].querySelector(".horas-atual");
