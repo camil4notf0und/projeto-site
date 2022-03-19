@@ -192,20 +192,6 @@ function mudaVelocidade() {
 }
 
 
-if(window.innerWidth < 900) {
-  setInterval(() => {
-    if(tocando == true) {
-      const velocidadeSelecionada = parseFloat(botoesVelocidade[qualTocando].value);
-      pegaVelocidade();
-
-      if(velocidadeSelecionada != velocidade) {
-        players[qualTocando].setPlaybackRate(velocidadeSelecionada);
-      }
-    }
-  }, 10);
-}
-
-
 btnsFechaOffCanvas[1].addEventListener("click", () => {
   setTimeout(segundoPlano, 350);
 });
@@ -269,7 +255,7 @@ btnsFechaOffCanvas[0].onclick = fechaModal;
 });
 
 [...botoesVelocidade].forEach((e) => {
-  e.addEventListener("click", mudaVelocidade);
+  e.addEventListener("change", mudaVelocidade);
 });
 
 
@@ -492,46 +478,3 @@ ouvirVideo.forEach((elemento) => {
     }
   });
 });
-
-
-
-function adicionaVideo() {
-  /**
-  let player = new YT.Player('player', {
-    height: '100%',
-    width: '100%',
-    videoId: 'tHbFukPmM9s',
-    playerVars: {
-      controls: '0',
-      rel: '0'
-    }
-  });
-
-
-  let qualVideoLocal = qualVideo;
-  player.addEventListener("click", () => {
-    if(tocando == false) {
-      qualTocando = qualVideoLocal;
-      tocando = true;
-      for (i = 0; i < titulosOffCanvas.length; i++) {
-        titulosOffCanvas[i].classList.add("d-none");
-      }
-      titulosOffCanvas[qualTocando].classList.remove("d-none");
-      playEPause();
-    }else {
-      var abrirAvisoVar = videos[qualVideoLocal].getAttribute("data-abrir-aviso");
-      if(abrirAvisoVar == "true") {
-        abreAviso();
-        videoSelecionado = qualVideoLocal;
-      }
-      if(abrirAvisoVar == "false") {
-        botaoOffCanvas.click();
-      }
-    }
-  });
-  qualVideo++;
-
-  players.push(player);
-  */
- void(0);
-}

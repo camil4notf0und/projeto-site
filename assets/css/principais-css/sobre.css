@@ -46,12 +46,6 @@ main {
     height: 175px;
 }
 .perfils__borda:nth-child(1) .perfils__imagem {
-    background: url(../../img/camila-cardoso.jpeg) center / cover no-repeat
-}
-.perfils__borda:nth-child(2) .perfils__imagem {
-    background: url(../../img/felipe-henrique.png) center / cover no-repeat
-}
-.perfils__borda:nth-child(3) .perfils__imagem {
     background: url(../../img/felipe-laskos.jpg) center / cover no-repeat;
 }
 

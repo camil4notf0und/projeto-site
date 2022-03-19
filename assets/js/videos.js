@@ -59,7 +59,6 @@ var pagCarregou = false;
 var carregandoPodcast = false;
 
 window.onload = function () {
-  document.querySelector(".carregando").classList.add("nao-aparece");
     pagCarregou = true;
     document.querySelector(".videos-chamada").classList.remove("inicio-chamada");
     let bordaCarregando = document.querySelector("div.animation");
@@ -67,7 +66,7 @@ window.onload = function () {
     setTimeout(() => {
       bordaCarregando.classList.add("no-animation");
     }, 50);
-};
+};  
 
 const podcastPronto = () => {
   videoAtual.classList.remove("inicio-videos");
@@ -80,6 +79,8 @@ const podcastPronto = () => {
 const podcastProntoNaoVisto = () => {
   tempoVideo();
   podcastCarregado[carregarVideo] = true;
+  videosFundo[carregarVideo].querySelector(".video").classList.remove("video-carregando");
+  videosFundo[carregarVideo].querySelector(".carregando").classList.add("nao-aparece");
   carregarVideo++;
   carregandoPodcast = false;
 }
@@ -92,6 +93,7 @@ function apareceVideos() {
         posicaoVideo = window.innerHeight - videoAtual.getBoundingClientRect()["y"];
         posicaoDesejada = tamanhoVideo / 2;
     }
+    /**
     if(posicaoDesejada <= posicaoVideo && pagCarregou == true && animacao < videos.length && typeof players[animacao] != "undefined" && podcastCarregado[animacao] == true) {
       videoAtual.classList.remove("inicio-videos");
       animacao++;
@@ -99,7 +101,15 @@ function apareceVideos() {
         apareceVideos();
       }
     }
-    
+    */
+    if(posicaoDesejada <= posicaoVideo && pagCarregou == true && animacao < videos.length) {
+      videoAtual.classList.remove("inicio-videos");
+      animacao++;
+      if(videoAtual.classList.contains("nao-aparece")) {
+        apareceVideos();
+      }
+    }
+
     if(pagCarregou == true && carregarVideo < videos.length && typeof players[carregarVideo] == "undefined" && carregandoPodcast == false && podcastCarregado[carregarVideo] == false) {
       carregandoPodcast = true;
 
@@ -126,7 +136,7 @@ function apareceVideos() {
     }
 }
 
-setInterval(apareceVideos, 250);
+setInterval(apareceVideos, 200);
 
 
 
@@ -411,6 +421,7 @@ function flowPodcast() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 function podpah() {
@@ -478,6 +489,7 @@ function podpah() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 function cienciaSemFim() {
@@ -545,6 +557,7 @@ function cienciaSemFim() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 function balela() {
@@ -612,6 +625,7 @@ function balela() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 function podversus() {
@@ -679,6 +693,7 @@ function podversus() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 function inteligenciaLtda() {
@@ -746,6 +761,7 @@ function inteligenciaLtda() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 function groselhaTalk() {
@@ -813,6 +829,7 @@ function groselhaTalk() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 function tourettcast() {
@@ -880,6 +897,7 @@ function tourettcast() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 function todos() {
@@ -946,6 +964,7 @@ function todos() {
           }
       }
   }
+  rolaAteVideos();
 }
 
 
@@ -1039,6 +1058,7 @@ btnSalvos.addEventListener("click", function() {
     }
     animacao = 0;
   }
+  rolaAteVideos();
 });
 
 btnAssistidos.addEventListener("click", () => {
@@ -1099,6 +1119,7 @@ btnAssistidos.addEventListener("click", () => {
       }
     }
   }
+  rolaAteVideos();
 });
 
 containerAcoesVideos.querySelector(".apagar-historico").addEventListener("click", () => {
@@ -1110,65 +1131,39 @@ containerAcoesVideos.querySelector(".apagar-historico").addEventListener("click"
   btnAssistidos.click();
 });
 
-filtro.addEventListener("click", () => {
-  if(colapsado == true) {
-      let selecionado = filtro.value;
-      
-          if(selecionado == "todos") {
-            todos();
-          }else if(selecionado == "flow podcast") {
-            flowPodcast();
-          }else if(selecionado == "podpah") {
-            podpah();
-          }else if(selecionado == "ciencia sem fim") {
-            cienciaSemFim();
-          }else if(selecionado == "balela") {
-            balela();
-          }else if(selecionado == "podversus") {
-            podversus();
-          }else if(selecionado == "inteligencia ltda") {
-            inteligenciaLtda();
-          }else if(selecionado == "groselha talk") {
-            groselhaTalk();
-          }else if(selecionado == "tourettcast") {
-            tourettcast();
-          }
-      colapsado = false;
-  }else {
-      colapsado = true;
-  }
-});
-filtro.addEventListener("blur", () => {
-  colapsado = false;
-});
+filtro.addEventListener("change", function() {
+    let selecionado = this.value;
 
-if(window.innerWidth < 900) {
-  var ultimoFiltro = filtro.value;
-
-  setInterval(() => {
-    if(ultimoFiltro != filtro.value) {
-      let selecionado = filtro.value;
-  
-      if(selecionado == "todos") {
-        todos();
-      }else if(selecionado == "flow podcast") {
-        flowPodcast();
-      }else if(selecionado == "podpah") {
-        podpah();
-      }else if(selecionado == "ciencia sem fim") {
-        cienciaSemFim();
-      }else if(selecionado == "balela") {
-        balela();
-      }else if(selecionado == "podversus") {
-        podversus();
-      }else if(selecionado == "inteligencia ltda") {
-        inteligenciaLtda();
-      }else if(selecionado == "groselha talk") {
-        groselhaTalk();
-      }else if(selecionado == "tourettcast") {
-        tourettcast();
-      }
-      ultimoFiltro = filtro.value;
+    if(selecionado == "todos") {
+      todos();
+    }else if(selecionado == "flow podcast") {
+      flowPodcast();
+    }else if(selecionado == "podpah") {
+      podpah();
+    }else if(selecionado == "ciencia sem fim") {
+      cienciaSemFim();
+    }else if(selecionado == "balela") {
+      balela();
+    }else if(selecionado == "podversus") {
+      podversus();
+    }else if(selecionado == "inteligencia ltda") {
+      inteligenciaLtda();
+    }else if(selecionado == "groselha talk") {
+      groselhaTalk();
+    }else if(selecionado == "tourettcast") {
+      tourettcast();
     }
-  }, 10);
+});
+
+const sectionVideos = document.getElementsByClassName("videos")[0];
+
+function rolaAteVideos() {
+  const posicaoYVideos = sectionVideos.getBoundingClientRect()["y"];
+  const posicaoYTela = window.scrollY;
+
+  if(posicaoYVideos >= 0) {
+    window.scrollTo(0, (posicaoYVideos + posicaoYTela) - 75);
+  }else {
+    window.scrollTo(0, (posicaoYTela - (-1 * posicaoYVideos)) - 75);
+  }
 }
